@@ -6,6 +6,8 @@ Redesign of outdated retail portal.
 3. Questions and Answers
 4. Related items and comparison 
 
+## Related 
+To Do: add link to each team members forked repo
 
 ## Table of Contents
 
