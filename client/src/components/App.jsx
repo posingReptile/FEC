@@ -9,15 +9,16 @@ import RateAndReview from './RateAndReviewFolder/RateAndReview.jsx';
 
 
 const App = (props) => {
+  const [productId, setProductId] = useState('');
 
   return (
     // <div>
     //   <h1>Hello World</h1>
     // </div>
     <div>
-      <Overview />
-      <QuestionAnswer />
-      <RateAndReview />
+      <Overview productId={productId}/>
+      <QuestionAnswer productId={productId}/>
+      <RateAndReview productId={productId}/>
     </div>
   );
 }
