@@ -5,7 +5,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 
 const RateAndReview = (props) => {
   return (
-    <div>
+    <div data-testid="rating-main">
       <h2>Ratings And Reviews</h2>
       <RatingBreakdown />
       <ProductBreakdown />
