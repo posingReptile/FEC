@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import SortOptions from './SortOptions.jsx';
+import NewReview from './NewReview.jsx';
 
 const ReviewsList = (props) => {
   return (
@@ -8,6 +9,7 @@ const ReviewsList = (props) => {
       <h3>Reviews List</h3>
       <SortOptions />
       <ReviewTile />
+      <NewReview />
     </div>
   )
 }
