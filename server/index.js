@@ -12,11 +12,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/getProducts', (req, res) => {
-  getProducts('products').then((data) => {
-    // console.log(data);
+  let query = '';
+  let productId = req.query.product_id;
+  let style = req.query.style;
+  if (style && productId) {
+    query += `${productId}/styles`;
+  } else if (productId) {
+    query += productId;
+  };
+
+  // console.log(query);
+  getProducts(`products/${query}`).then((data) => {
+    // console.log(data.data);
     res.json(data.data);
-  })
+  }).catch((err) => console.log(err));
 });
+
 
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
