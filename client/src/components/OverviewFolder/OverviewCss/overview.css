@@ -1,0 +1,13 @@
+ #overview {
+  display: flex;
+  justify-content: space-around;
+  border:1px black solid;
+ }
+
+
+#overviewFooter {
+  justify-content: space-around;
+  display: flex;
+  border:1px black solid;
+}
+
