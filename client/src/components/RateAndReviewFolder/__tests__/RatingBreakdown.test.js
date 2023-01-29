@@ -63,3 +63,5 @@ test('has placeholder for 5 stars', () => {
   const breakdownElement = screen.getByText('5 Stars');
   expect(breakdownElement).toBeTruthy();
 });
+
+// will need to write test to verify star bars are rending correctly
