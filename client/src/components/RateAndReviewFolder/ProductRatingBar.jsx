@@ -3,11 +3,12 @@ import React from 'react';
 
 //needs work... this is only placing triangle at begining of bar
 
-const ProductRatingBar = ({ height, productRating }) => {
+const ProductRatingBar = ({ height, name, productRating }) => {
   const productBar = {
     height: height,
     width: '20%',
     backgroundColor: 'lightgray',
+    marginBottom: '5px'
   }
   const productCarrot = {
     height: '100%',
@@ -19,6 +20,7 @@ const ProductRatingBar = ({ height, productRating }) => {
     right: 0
     // paddingLeft: `${productRating}%`
   }
+  console.log('this is productRating in rating bar:', productRating);
 
 
   return (
