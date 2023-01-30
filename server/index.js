@@ -18,6 +18,13 @@ app.get('/getProducts', (req, res) => {
   })
 });
 
+
+app.get('/questions', (req, res) => {
+  let id = req.query.product_id
+  getProducts(`qa/questions/?product_id=${id}&count=100`)
+  .then(data => res.json(data.data))
+})
+
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
 console.log(`listening on port http://localhost:${process.env.PORT}`);

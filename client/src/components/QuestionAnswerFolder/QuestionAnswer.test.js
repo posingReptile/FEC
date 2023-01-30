@@ -7,6 +7,12 @@ import App from '../App'
 
 
 
-test('renders the landing page', () => {
-  render(<App />);
+test('renders the Question Answer page ', () => {
+  const {container} = render(<QuestionAnswer />);
+
+  const questions = container.getElementsByClassName('Questions');
+  console.log(questions)
+  expect(questions.length).toBe(1);
+
+
 });
