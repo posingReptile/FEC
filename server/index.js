@@ -28,6 +28,28 @@ app.get('/getProducts', (req, res) => {
   }).catch((err) => console.log(err));
 });
 
+app.get('/getReviews', (req, res) => {
+  let query = '';
+  query += req.query.product_id;
+
+  getProducts(`reviews/?product_id=${query}`)
+    .then(data => {
+      res.json(data.data);
+    })
+    .catch(err => console.log(err));
+})
+
+app.get('/getReviewsMeta', (req, res) => {
+  let query = '';
+  query += req.query.product_id;
+
+  getProducts(`reviews/meta/?product_id=${query}`)
+    .then(data => {
+      res.json(data.data)
+    })
+    .catch(err => console.log(err));
+})
+
 
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
