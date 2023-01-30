@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 import "./OverviewCss/overview.css";
-import "./OverviewCss/imageGallery.css";
 import "./OverviewCss/productInformation.css";
+import Static from "./Static.js";
 
-import CarouselThumbnail from './CarouselThumbnail.jsx';
+import ImageGallery from './ImageGallery.jsx'
 import ProductInformation from './ProductInformation.jsx'
 import OverviewFooter from "./OverviewFooter.jsx";
 
@@ -13,9 +13,11 @@ import OverviewFooter from "./OverviewFooter.jsx";
 
 const Overview = (props) => {
 
-  let [item, setItem] = useState(false);
-  let [itemStyle, setItemStyle] = useState(false);
-  let [mainPhoto, setMainPhoto] = useState("")
+  let [item, setItem] = useState(Static.productId);
+  let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
+  let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
+  let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].thumbnail_url)
+
 
   useEffect(() => {
     axios.get(`/getProducts/?product_id=37311`)
@@ -25,26 +27,22 @@ const Overview = (props) => {
 
     axios.get(`/getProducts/?product_id=37311&style=true`)
     .then((data) => {
-      const styleResult = data.data.results[0]
-      setItemStyle(styleResult);
-      setMainPhoto(styleResult.photos[0].thumbnail_url);
+     let productData = data.data.results;
+      setItemStyle(productData[0]);
+      setMainPhoto(productData[0].photos[0].thumbnail_url);
+      setStyleResult(productData);
     })
   }, []);
 
 
-  // {itemStyle.photos[0].thumbnail_url}
+  // console.log(Static.productId)
   return (
     <div>
       <h2>Overview</h2>
-        {item && itemStyle ?
-          (<div id="overview">
-            <div id="imageGallery">
-              <img id="main" src={mainPhoto} onClick={() => {console.log(mainPhoto)}}></img>
-              <CarouselThumbnail photos={itemStyle.photos} setMainPhoto={setMainPhoto}/>
-            </div>
-            <ProductInformation item={item} itemStyle={itemStyle}/>
-          </div>)
-        : null}
+          <div id="overview">
+            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}/>
+            <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult}/>
+          </div>
       <OverviewFooter item={item}/>
     </div>
   );

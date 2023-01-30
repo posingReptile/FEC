@@ -1,15 +1,24 @@
 import React, {useState} from 'react';
 
 
-const Style = ({photos}) => {
-  const [check, setCheck] = useState(1);
+const Style = ({allStyleResult}) => {
+  const [check, setCheck] = useState(0);
+ let firstOfEveryStyle = {
+
+ }
+//  console.log('this is from style', allStyleResult);
+let array = [];
+ for (let i = 0; i < allStyleResult.length; i++) {
+  array.push(allStyleResult[i].photos[0].thumbnail_url)
+ }
+//  console.log(array);
 
   return (
       <div className="styleIcons">
-        {[1, 2, 3, 4].map((n) => (
+        {array.slice(0, 4).map((url, n) => (
           <div className="style" key={n}>
             {n === check ? <div className="check">&#10003;</div> : null}
-            <img className="column" src="https://via.placeholder.com/50x50" alt="placeHolder" onClick={(e) => { setCheck(n); }}></img>
+            <img className="column" src={url} alt="placeHolder" onClick={() => { setCheck(n); }}></img>
           </div>
         ))}
       </div>

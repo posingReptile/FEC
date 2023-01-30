@@ -5,7 +5,7 @@ import Style from './Style.jsx';
 
 import "./OverviewCss/productInformation.css";
 
-const ProductInformation = ({item, itemStyle}) => {
+const ProductInformation = ({item, itemStyle, allStyleResult}) => {
 
   return (
       <div id="productInformation">
@@ -14,7 +14,7 @@ const ProductInformation = ({item, itemStyle}) => {
         <div>{item.name}</div>
         <div>{itemStyle.original_price}</div>
         <div>Style > {itemStyle.name}</div>
-        <Style photos={itemStyle.photos}/>
+        <Style allStyleResult={allStyleResult}/>
         <div id="sizeDropdown">
           <Dropdown placeHolder="Select Size" />
           <Dropdown placeHolder="Quantity" />
