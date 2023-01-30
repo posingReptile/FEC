@@ -24,11 +24,13 @@ const ProductRatingBar = ({ height, name, productRating }) => {
 
 
   return (
+    <>
+    <h5>{name}</h5>
     <div style={productBar}>
       <div style={productCarrot}>
         <span>{'▼'}</span>
       </div>
-    </div>
+    </div></>
   )
 
 }
