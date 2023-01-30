@@ -1,0 +1,58 @@
+#imageGallery {
+  position: relative;
+  border:1px black solid;
+}
+
+#main{
+  border:1px black solid;
+  position: relative;
+  display: inline;
+}
+
+#main {
+  width: 800px;
+  height: 650px;
+  object-fit: cover;
+  object-position: 30% 30%;
+}
+
+#main:hover{
+  border:1px black solid;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.horizontalCarousel {
+  border:1px black solid;
+  position: absolute;
+  width: 10%;
+  height: 80%;
+  top: 10%;
+}
+
+.topThumbnailButton {
+  width: 100%;
+  position: absolute;
+  top: 4%;
+}
+
+.botThumbnailButton {
+  width: 100%;
+  position: absolute;
+  bottom: 4%;
+}
+
+#carouselThumbnail {
+  position: absolute;
+  width: 100%;
+  top: 15%;
+}
+
+.column {
+  border:1px black solid;
+  width: 100%;
+  height: 75px;
+  object-fit: cover;
+  object-position: 30% 30%;
+}
