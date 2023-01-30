@@ -28,7 +28,7 @@ const ProductBreakdown = (props) => {
     <div data-testid='rating-product'>
       <h4>Product Breakdown</h4>
       <div data-testid='product-bars'>
-        <ProductRatingBar productRating={50} height={15}/>
+        <ProductRatingBar productRating={70} height={15}/>
 
       </div>
     </div>

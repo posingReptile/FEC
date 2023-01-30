@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoTriangleDown } from 'react-icons/go'
+// import { GoTriangleDown } from 'react-icons/go'
 
 //needs work... this is only placing triangle at begining of bar
 
@@ -24,7 +24,7 @@ const ProductRatingBar = ({ height, productRating }) => {
   return (
     <div style={productBar}>
       <div style={productCarrot}>
-        <span><GoTriangleDown style={trianglePos}/></span>
+        <span>{'▼'}</span>
       </div>
     </div>
   )
