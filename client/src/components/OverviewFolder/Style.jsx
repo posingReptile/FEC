@@ -1,24 +1,28 @@
 import React, {useState} from 'react';
 
 
-const Style = ({photos}) => {
-  let [check, setCheck] = useState(1);
-  // console.log(e.target.getAttribute('id')) (document.getElementById(n).id) setCheck(e.target.getAttribute('id'))
-  let test = function (n) {
-    console.log(n);
-    setCheck(n);
-  }
-  return (
-    <div className="styleIcons">
-      {[1, 2, 3, 4].map((n) => (
-        <div className="style" key={n}>
-           {n === check ? <div className="check">&#10003;</div> : null}
-           <img className="column" src="https://via.placeholder.com/50x50" alt="placeHolder" onClick={(e) => {test(n)}}></img>
-        </div>
-      ))}
-    </div>
+const Style = ({allStyleResult}) => {
+  const [check, setCheck] = useState(0);
+ let firstOfEveryStyle = {
 
-  )
-}
+ }
+//  console.log('this is from style', allStyleResult);
+let array = [];
+ for (let i = 0; i < allStyleResult.length; i++) {
+  array.push(allStyleResult[i].photos[0].thumbnail_url)
+ }
+//  console.log(array);
+
+  return (
+      <div className="styleIcons">
+        {array.slice(0, 4).map((url, n) => (
+          <div className="style" key={n}>
+            {n === check ? <div className="check">&#10003;</div> : null}
+            <img className="column" src={url} alt="placeHolder" onClick={() => { setCheck(n); }}></img>
+          </div>
+        ))}
+      </div>
+  );
+};
 
 export default Style;
