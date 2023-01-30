@@ -28,6 +28,12 @@ app.get('/getProducts', (req, res) => {
   }).catch((err) => console.log(err));
 });
 
+app.get('/questions', (req, res) => {
+  let id = req.query.product_id
+  getProducts(`qa/questions/?product_id=${id}&count=100`)
+  .then(data => res.json(data.data))
+})
+
 app.get('/getReviews', (req, res) => {
   let query = '';
   query += req.query.product_id;
@@ -48,8 +54,7 @@ app.get('/getReviewsMeta', (req, res) => {
       res.json(data.data)
     })
     .catch(err => console.log(err));
-})
-
+}) 
 
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
