@@ -32,7 +32,6 @@ const RateAndReview = ({ product_id }) => {
           ratingObj[rate] = (ratings[rate] / totalRatings) * 100;
         }
         setRating(ratingObj);
-        // console.log('this is rating obj', ratingObj)
 
         //characteristics info
         let characteristics = meta.characteristics;
