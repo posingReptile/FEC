@@ -1,0 +1,19 @@
+#productInformation {
+  align-self: center;
+  border:1px black solid;
+}
+
+.styleIcons {
+  display: flex;
+}
+
+.style {
+  padding: 5px;
+  width: 25%;
+  height: 100%;
+}
+
+.check {
+  position: absolute;
+  width: auto;
+}
