@@ -23,7 +23,7 @@
   cursor: zoom-in;
 }
 
-.carouselThumbnail {
+.horizontalCarousel {
   border:1px black solid;
   position: absolute;
   width: 10%;
@@ -43,7 +43,7 @@
   bottom: 4%;
 }
 
-#thumbnail {
+#carouselThumbnail {
   position: absolute;
   width: 100%;
   top: 15%;
