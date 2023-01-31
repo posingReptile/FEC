@@ -30,7 +30,7 @@ app.get('/getProducts', (req, res) => {
 
 app.get('/questions', (req, res) => {
   let id = req.query.product_id
-  getProducts(`qa/questions/?product_id=${id}&count=100`)
+  getProducts(`qa/questions/?product_id=${id}&count=100&sort=helpful`)
   .then(data => res.json(data.data))
 })
 
