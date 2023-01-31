@@ -1,24 +1,15 @@
 import React, {useState} from 'react';
+import { IoIosCheckbox } from "react-icons/io";
 
-
-const Style = ({allStyleResult}) => {
-  const [check, setCheck] = useState(0);
- let firstOfEveryStyle = {
-
- }
-//  console.log('this is from style', allStyleResult);
-let array = [];
- for (let i = 0; i < allStyleResult.length; i++) {
-  array.push(allStyleResult[i].photos[0].thumbnail_url)
- }
-//  console.log(array);
+const Style = ({allStyleResult, setItemStyle}) => {
+  const [check, setCheck] = useState(allStyleResult[0].style_id);
 
   return (
       <div className="styleIcons">
-        {array.slice(0, 4).map((url, n) => (
-          <div className="style" key={n}>
-            {n === check ? <div className="check">&#10003;</div> : null}
-            <img className="column" src={url} alt="placeHolder" onClick={() => { setCheck(n); }}></img>
+        {allStyleResult.map((item) => (
+          <div className="styleDiv" key={item.style_id}>
+            {item.style_id === check ? <div className="check"><IoIosCheckbox /></div> : null}
+            <img className="stylePhotos" src={item.photos[0].thumbnail_url} alt="placeHolder" onClick={() => { setCheck(item.style_id); setItemStyle(item); }}></img>
           </div>
         ))}
       </div>

@@ -6,10 +6,7 @@
 #main{
   border:1px black solid;
   position: relative;
-  display: inline;
-}
-
-#main {
+  background-color: white;
   width: 800px;
   height: 650px;
   object-fit: cover;
@@ -22,9 +19,15 @@
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
+#mainPhoto {
+  border:1px black solid;
+  display: block;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .horizontalCarousel {
-  border:1px black solid;
   position: absolute;
   width: 10%;
   height: 80%;
@@ -54,4 +57,6 @@
   height: 75px;
   object-fit: cover;
   object-position: 30% 30%;
+  border-radius: 15%;
+  border: 1px black solid;
 }
