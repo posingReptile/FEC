@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const {getProducts} = require('./helpers/helpers.js')
+const {getProducts, markReviewHelpful} = require('./helpers/helpers.js')
 
 
 const app = express();
@@ -53,6 +53,16 @@ app.get('/getReviewsMeta', (req, res) => {
     .then(data => {
       res.json(data.data)
     })
+    .catch(err => console.log(err));
+})
+
+app.put('/markReviewHelpful', (req, res) => {
+  let query = '';
+  query += req.query.review_id;
+  // console.log(query)
+
+  markReviewHelpful(`reviews/${query}/helpful`)
+    .then(() => console.log(`Review ${query} was marked helpful!`))
     .catch(err => console.log(err));
 })
 
