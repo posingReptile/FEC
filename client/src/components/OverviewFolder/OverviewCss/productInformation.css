@@ -5,15 +5,26 @@
 
 .styleIcons {
   display: flex;
+  flex-wrap: wrap;
+  width: 400px;
 }
 
-.style {
+.styleDiv {
   padding: 5px;
   width: 25%;
-  height: 100%;
 }
+
+.stylePhotos {
+  width: 100%;
+  height: 75px;
+  object-fit: cover;
+  object-position: 30% 30%;
+  border-radius: 15%;
+}
+
 
 .check {
   position: absolute;
   width: auto;
+  color: brown;
 }

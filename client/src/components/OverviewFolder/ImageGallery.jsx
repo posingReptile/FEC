@@ -7,7 +7,9 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto}) => {
 // console.log('this is from ImageGallery', photos);
   return (
     <div id="imageGallery">
-      <img id="main" src={mainPhoto} onClick={() => {console.log(mainPhoto)}}></img>
+      <div id="main">
+        <img id="mainPhoto" src={mainPhoto} onClick={() => {console.log(mainPhoto)}}></img>
+      </div>
       <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto}/>
     </div>
   );
