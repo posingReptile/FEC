@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import "./Q&A.css";
 
 const IndividualQuestion = (props) => {
   let productId = props.productid
@@ -13,7 +16,7 @@ const IndividualQuestion = (props) => {
   }
 
   const handleLoadMoreAnswer = (q) => {
-    if (q[2] >= q[1].length && q[1].length > 2 ) {
+    if (q[2] >= q[1].length && q[1].length > 2) {
     }
     q[2] += 2
     getReviews()
@@ -43,38 +46,77 @@ const IndividualQuestion = (props) => {
       finalQAObj[key].push(questions[key][1])
     }
 
+    const flexStyle = {
+      display: 'flex',
+      flexDirection: 'row'
+    }
 
+    const QABoldStyle = {
+      fontSize: '20px',
+      fontWeight: 'bold'
+    }
+
+    const underlineStyle = {
+      textDecoration: 'underline'
+    }
+
+    //A:{answer.body by {answer.answerer_name} | helpful? {answer.helpfulness} Report
     for (let key in finalQAObj) {
       let mappedAnswers = finalQAObj[key].slice(0, finalQAObj[key].length - 1).map((answer, index) => {
-        return <div key={index}><div><text style={{ fontSize: '20px', fontWeight: 'bold' }}>A: </text>{answer.body}</div>
-          <div> by {answer.answerer_name} | helpful? <text style={{ textDecoration: 'underline' }}>yes</text>
-            ({answer.helpfulness}) | <text style={{ textDecoration: 'underline' }}> Report</text></div></div>
-      })
-      setHtmlQAList(previous => [...previous, [<div shown={2} key={key}><text style={{ fontSize: '20px', fontWeight: 'bold' }}>Q:</text>{key}
-        Helpful? <text style={{ textDecoration: 'underline' }}>yes</text> ({finalQAObj[key].pop()}) | <text style={{ textDecoration: 'underline' }}>Add Answer</text></div>, mappedAnswers, 2]])
+        return (
+          <div className="answerBlock" key={index}>
+            <div className="answerBody">
+              <h3><strong>A:</strong></h3>
+              {answer.body}
+            </div>
+            <div className="answerInfo">
+              By: {answer.answerer_name} | helpful?
+              <u>Yes</u>
+              ({answer.helpfulness}) |
+              <u>Report</u>
+            </div>
+          </div>
+        )
+      });
+
+
+
+      setHtmlQAList(previous => [...previous, [
+        <div className="QBlock" key={key}>
+          <h3><strong>Q: {key}</strong></h3>
+          <div className="Qhelpful">
+              Helpful?
+              <u>Yes</u>
+              ({finalQAObj[key].pop()}) |
+              <u>Add Answer</u>
+          </div>
+        </div>,
+        mappedAnswers, 2]])
     }
   }
 
 
   const renderQuestionAnswerElements =
+    // eslint-disable-next-line react/prop-types
     htmlQAList.slice(0, props.numberOfQuestions).map((q) => {
 
       let answers = q[1].slice(0, q[2]).map((a) => {
         return a
       })
-
-
       if (q[2] >= q[1].length && q[1].length > 2) {
-        return ([q[0], answers, <button key="loadFewerAnswers" onClick={()=> {handleLoadFewerAnswer(q)}}>Load Fewer Answers</button>])
+        return ([q[0], answers, <button key="loadFewerAnswers" onClick={() => { handleLoadFewerAnswer(q) }}>Load Fewer Answers</button>])
       } else if (q[1].length > 2) {
-        return ([q[0], answers,<button key="loadMoreAnswers" onClick={() => {handleLoadMoreAnswer(q)}}>Load More Answers</button>])
+        return ([q[0], answers, <button key="loadMoreAnswers" onClick={() => { handleLoadMoreAnswer(q) }}>Load More Answers</button>])
       } else {
         return ([q[0], answers])
       }
     })
 
 
-
+  const rowStyle = {
+    display: 'flex',
+    flexDirection: 'column'
+  }
 
 
   useEffect(() => {

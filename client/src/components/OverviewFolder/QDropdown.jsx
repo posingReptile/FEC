@@ -2,8 +2,7 @@ import React, {useState} from "react";
 
 import "./OverviewCss/dropdown.css";
 
-
-const Dropdown = ({placeHolder, option, setSizeSelector, Icon}) => {
+const QDropdown = ({placeHolder , option, setSizeSelector, Icon}) => {
   let [showDrop, setShowDrop] = useState(false);
   let style = {
     visibility: showDrop ? null : 'hidden'
@@ -25,4 +24,4 @@ const Dropdown = ({placeHolder, option, setSizeSelector, Icon}) => {
   );
 };
 
-export default Dropdown;
+export default QDropdown;

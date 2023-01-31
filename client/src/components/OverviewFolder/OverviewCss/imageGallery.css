@@ -59,4 +59,9 @@
   object-position: 30% 30%;
   border-radius: 15%;
   border: 1px black solid;
+  opacity: .75;
+}
+
+.column:hover {
+  opacity: 1;
 }
