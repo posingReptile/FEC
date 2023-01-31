@@ -2,7 +2,7 @@ import React from 'react';
 import StarBar from './StarBar.jsx'
 
 const RatingBreakdown = ({productRating}) => {
-  console.log('this is productRating', productRating);
+  // console.log('this is productRating', productRating);
 
 
   return (
