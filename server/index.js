@@ -37,8 +37,11 @@ app.get('/questions', (req, res) => {
 app.get('/getReviews', (req, res) => {
   let query = '';
   query += req.query.product_id;
+  let count = '';
+  count += req.query.count;
 
-  getProducts(`reviews/?product_id=${query}`)
+
+  getProducts(`reviews/?product_id=${query}&count=${count}`)
     .then(data => {
       res.json(data.data);
     })
@@ -54,7 +57,7 @@ app.get('/getReviewsMeta', (req, res) => {
       res.json(data.data)
     })
     .catch(err => console.log(err));
-}) 
+})
 
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);

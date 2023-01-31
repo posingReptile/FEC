@@ -1,11 +1,7 @@
 import React, {useState} from 'react';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en.json';
-import ReactTimeAgo from 'react-time-ago';
+import TimeAgo from 'react-timeago';
 
 const ReviewTile = ({ review }) => {
-  TimeAgo.addDefaultLocale(en)
-
 
   let starsMapper = (rating) => {
     let starFilled = '★';
@@ -21,7 +17,6 @@ const ReviewTile = ({ review }) => {
     }
     return result;
   }
-  console.log('this is review object ', review)
 
   return (
     <div style={{border: '1px solid black'}}>
@@ -29,7 +24,7 @@ const ReviewTile = ({ review }) => {
       <div className="Rating-And-Name">
         <h5>{starsMapper(review.rating)}</h5>
         <p>{review['reviewer_name']}</p>
-        <ReactTimeAgo date={review.date} locale="en-US"/>
+        <TimeAgo date={review.date} locale="en-US"/>
       </div>
       <h5>{review.summary}</h5>
       <div>

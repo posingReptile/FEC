@@ -3,8 +3,15 @@ import ReviewTile from './ReviewTile.jsx';
 import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
 
-const ReviewsList = ({ productReviews }) => {
+
+const ReviewsList = ({ productReviews, loadMoreReviews, reviewCount, setReviewCount }) => {
   const [reviewButton, setReviewState] = useState(false);
+
+  const clickHandler = () => {
+    let newCount = reviewCount + 2;
+    setReviewCount(newCount);
+    loadMoreReviews();
+  }
 
   return (
     <div data-testid='review-list'>
@@ -17,6 +24,7 @@ const ReviewsList = ({ productReviews }) => {
         </div>
       ))}
     </div>
+    <button onClick={clickHandler}>More Reviews</button>
 
     <button onClick={()=> setReviewState(!reviewButton)}>Add New Review</button>
       <>{reviewButton ? <NewReview /> : null}</>
