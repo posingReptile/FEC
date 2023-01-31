@@ -37,11 +37,8 @@ app.get('/questions', (req, res) => {
 app.get('/getReviews', (req, res) => {
   let query = '';
   query += req.query.product_id;
-  let count = '';
-  count += req.query.count;
 
-
-  getProducts(`reviews/?product_id=${query}&count=${count}`)
+  getProducts(`reviews/?product_id=${query}&count=100`)
     .then(data => {
       res.json(data.data);
     })
