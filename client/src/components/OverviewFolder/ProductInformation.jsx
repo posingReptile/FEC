@@ -9,10 +9,14 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
   return (
       <div id="productInformation">
         <div> &#9733;&#9733;&#9733;&#9734;&#9734; Read all [#] reviews</div>
-        <div>{item.category}</div>
-        <div>{item.name}</div>
-        <div>{itemStyle.original_price}</div>
-        <div>Style > {itemStyle.name}</div>
+        <div id="category">{item.category}</div>
+        <h2 id="itemName">{item.name}</h2>
+        {itemStyle.sale_price ?
+        <div id="itemPrice">
+          <p><s>${itemStyle.original_price}</s></p> &nbsp;
+          <p style={{color: 'red'}}>${itemStyle.sale_price}</p>
+        </div> : <div id="itemPrice">${itemStyle.original_price}</div>}
+        <div><strong>Style > </strong>{itemStyle.name}</div>
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>
         <div id="sizeDropdown">
           <Dropdown placeHolder="Select Size" />

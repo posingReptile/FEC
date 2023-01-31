@@ -8,7 +8,9 @@
   flex-wrap: wrap;
   width: 400px;
 }
-
+#itemPrice {
+  display: flex;
+}
 .styleDiv {
   padding: 5px;
   width: 25%;
