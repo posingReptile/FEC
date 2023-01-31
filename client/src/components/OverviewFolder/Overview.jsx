@@ -41,7 +41,7 @@ const Overview = (props) => {
       <h2>Overview</h2>
           <div id="overview">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}/>
-            <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle}/>
+            <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>
           </div>
       <OverviewFooter item={item}/>
     </div>
