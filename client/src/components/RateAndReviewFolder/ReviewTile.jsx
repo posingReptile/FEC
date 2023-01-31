@@ -20,7 +20,6 @@ const ReviewTile = ({ review }) => {
 
   return (
     <div style={{border: '1px solid black'}}>
-      {/* <h4>Review Tile</h4> */}
       <div className="Rating-And-Name">
         <h5>{starsMapper(review.rating)}</h5>
         <p>{review['reviewer_name']}</p>

@@ -6,13 +6,18 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 
 const RateAndReview = ({ product_id }) => {
   const [productReviews, setReviews] = useState([]);
+  const [reviewsShown, setShownReviews] = useState([]);
   const [productMeta, setProductMeta] = useState({});
   const [productChar, setChar] = useState([])
   const [productRating, setRating] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
 
   useEffect(() => {
-    loadMoreReviews();
+    axios.get(`getReviews/?product_id=${product_id}`)
+    .then(data => {
+       setReviews(data.data.results);
+       setShownReviews(data.data.results.slice(0, reviewCount))
+    });
 
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
       .then(data => {
@@ -49,13 +54,13 @@ const RateAndReview = ({ product_id }) => {
       })
   }, []);
 
-  const loadMoreReviews = () => {
-    axios.get(`getReviews/?product_id=${product_id}&count=${reviewCount}`)
-    .then(data => {
-      setReviews(data.data.results);
-    });
-  }
+  useEffect(() => {
+    setShownReviews(productReviews.slice(0, reviewCount))
+  },[reviewCount])
 
+  const showMoreReviews = () => {
+    return setReviewCount(reviewCount + 2);
+  }
 
   return (
     <div data-testid="rating-main">
@@ -63,10 +68,7 @@ const RateAndReview = ({ product_id }) => {
       <div>
       <RatingBreakdown productRating={productRating}/>
       <ProductBreakdown productChar={productChar}/>
-      <ReviewsList productReviews={productReviews}
-       loadMoreReviews={loadMoreReviews}
-       reviewCount={reviewCount}
-       setReviewCount={setReviewCount}/>
+      <ReviewsList reviewsShown={reviewsShown} showMoreReviews={showMoreReviews}/>
       </div>
     </div>
   )
