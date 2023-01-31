@@ -15,52 +15,59 @@ const RateAndReview = ({ product_id }) => {
   useEffect(() => {
     axios.get(`getReviews/?product_id=${product_id}`)
     .then(data => {
-       setReviews(data.data.results);
-       setShownReviews(data.data.results.slice(0, reviewCount))
+      setReviews(data.data.results);
+      setShownReviews(data.data.results.slice(0, reviewCount))
     });
 
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
-      .then(data => {
-        let meta = data.data
-        setProductMeta(meta);
+    .then(data => {
+      let meta = data.data
+      setProductMeta(meta);
 
-        // star rating breakdown
-        let totalRatings = 0;
-        let ratings = meta.ratings;
-        for (let rate in ratings) {
-          totalRatings += JSON.parse(ratings[rate]);
-        }
-        let ratingObj = {};
-        for (let rate in ratings) {
-          ratingObj[rate] = (ratings[rate] / totalRatings) * 100;
-        }
-        setRating(ratingObj);
+      // star rating breakdown
+      let totalRatings = 0;
+      let ratings = meta.ratings;
+      for (let rate in ratings) {
+        totalRatings += JSON.parse(ratings[rate]);
+      }
+      let ratingObj = {};
+      for (let rate in ratings) {
+        ratingObj[rate] = (ratings[rate] / totalRatings) * 100;
+      }
+      setRating(ratingObj);
 
-        //characteristics info
-        let characteristics = meta.characteristics;
-        let charArr = [];
-        for (let key in characteristics) {
-          let rating = characteristics[key].value
-          let percentRating = (rating / 5) * 100;
+      //characteristics info
+      let characteristics = meta.characteristics;
+      let charArr = [];
+      for (let key in characteristics) {
+        let rating = characteristics[key].value
+        let percentRating = (rating / 5) * 100;
 
-          charArr.push({
-            'name': key,
-            'percent': percentRating,
-            'value': characteristics[key].value,
-            'id': characteristics[key].id
-          });
-        }
-        setChar(charArr);
-      })
+        charArr.push({
+          'name': key,
+          'percent': percentRating,
+          'value': characteristics[key].value,
+          'id': characteristics[key].id
+        });
+      }
+      setChar(charArr);
+    })
   }, []);
 
   useEffect(() => {
     setShownReviews(productReviews.slice(0, reviewCount))
   },[reviewCount])
 
+  const markHelpful = (reviewId) => {
+    axios.put(`markReviewHelpful/?review_id=${reviewId}`)
+      .then(() => console.log('marked!'))
+      .catch(err => console.log(err));
+  }
+
   const showMoreReviews = () => {
     return setReviewCount(reviewCount + 2);
   }
+
 
   return (
     <div data-testid="rating-main">
@@ -68,7 +75,9 @@ const RateAndReview = ({ product_id }) => {
       <div>
       <RatingBreakdown productRating={productRating}/>
       <ProductBreakdown productChar={productChar}/>
-      <ReviewsList reviewsShown={reviewsShown} showMoreReviews={showMoreReviews}/>
+      <ReviewsList reviewsShown={reviewsShown}
+      showMoreReviews={showMoreReviews}
+      markHelpful={markHelpful}/>
       </div>
     </div>
   )
