@@ -4,7 +4,7 @@ import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
 
 
-const ReviewsList = ({ reviewsShown, showMoreReviews }) => {
+const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
   const [reviewButton, setReviewState] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const ReviewsList = ({ reviewsShown, showMoreReviews }) => {
     <SortOptions />
     {reviewsShown.map((review) =>  (
         <div key={review['review_id']}>
-          <ReviewTile review={review}/>
+          <ReviewTile review={review} markHelpful={markHelpful}/>
         </div>
       ))}
     </div>

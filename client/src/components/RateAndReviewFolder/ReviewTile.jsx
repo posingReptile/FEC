@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
 
-const ReviewTile = ({ review }) => {
+const ReviewTile = ({ review, markHelpful }) => {
+  const [helpfulCount, setHelpfulCount] = useState(review.helpfulness);
+  const [helpClicked, setClicked] = useState(false);
 
   let starsMapper = (rating) => {
     let starFilled = '★';
@@ -16,6 +18,14 @@ const ReviewTile = ({ review }) => {
       result += starEmpty;
     }
     return result;
+  }
+
+  const clickHelper = () => {
+    if (!helpClicked) {
+      markHelpful(review.review_id);
+      setHelpfulCount(helpfulCount + 1);
+      setClicked(true);
+    }
   }
 
   return (
@@ -41,7 +51,7 @@ const ReviewTile = ({ review }) => {
         {review.response ? <p>review.response</p> : null }
       </div>
       <div>
-        <span>Helpful? <a>Yes({review.helpfulness})</a></span>
+        <span>Helpful? <a onClick={() => clickHelper()}>Yes({helpfulCount})</a></span>
       </div>
     </div>
 

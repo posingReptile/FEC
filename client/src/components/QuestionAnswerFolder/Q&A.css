@@ -1,0 +1,19 @@
+.QBlock, .answerBody, .answerInfo {
+  display: flex;
+  flex-direction: row;
+}
+.answerBlock {
+  display: flex;
+  flex-direction: column;
+}
+.QABoldStyle {
+  font-size: '20px';
+  font-weight: 'bold';
+}
+.QBlock{
+  position: relative;
+}
+.Qhelpful {
+  position: absolute;
+  right: 0px;
+}
