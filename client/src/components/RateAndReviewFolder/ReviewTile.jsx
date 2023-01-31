@@ -21,7 +21,6 @@ const ReviewTile = ({ review }) => {
     }
     return result;
   }
-  console.log('this is review object ', review)
 
   return (
     <div style={{border: '1px solid black'}}>
