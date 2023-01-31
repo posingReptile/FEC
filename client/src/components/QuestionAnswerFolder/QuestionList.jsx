@@ -1,10 +1,10 @@
 import React from 'react';
 import IndividualQuestion from './IndividualQuestion.jsx'
 
-const QuestionList = ({numberOfQuestions}) => {
+const QuestionList = (props) => {
 
 return (
-  <IndividualQuestion numberOfQuestions={numberOfQuestions}/>
+  <IndividualQuestion productid={props.productId} numberOfQuestions={props.numberOfQuestions}/>
 )
 }
 
