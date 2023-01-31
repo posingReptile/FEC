@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
 
@@ -23,7 +24,7 @@ const ReviewTile = ({ review, markHelpful }) => {
   const clickHelper = () => {
     if (!helpClicked) {
       markHelpful(review.review_id);
-      setHelpfulCount(helpfulCount + 1);
+      setHelpfulCount(() => helpfulCount + 1);
       setClicked(true);
     }
   }
