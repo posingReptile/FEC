@@ -9,13 +9,10 @@ const RateAndReview = ({ product_id }) => {
   const [productMeta, setProductMeta] = useState({});
   const [productChar, setChar] = useState([])
   const [productRating, setRating] = useState({});
+  const [reviewCount, setReviewCount] = useState(2);
 
   useEffect(() => {
-    axios.get(`getReviews/?product_id=${product_id}`)
-      .then(data => {
-        // console.log('is this an array of reviews?', data.data.results);
-        setReviews(data.data.results);
-      })
+    loadMoreReviews();
 
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
       .then(data => {
@@ -52,6 +49,13 @@ const RateAndReview = ({ product_id }) => {
       })
   }, []);
 
+  const loadMoreReviews = () => {
+    axios.get(`getReviews/?product_id=${product_id}&count=${reviewCount}`)
+    .then(data => {
+      setReviews(data.data.results);
+    });
+  }
+
 
   return (
     <div data-testid="rating-main">
@@ -59,7 +63,10 @@ const RateAndReview = ({ product_id }) => {
       <div>
       <RatingBreakdown productRating={productRating}/>
       <ProductBreakdown productChar={productChar}/>
-      <ReviewsList productReviews={productReviews}/>
+      <ReviewsList productReviews={productReviews}
+       loadMoreReviews={loadMoreReviews}
+       reviewCount={reviewCount}
+       setReviewCount={setReviewCount}/>
       </div>
     </div>
   )
