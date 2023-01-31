@@ -20,7 +20,7 @@ const ProductRatingBar = ({ height, name, productRating }) => {
     right: 0
     // paddingLeft: `${productRating}%`
   }
-  console.log('this is productRating in rating bar:', productRating);
+  // console.log('this is productRating in rating bar:', productRating);
 
 
   return (

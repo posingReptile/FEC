@@ -1,7 +1,8 @@
 import React from 'react';
 import StarBar from './StarBar.jsx'
 
-const RatingBreakdown = (props) => {
+const RatingBreakdown = ({productRating}) => {
+  // console.log('this is productRating', productRating);
 
 
   return (
@@ -16,11 +17,11 @@ const RatingBreakdown = (props) => {
         <p>% of reviewers recommend this product</p>
       </div>
       <div data-testid='rating-bd-stars'>
-        <a>5 Stars</a> <StarBar starRating={40} height={15}/><br/>
-        <a>4 Stars</a> <StarBar starRating={30} height={15}/> <br/>
-        <a>3 Stars</a> <StarBar starRating={15} height={15}/> <br/>
-        <a>2 Stars</a> <StarBar starRating={15} height={15}/> <br/>
-        <a>1 Stars</a> <StarBar starRating={10} height={15}/> <br/>
+        <a>5 Stars</a> <StarBar starRating={productRating['5']} height={15}/><br/>
+        <a>4 Stars</a> <StarBar starRating={productRating['4']} height={15}/> <br/>
+        <a>3 Stars</a> <StarBar starRating={productRating['3']}height={15}/> <br/>
+        <a>2 Stars</a> <StarBar starRating={productRating['2']} height={15}/> <br/>
+        <a>1 Stars</a> <StarBar starRating={productRating['1']} height={15}/> <br/>
       </div>
     </div>
   )
