@@ -2,10 +2,21 @@ import React, {useState} from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
+import Modal from 'react-modal';
 
 
 const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
-  const [reviewButton, setReviewState] = useState(false);
+  // const [reviewButton, setReviewState] = useState(false);
+  const [modalIsOpen, setModal] = useState(false);
+
+  let openModal = () => {
+    setModal(true);
+  }
+
+  let closeModal = () => {
+    setModal(false);
+  }
+
 
   return (
     <div data-testid='review-list'>
@@ -20,8 +31,12 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
     </div>
     <button onClick={() => showMoreReviews()}>More Reviews</button>
 
-    <button onClick={()=> setReviewState(!reviewButton)}>Add New Review</button>
-      <>{reviewButton ? <NewReview /> : null}</>
+    <button onClick={openModal}>Add New Review</button>
+    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <NewReview />
+      <button onClick={closeModal}>close</button>
+    </Modal>
+      {/* <>{reviewButton ? : null}</> */}
     </div>
   )
 };
