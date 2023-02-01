@@ -52,7 +52,9 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
           <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector} Icon={Icon}/>
           <QDropdown option={quantity} Icon={Icon} sizeSelector={sizeSelector} setSizeSelector={setSizeSelector}/>
         </div>
-        <button>Add To Bag</button>
+        <div className="checkout">
+           <button>Add To Bag</button>
+        </div>
       </div>
   );
 };

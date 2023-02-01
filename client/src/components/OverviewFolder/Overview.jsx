@@ -3,8 +3,9 @@ import axios from 'axios';
 
 import "./OverviewCss/overview.css";
 import "./OverviewCss/productInformation.css";
-import Static from "./Static.js";
+import "./OverviewCss/footer.css"
 
+import Static from "./Static.js";
 import ImageGallery from './ImageGallery.jsx'
 import ProductInformation from './ProductInformation.jsx'
 import OverviewFooter from "./OverviewFooter.jsx";
@@ -17,7 +18,7 @@ const Overview = (props) => {
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
   let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].url)
-
+  let [expandView, setExpandView] = useState(false)
 
   useEffect(() => {
     axios.get(`/getProducts/?product_id=37311`)
@@ -37,11 +38,11 @@ const Overview = (props) => {
 
   // console.log(Static.productId)
   return (
-    <div>
-      <h2>Overview</h2>
-          <div id="overview">
-            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}/>
-            <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>
+    <div id="overview">
+      <h1>Overview</h1>
+          <div id="overviewHeader">
+            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView}/>
+            {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>}
           </div>
       <OverviewFooter item={item}/>
     </div>

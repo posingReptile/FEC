@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-
+import { IoIosExpand } from "react-icons/io";
 import "./OverviewCss/imageGallery.css";
 import CarouselThumbnail from './CarouselThumbnail.jsx';
 
-const ImageGallery = ({photos, mainPhoto, setMainPhoto}) => {
+const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandView}) => {
 // console.log('this is from ImageGallery', photos);
   // console.log('this is from img', mainPhoto)
   return (
     <div id="imageGallery">
       <div id="main">
+        <div className="expand" onClick={()=> {setExpandView(!expandView)}}><IoIosExpand /></div>
         <img id="mainPhoto" src={mainPhoto} onClick={() => {console.log(mainPhoto)}}></img>
       </div>
       <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto}/>
