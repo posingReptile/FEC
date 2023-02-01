@@ -49,7 +49,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>
         <div id="sizeDropdown">
           <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector} Icon={Icon}/>
-          <QDropdown placeHolder="-" option={quantity} Icon={Icon} sizeSelector={sizeSelector} setSizeSelector={setSizeSelector}/>
+          <QDropdown option={quantity} Icon={Icon} sizeSelector={sizeSelector} setSizeSelector={setSizeSelector}/>
         </div>
         <button>Add To Bag</button>
       </div>
