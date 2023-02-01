@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import "./OverviewCss/dropdown.css";
+
 
 const QDropdown = ({option, setSizeSelector, Icon, sizeSelector}) => {
   const [quantity, setQuantitySelector] = useState('-')
