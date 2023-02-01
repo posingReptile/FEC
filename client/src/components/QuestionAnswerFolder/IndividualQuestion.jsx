@@ -46,20 +46,6 @@ const IndividualQuestion = (props) => {
       finalQAObj[key].push(questions[key][1])
     }
 
-    const flexStyle = {
-      display: 'flex',
-      flexDirection: 'row'
-    }
-
-    const QABoldStyle = {
-      fontSize: '20px',
-      fontWeight: 'bold'
-    }
-
-    const underlineStyle = {
-      textDecoration: 'underline'
-    }
-
     //A:{answer.body by {answer.answerer_name} | helpful? {answer.helpfulness} Report
     for (let key in finalQAObj) {
       let mappedAnswers = finalQAObj[key].slice(0, finalQAObj[key].length - 1).map((answer, index) => {
@@ -111,12 +97,6 @@ const IndividualQuestion = (props) => {
         return ([q[0], answers])
       }
     })
-
-
-  const rowStyle = {
-    display: 'flex',
-    flexDirection: 'column'
-  }
 
 
   useEffect(() => {
