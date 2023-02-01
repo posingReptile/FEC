@@ -22,7 +22,7 @@
 #mainPhoto {
   border:1px black solid;
   display: block;
-  height: 600px;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
 }

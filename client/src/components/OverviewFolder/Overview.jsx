@@ -16,7 +16,7 @@ const Overview = (props) => {
   let [item, setItem] = useState(Static.productId);
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
-  let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].thumbnail_url)
+  let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].url)
 
 
   useEffect(() => {
