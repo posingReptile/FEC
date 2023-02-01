@@ -2,22 +2,31 @@ import React, {useState} from 'react';
 
 import Dropdown from './Dropdown.jsx';
 import Style from './Style.jsx';
+import QDropdown from './QDropdown.jsx'
 
 import "./OverviewCss/productInformation.css";
 
 const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto}) => {
   const [sizeSelector, setSizeSelector] = useState('Select Size')
-  let quantity = [];
   let size = [];
+  let quantity = {};
   // itemStyle.skus is a object of objects it contains a style id  as a key and the quanitiy and size as value
   // We want to turn the
-  Object.keys(itemStyle.skus).map(styleId => {return itemStyle.skus[styleId]}).forEach(item => {
-    if (item.quantity > 0) {size.push(item.size); quantity.push(item.quantity)}
+
+  Object.keys(itemStyle.skus).map(styleId => {
+    return itemStyle.skus[styleId]
+  }).forEach(item => {
+    // console.log(item)
+    if (item.quantity > 0) {
+      size.push(item.size);
+      quantity[item.size] = item.quantity
+    }
   })
   if (size.length === 0) {
     setSizeSelector('Out Of Stock');
   }
-  // console.log(quantity, size);
+  // console.log('quantity: ', quantity, size);
+  // console.log('size: ', size);
   const Icon = () => {
     return (
       <svg height="20" width="20" viewBox="0 0 20 20">
@@ -39,8 +48,8 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
         <div><strong>Style &gt; </strong>{itemStyle.name}</div>
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>
         <div id="sizeDropdown">
-          <Dropdown placeHolder={sizeSelector} option={size} setSizeSelector={setSizeSelector} Icon={Icon}/>
-          <Dropdown placeHolder="Quantity" option={quantity} Icon={Icon}/>
+          <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector} Icon={Icon}/>
+          <QDropdown placeHolder="-" option={quantity} Icon={Icon} sizeSelector={sizeSelector} setSizeSelector={setSizeSelector}/>
         </div>
         <button>Add To Bag</button>
       </div>

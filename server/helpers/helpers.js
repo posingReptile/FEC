@@ -7,7 +7,10 @@ let getProducts = (query) => {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${process.env.TOKEN}`
-    }
+    },
+    // params: {
+    //   count: 15
+    // }
   };
   return axios(options).catch(err => {
     console.error(err);
