@@ -5,6 +5,7 @@ import Style from './Style.jsx';
 import QDropdown from './QDropdown.jsx'
 
 import "./OverviewCss/productInformation.css";
+import "./OverviewCss/dropdown.css";
 
 const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto}) => {
   const [sizeSelector, setSizeSelector] = useState('Select Size')

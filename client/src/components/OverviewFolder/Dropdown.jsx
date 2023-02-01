@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import "./OverviewCss/dropdown.css";
+// import "./OverviewCss/dropdown.css";
 
 
 const Dropdown = ({placeHolder, sizeOption, setSizeSelector, Icon}) => {
