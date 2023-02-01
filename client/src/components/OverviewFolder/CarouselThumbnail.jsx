@@ -18,16 +18,16 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto}) => {
     lastPhotoInCarousel = array[array.length - 1];
     return array;
   }
-
+  // console.log('this is from', photos);
   return (
     <div className="horizontalCarousel" >
       {index === 0 ? null : <button className='topThumbnailButton' type="button" onClick={() => { setIndex(index - 1); }}>▲</button>}
       <div id="carouselThumbnail">
-        {thumbnail().map(({thumbnail_url}, index) => (
+        {thumbnail().map(({thumbnail_url, url}, index) => (
           <div key={index}>
-            {thumbnail_url !== mainPhoto ?
-              <img className="column" src={thumbnail_url} onClick={e => setMainPhoto(e.target.src)}></img> :
-              <img className="column" style={{border: '2px yellow solid'}} src={thumbnail_url} onClick={e => setMainPhoto(e.target.src)}></img>}
+            {url !== mainPhoto ?
+              <img className="column" src={thumbnail_url} onClick={e => setMainPhoto(url)}></img> :
+              <img className="column" style={{border: '2px yellow solid'}} src={thumbnail_url} onClick={e => setMainPhoto(url)}></img>}
           </div>
         ))}
       </div>

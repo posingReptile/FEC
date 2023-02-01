@@ -5,6 +5,7 @@ import CarouselThumbnail from './CarouselThumbnail.jsx';
 
 const ImageGallery = ({photos, mainPhoto, setMainPhoto}) => {
 // console.log('this is from ImageGallery', photos);
+  // console.log('this is from img', mainPhoto)
   return (
     <div id="imageGallery">
       <div id="main">
