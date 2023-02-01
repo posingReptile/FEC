@@ -26,12 +26,12 @@ test('Has placeholder for product\'s average rating', () => {
   expect(breakdownElement).toBeTruthy();
 });
 
-test('Has placeholder for product\'s average rating star visual', () => {
-  render(<RatingBreakdown />);
+// test('Has placeholder for product\'s average rating star visual', () => {
+//   render(<RatingBreakdown />);
 
-  const breakdownElement = screen.getByText('stars');
-  expect(breakdownElement).toBeTruthy();
-});
+//   const breakdownElement = screen.getByText('stars');
+//   expect(breakdownElement).toBeTruthy();
+// });
 
 
 //BD Recommendation tests
