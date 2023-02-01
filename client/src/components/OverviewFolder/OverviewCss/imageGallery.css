@@ -1,12 +1,13 @@
 #imageGallery {
   position: relative;
   border:1px black solid;
+  width: 70%;
 }
 
 #main{
-  border:1px black solid;
+  border: 1px black solid;
   background-color: white;
-  width: 800px;
+  width: 100%;
   height: 650px;
   display: flex;
   align-items: center;
@@ -32,6 +33,7 @@
   width: 10%;
   height: 80%;
   top: 10%;
+  left: 1%;
 }
 
 .topThumbnailButton {
@@ -59,9 +61,22 @@
   object-position: 30% 30%;
   border-radius: 15%;
   border: 1px black solid;
-  opacity: .75;
+  opacity: .90;
 }
 
 .column:hover {
   opacity: 1;
 }
+
+.expand {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: brown;
+  font-size: xx-large;
+}
+
+.expand:hover {
+  cursor: pointer;
+}
+
