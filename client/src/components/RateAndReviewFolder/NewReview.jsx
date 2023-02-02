@@ -29,11 +29,11 @@ const NewReview = (/*props*/) => {
       <form>
       <label>
         Username
-        <input name="username" value={username} onChange={setUsername}/>
+        <input name="username" value={username} onChange={setUsername} required/>
       </label><br/>
       <label>
         Email
-        <input name="email" type ="email" value={email} onChange={setEmail}/>
+        <input name="email" type ="email" value={email} onChange={setEmail} required/>
       </label><br/>
       <label>Overall Rating
           <div>
@@ -54,11 +54,10 @@ const NewReview = (/*props*/) => {
             </HorizontalList>
          </div>
       </label> <br/>
-
         Do you recommend this product?
         {recommendOptions.map((valueObj, k) => (
           <label key={k}><input type="radio" value={valueObj.value} name={valueObj.name} onChange={handleRecClick} checked={recommend.name === valueObj.value}/>{valueObj.value}</label>
-        ))}
+        ))} <br/>
       </form>
       </Container>
     </div>
