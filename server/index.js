@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const {getProducts, markReviewHelpful, postProducts} = require('./helpers/helpers.js')
+const {getProducts, markReviewHelpful, postProducts, postAnswer} = require('./helpers/helpers.js')
 
 
 const app = express();
@@ -64,6 +64,17 @@ app.post('/addQuestion', (req, res) => {
     product_id: req.body.value.product_id
   })
   .then(data => console.log('addQuestion complete'))
+  .catch(err => (console.log('error in express addQuestion', err)))
+  res.send('post complete')
+})
+
+app.post('/addAnswer', (req, res) => {
+  postAnswer(`qa/questions/${req.body.value.question_id}/answers`, {
+    body: req.body.value.answer,
+    name: req.body.value.nickname,
+    email: req.body.value.email,
+  })
+  .then(data => console.log('addAnswer complete'))
   .catch(err => (console.log('error in express addQuestion', err)))
   res.send('post complete')
 })

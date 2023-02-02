@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 
+
 const NewQuestion = (props) => {
 
   const [questionInput, setQuestionInput] = useState({
@@ -24,11 +25,11 @@ const NewQuestion = (props) => {
   return (
     <form onSubmit={handleSubmitNewQuestion}>
       <p>Email Address:</p>
-      <input name="email" onChange={handleQuestionInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com"   required  ></input>
+      <input name="email" onChange={handleQuestionInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com" required  ></input>
       <p>Nickname:</p>
-      <input name="nickname" onChange={handleQuestionInputChange} placeholder="Example: jackyBoy" minLength="5" required></input>
+      <input name="nickname" onChange={handleQuestionInputChange} placeholder="Example: jackyBoy" required minLength="5" ></input>
       <p>Question:</p>
-      <input name="question" onChange={handleQuestionInputChange} placeholder="Example: Why am I like this?" minLength="5" required></input>
+      <input name="question" onChange={handleQuestionInputChange} placeholder="Example: Why am I like this?" required minLength="5" ></input>
       <input type="submit" />
     </form>
   )
