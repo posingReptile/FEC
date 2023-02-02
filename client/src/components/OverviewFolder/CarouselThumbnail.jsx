@@ -20,7 +20,7 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
     return array;
   }
   // console.log('this is from', photos);
-  console.log(vis)
+
   return (
       <div>
         {zoom ? null :
