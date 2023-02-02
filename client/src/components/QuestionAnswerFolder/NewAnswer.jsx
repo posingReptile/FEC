@@ -12,7 +12,6 @@ const NewAnswer = (props) => {
     answer: '',
     question_id: props.questionId
   })
-  console.log(answerInput)
   const handleSubmitNewQuestion = () => {
     axios.post('/addAnswer', {value: answerInput})
     .catch(err => console.log('err in axios post add question', err))
