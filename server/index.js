@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const {getProducts, markReviewHelpful} = require('./helpers/helpers.js')
+const {getProducts, markReviewHelpful, postProducts} = require('./helpers/helpers.js')
 
 
 const app = express();
@@ -54,6 +54,18 @@ app.get('/getReviewsMeta', (req, res) => {
       res.json(data.data)
     })
     .catch(err => console.log(err));
+})
+
+app.post('/addQuestion', (req, res) => {
+  postProducts(`qa/questions/`, {
+    body: req.body.value.question,
+    name: req.body.value.nickname,
+    email: req.body.value.email,
+    product_id: req.body.value.product_id
+  })
+  .then(data => console.log('addQuestion complete'))
+  .catch(err => (console.log('error in express addQuestion', err)))
+  res.send('post complete')
 })
 
 app.put('/markReviewHelpful', (req, res) => {
