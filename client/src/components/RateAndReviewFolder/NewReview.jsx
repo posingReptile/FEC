@@ -10,13 +10,15 @@ const NewReview = (/*props*/) => {
   const [starRating, setRating] = useState(0);
   const [hovered, setHovered] = useState(undefined);
   // recommendation
-  const [recommend, setRecommend] = useState(null);
+  const [recommend, setRecommend] = useState({ name: '', value: ''});
 
   const handleRecClick = (e) => {
-    setRecommend(e.target.value);
+    const obj = {name: e.target.value, value: e.target.name };
+    setRecommend(obj);
   }
 
-  const recommendOptions = [ { name: "yes", value: "true"}, { name: "no", value: "false"}]
+  const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
+
 
   const stars = Array(5).fill(0);
 
@@ -27,11 +29,11 @@ const NewReview = (/*props*/) => {
       <form>
       <label>
         Username
-        <input name="username" value={username} onChange={setUsername}/>
+        <input name="username" value={username} onChange={setUsername} required/>
       </label><br/>
       <label>
         Email
-        <input name="email" type ="email" value={email} onChange={setEmail}/>
+        <input name="email" type ="email" value={email} onChange={setEmail} required/>
       </label><br/>
       <label>Overall Rating
           <div>
@@ -52,11 +54,10 @@ const NewReview = (/*props*/) => {
             </HorizontalList>
          </div>
       </label> <br/>
-      <label>
         Do you recommend this product?
-        {}
-        <input />
-      </label>
+        {recommendOptions.map((valueObj, k) => (
+          <label key={k}><input type="radio" value={valueObj.value} name={valueObj.name} onChange={handleRecClick} checked={recommend.name === valueObj.value}/>{valueObj.value}</label>
+        ))} <br/>
       </form>
       </Container>
     </div>
