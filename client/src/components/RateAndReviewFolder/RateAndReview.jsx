@@ -23,7 +23,6 @@ const RateAndReview = ({ product_id }) => {
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
       let meta = data.data
-      console.log(meta)
 
       //overall Rating
       let avgRating = calculateAvg(meta.ratings);
