@@ -23,10 +23,12 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
 
   let expandFunction = (expandView) => {
     if (!expandView) {
+      img.style.cursor = 'crosshair'
       img.addEventListener("mousemove", onZoom);
       img.addEventListener("mouseover", onZoom);
       img.addEventListener("mouseleave", offZoom);
     } else {
+      img.style.cursor = 'zoom-in'
       img.removeEventListener("mousemove", onZoom);
       img.removeEventListener("mouseover", onZoom);
       img.removeEventListener("mouseleave", offZoom);
@@ -36,8 +38,8 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
   return (
     <div id="imageGallery">
       <div id="main">
-      <div className="expand" onClick={()=> {setExpandView(!expandView); expandFunction(expandView)}}><IoIosExpand /></div>
-       <div id="test"><img id="expandview" src={mainPhoto} ></img></div>
+        <div id="test"><img id="expandview" src={mainPhoto} ></img></div>
+        <div className="expand" onClick={()=> {setExpandView(!expandView); expandFunction(expandView)}}><IoIosExpand /></div>
       </div>
       <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto}/>
     </div>
