@@ -5,7 +5,7 @@ import IndividualQuestion from './IndividualQuestion.jsx'
 const QuestionList = (props) => {
 
 return (
-  <IndividualQuestion productid={props.productId} numberOfQuestions={props.numberOfQuestions}/>
+  <IndividualQuestion search={props.search} searchInput={props.searchInput} productid={props.productId} numberOfQuestions={props.numberOfQuestions}/>
 )
 }
 
