@@ -5,10 +5,12 @@ import Modal from 'react-modal';
 import NewQuestion from './NewQuestion.jsx'
 
 const QuestionAnswer = (props) => {
-
+  Modal.setAppElement('#root')
   const [numberOfQuestions, setNumberOfQuestions] = useState(2)
 
   const [modalIsOpen, setModal] = useState(false);
+
+  const [searchInput, setSearchInput] = useState('');
 
   let openModal = () => {
     setModal(true);
@@ -21,9 +23,7 @@ const QuestionAnswer = (props) => {
 
   return (
     <div>
-      <input placeholder="Search Questions and Answers"></input>
-
-      <QuestionList productId={props.product_id} numberOfQuestions={numberOfQuestions} />
+      <QuestionList searchInput={searchInput} productId={props.product_id} numberOfQuestions={numberOfQuestions} />
       <div>
         <button onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
         {numberOfQuestions > 2 ?

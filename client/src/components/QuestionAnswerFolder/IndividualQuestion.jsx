@@ -8,11 +8,14 @@ import NewAnswer from './NewAnswer.jsx'
 import "./Q&A.css";
 
 const IndividualQuestion = (props) => {
+  Modal.setAppElement('#root')
   let productId = props.productid
   const [questions, setQuestions] = useState({})
   const [htmlQAList, setHtmlQAList] = useState([])
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
+  const [searchInput, setSearchInput] = useState('')
+
 
   let openModal = (e) => {
     setQuestionId(e.target.id)
@@ -39,11 +42,15 @@ const IndividualQuestion = (props) => {
   const getReviews = () => {
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
+        setQuestions({})
+        setHtmlQAList([])
         for (let i = 0; i < data.data.results.length; i++) {
-          setQuestions((previous) => ({
-            ...previous, [data.data.results[i].question_body]:
-              [[data.data.results[i].answers, data.data.results[i].question_id], data.data.results[i].question_helpfulness]
-          }))
+          if (data.data.results[i].question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+            setQuestions((previous) => ({
+              ...previous, [data.data.results[i].question_body]:
+                [[data.data.results[i].answers, data.data.results[i].question_id], data.data.results[i].question_helpfulness]
+            }))
+          }
         }
       })
       .catch(err => console.log('err in axios get reviews', err))
@@ -70,10 +77,10 @@ const IndividualQuestion = (props) => {
             </div>
             {answer.photos ? answer.photos.map(photo => {
               return (
-              <div key={photo} style={{ width: '10%', position: 'relative' }}>
-                <img src={photo} alt="placeholder" />
-              </div>
-            )
+                <div key={photo} style={{ width: '10%', position: 'relative' }}>
+                  <img src={photo} alt="placeholder" />
+                </div>
+              )
             }) : null}
             <div className="answerInfo">
               By: {answer.answerer_name} | helpful?
@@ -128,6 +135,8 @@ const IndividualQuestion = (props) => {
 
   return (
     <div>
+     <input onChange={(e)=> {setSearchInput(e.target.value)}} placeholder="Search Questions and Answers"></input>
+      <button onClick={()=> {getReviews(), getFinalHtmlElements()}}>Search</button>
       {htmlQAList.length > 0
         ? renderQuestionAnswerElements
         : 'Loading'
