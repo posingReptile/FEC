@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
 
-const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto}) => {
+const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
   let [index, setIndex] = useState(0);
+  let [vis, setVis] = useState(false);
 
   let lastPhoto;
   let lastPhotoInCarousel = 0;
@@ -19,20 +20,25 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto}) => {
     return array;
   }
   // console.log('this is from', photos);
+
   return (
-    <div className="horizontalCarousel" >
-      {index === 0 ? null : <button className='topThumbnailButton' type="button" onClick={() => { setIndex(index - 1); }}>▲</button>}
-      <div id="carouselThumbnail">
-        {thumbnail().map(({thumbnail_url, url}, index) => (
-          <div key={index}>
-            {url !== mainPhoto ?
-              <img className="column" src={thumbnail_url} onClick={e => setMainPhoto(url)}></img> :
-              <img className="column" style={{border: '2px yellow solid'}} src={thumbnail_url} onClick={e => setMainPhoto(url)}></img>}
+      <div>
+        {zoom ? null :
+            <div className="horizontalCarousel" >
+            {index === 0 ? null : <button className='topThumbnailButton' type="button" onClick={() => { setIndex(index - 1); }}>▲</button>}
+            <div id="carouselThumbnail">
+              {thumbnail().map(({thumbnail_url, url}, index) => (
+                <div key={index}>
+                  {url !== mainPhoto ?
+                    <img className="column" src={thumbnail_url} onClick={e => setMainPhoto(url)}></img> :
+                    <img className="column" style={{border: '2px yellow solid'}} src={thumbnail_url} onClick={e => setMainPhoto(url)}></img>}
+                </div>
+              ))}
+            </div>
+            {lastPhoto === lastPhotoInCarousel ? null : <button className='botThumbnailButton' type="button" onClick={() => { setIndex(index + 1); }}>▼</button>}
           </div>
-        ))}
+        }
       </div>
-      {lastPhoto === lastPhotoInCarousel ? null : <button className='botThumbnailButton' type="button" onClick={() => { setIndex(index + 1); }}>▼</button>}
-    </div>
   )
 }
 

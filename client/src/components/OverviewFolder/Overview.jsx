@@ -19,6 +19,7 @@ const Overview = (props) => {
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
   let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].url)
   let [expandView, setExpandView] = useState(false)
+  let [zoom, setZoom] = useState(false);
 
   useEffect(() => {
     axios.get(`/getProducts/?product_id=37311`)
@@ -41,7 +42,7 @@ const Overview = (props) => {
     <div id="overview">
       <h1>Overview</h1>
           <div id="overviewHeader">
-            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView}/>
+            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}/>
             {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>}
           </div>
       <OverviewFooter item={item}/>
