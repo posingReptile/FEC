@@ -7,7 +7,8 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 const RateAndReview = ({ product_id }) => {
   const [productReviews, setReviews] = useState([]);
   const [reviewsShown, setShownReviews] = useState([]);
-  const [productRating, setRating] = useState({});
+  const [ratingOverall, setOverall] = useState(0);
+  const [productRatings, setRating] = useState({});
   const [recommendPercentage, setPercentage] = useState(0);
   const [productChar, setChar] = useState([])
   const [reviewCount, setReviewCount] = useState(2);
@@ -22,6 +23,11 @@ const RateAndReview = ({ product_id }) => {
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
       let meta = data.data
+      console.log(meta)
+
+      //overall Rating
+      let avgRating = calculateAvg(meta.ratings);
+      setOverall(avgRating);
 
       // star rating breakdown
       let totalRatings = 0;
@@ -74,12 +80,31 @@ const RateAndReview = ({ product_id }) => {
     return setReviewCount(reviewCount + 2);
   }
 
+  const calculateAvg = (ratingObject) => {
+    let ratingArr = [];
+    for (let key in ratingObject) {
+      let keyNum = Number.parseInt(key);
+      let valueNum = Number.parseInt(ratingObject[key]);
+      let numArr = Array(valueNum).fill(keyNum);
+      ratingArr = ratingArr.concat(numArr);
+    }
+
+    let total = 0;
+    ratingArr.forEach(num => {
+      total += num;
+    });
+
+    let avg = total / (ratingArr.length);
+    avg = Number.parseInt(avg * 10) / 10;
+    return avg;
+  }
+
 
   return (
     <div data-testid="rating-main">
       <h2>Ratings And Reviews</h2>
       <div>
-      <RatingBreakdown productRating={productRating} recommendPercentage={recommendPercentage}/>
+      <RatingBreakdown ratingOverall={ratingOverall} productRatings={productRatings} recommendPercentage={recommendPercentage}/>
       <ProductBreakdown productChar={productChar}/>
       <ReviewsList reviewsShown={reviewsShown}
       showMoreReviews={showMoreReviews}
