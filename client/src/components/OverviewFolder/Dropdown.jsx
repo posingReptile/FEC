@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-
+import { IoIosArrowDown } from "react-icons/io";
 // import "./OverviewCss/dropdown.css";
 
 
-const Dropdown = ({placeHolder, sizeOption, setSizeSelector, Icon}) => {
+const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
   let [showDrop, setShowDrop] = useState(false);
   let style = {
     visibility: showDrop ? null : 'hidden'
@@ -13,7 +13,7 @@ const Dropdown = ({placeHolder, sizeOption, setSizeSelector, Icon}) => {
     <div className="dropdown-container" >
       <div className="dropdown-input" onClick={()=>{setShowDrop(!showDrop)}}>
         <div className="dropdown-selected-value">{placeHolder}</div>
-        <div className="dropdown-tools"><Icon /></div>
+        <div className="dropdown-tools"><IoIosArrowDown /></div>
       </div>
         <div className="dropdown-menu" style={style}>
           {sizeOption.map((item, index) => (

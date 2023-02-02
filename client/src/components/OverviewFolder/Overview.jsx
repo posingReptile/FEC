@@ -30,7 +30,7 @@ const Overview = (props) => {
     .then((data) => {
      let productData = data.data.results;
       setItemStyle(productData[0]);
-      setMainPhoto(productData[0].photos[0].thumbnail_url);
+      setMainPhoto(productData[0].photos[0].url);
       setStyleResult(productData);
     })
   }, []);

@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #main:hover{
@@ -20,13 +21,20 @@
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
+
 #mainPhoto {
-  border:1px black solid;
-  display: block;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
+  height: 100%;
+  /* transform-origin: center center;
+  cursor: crosshair; */
+  object-fit: fill;
 }
+
+/* #mainPhoto:hover {
+  transition:  0.5s all ease-in-out;
+  object-fit: cover;
+} */
 
 .horizontalCarousel {
   position: absolute;
@@ -80,3 +88,17 @@
   cursor: pointer;
 }
 
+#expandview {
+  transform-origin: center center;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#expandview:hover {
+  cursor: crosshair;
+}
+
+#test {
+  height: 100%;
+}
