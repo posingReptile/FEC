@@ -32,11 +32,10 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
     <button onClick={() => showMoreReviews()}>More Reviews</button>
 
     <button onClick={openModal}>Add New Review</button>
-    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+    <Modal  isOpen={modalIsOpen} onRequestClose={closeModal}>
       <NewReview />
-      <button onClick={closeModal}>close</button>
+      <button onClick={closeModal} style={{"display": "flex"}}>close</button>
     </Modal>
-      {/* <>{reviewButton ? : null}</> */}
     </div>
   )
 };
