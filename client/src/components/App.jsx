@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <div>
-      <Overview product_id={product_id}/>
+      <Overview product_id={product_id} productRating={productRating}/>
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}
         productRating={productRating}

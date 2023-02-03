@@ -11,7 +11,7 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
   let thumbnail = () => {
     lastPhoto = photos[photos.length - 1];
     let array = [];
-    for (let i = index; i < index + 5; i++) {
+    for (let i = index; i < index + 7; i++) {
       if (photos[i]) {
         array.push(photos[i]);
       };
@@ -19,10 +19,18 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
     lastPhotoInCarousel = array[array.length - 1];
     return array;
   }
+  // if (document.getElementById('horizontalCarousel')) {
+  //   let scrollDiv = document.getElementById('horizontalCarousel');
+  //   let scrollFunc = () => {
+  //     // var maxScrollPosition = scrollDiv.scrollHeight - scrollDiv.clientHeight;
+  //     console.log(scrollDiv.scrollHeight, scrollDiv.scrollTop, scroll.scrollLeft);
+  //   }
+  //   scrollDiv.addEventListener('scroll', scrollFunc);
+  // }
 
   return (
       <div>
-            <div className="horizontalCarousel" >
+            <div id="horizontalCarousel" >
             {index === 0 ? null : <button className='topThumbnailButton' type="button" onClick={() => { setIndex(index - 1); }}>▲</button>}
             <div id="carouselThumbnail">
               {thumbnail().map(({thumbnail_url, url}, index) => (
