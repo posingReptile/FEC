@@ -5,10 +5,9 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import { StyledRatingsAndReviews } from '../styled/RAndR.styled.js';
 
-const RateAndReview = ({ product_id }) => {
+const RateAndReview = ({ product_id, productRating, setProductRating }) => {
   const [productReviews, setReviews] = useState([]);
   const [reviewsShown, setShownReviews] = useState([]);
-  const [ratingOverall, setOverall] = useState(0);
   const [productRatings, setRating] = useState({});
   const [recommendPercentage, setPercentage] = useState(0);
   const [productChar, setChar] = useState([])
@@ -29,7 +28,7 @@ const RateAndReview = ({ product_id }) => {
 
       //overall Rating
       let avgRating = calculateAvg(meta.ratings);
-      setOverall(avgRating);
+      setProductRating(avgRating);
 
       // star rating breakdown
       let totalRatings = 0;
@@ -158,7 +157,7 @@ const RateAndReview = ({ product_id }) => {
     <StyledRatingsAndReviews data-testid="rating-main">
       <h3>Ratings And Reviews</h3>
       <div>
-      <RatingBreakdown ratingOverall={ratingOverall}
+      <RatingBreakdown productRating={productRating}
         productRatings={productRatings}
         recommendPercentage={recommendPercentage}/>
       <ProductBreakdown productChar={productChar} charWords={charWords}/>

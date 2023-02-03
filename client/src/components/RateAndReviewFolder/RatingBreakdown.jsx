@@ -1,17 +1,18 @@
 import React from 'react';
 import StarBar from './StarBar.jsx'
+import { StyledStarRating } from '../styled/StarRating.styled.js';
 
-const RatingBreakdown = ({ ratingOverall, productRatings, recommendPercentage}) => {
+const RatingBreakdown = ({ productRating, productRatings, recommendPercentage}) => {
   // console.log('this is recommendPercentage', recommendPercentage);
-
+  const ratingPercent = (productRating * 100) / 5;
 
   return (
     <div data-testid='rating-breakdown'>
       <h3>Rating Breakdown</h3>
       <div data-testid='rating-bd-sum'>
         <h5>Rating Summary</h5>
-        <h5>{ratingOverall}</h5>
-        <h5>{/*Placeholder for stars*/}stars</h5>
+        <h5>{productRating} <StyledStarRating ratingPercent={ratingPercent}/></h5>
+
       </div>
       <div data-testid='rating-bd-rec'>
         <p>{recommendPercentage}% of reviewers recommend this product</p>
