@@ -1,11 +1,11 @@
 import React from 'react';
 import ProductRatingBar from './ProductRatingBar.jsx';
-import { StyledWordList, StyledWordItem, StyledProductBreakdown } from '../styled/ProductRatingBar.styled.js';
+// import { StyledWordList, StyledWordItem, StyledProductBreakdown } from '../styled/ProductRatingBar.styled.js';
 
 const ProductBreakdown = ({ productChar, charWords}) => {
 
-  console.log('this is productChar', productChar);
-  console.log('this is charWords', charWords);
+  // console.log('this is productChar', productChar);
+  // console.log('this is charWords', charWords);
   // var three = []
 
   return (

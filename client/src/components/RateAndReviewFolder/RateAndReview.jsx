@@ -15,13 +15,11 @@ const RateAndReview = ({ product_id }) => {
   const [charArray, setCharArr] = useState([]);
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
+  const [totalNumReviews, setTotalNumReviews] = useState(0);
+  const [sortBy, setSortBy] = useState('relevant');
 
   useEffect(() => {
-    axios.get(`getReviews/?product_id=${product_id}`)
-    .then(data => {
-      setReviews(data.data.results);
-      setShownReviews(data.data.results.slice(0, reviewCount))
-    });
+    getReviewsHelper()
 
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
@@ -103,6 +101,19 @@ const RateAndReview = ({ product_id }) => {
     setShownReviews(productReviews.slice(0, reviewCount))
   },[reviewCount])
 
+  useEffect(() => {
+    getReviewsHelper()
+  }, [sortBy]);
+
+  let getReviewsHelper = () => {
+    return axios.get(`getReviews/?product_id=${product_id}&sort=${sortBy}`)
+    .then(data => {
+      setReviews(data.data.results);
+      setShownReviews(data.data.results.slice(0, reviewCount))
+      setTotalNumReviews(data.data.results.length);
+    });
+  }
+
   const markHelpful = (reviewId) => {
     axios.put(`markReviewHelpful/?review_id=${reviewId}`)
       .then(() => console.log('marked!'))
@@ -150,7 +161,9 @@ const RateAndReview = ({ product_id }) => {
         productRatings={productRatings}
         recommendPercentage={recommendPercentage}/>
       <ProductBreakdown productChar={productChar} charWords={charWords}/>
-      <ReviewsList reviewsShown={reviewsShown}
+      <ReviewsList setSortBy={setSortBy}
+        totalNumReviews={totalNumReviews}
+        reviewsShown={reviewsShown}
         showMoreReviews={showMoreReviews}
         markHelpful={markHelpful}
         charArray={charArray}
