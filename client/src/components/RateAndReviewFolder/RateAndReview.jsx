@@ -11,6 +11,8 @@ const RateAndReview = ({ product_id }) => {
   const [productRatings, setRating] = useState({});
   const [recommendPercentage, setPercentage] = useState(0);
   const [productChar, setChar] = useState([])
+  const [charArray, setCharArr] = useState([]);
+  const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const RateAndReview = ({ product_id }) => {
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
       let meta = data.data
+      // console.log(meta);
 
       //overall Rating
       let avgRating = calculateAvg(meta.ratings);
@@ -47,7 +50,7 @@ const RateAndReview = ({ product_id }) => {
       let percent = Number.parseInt((totalTrue / total) * 100);
       setPercentage(percent);
 
-      //characteristics info
+      //characteristics info for rating breakdown
       let characteristics = meta.characteristics;
       let charArr = [];
       for (let key in characteristics) {
@@ -62,7 +65,25 @@ const RateAndReview = ({ product_id }) => {
         });
       }
       setChar(charArr);
-    })
+
+      // characteristics options for new review
+      let charOptions = charArr.map(char => {
+        const { name, id } = char;
+        const object = { rating: '', name, id};
+        return object;
+      });
+      setCharArr(charOptions);
+
+      charArr.forEach(obj => {
+        const { name, id } = obj;
+        setCharChoice((prev) => ({
+        ...prev,
+        [id]: ({name, rating: '', checked: 0})
+      }))
+      })
+
+
+    });
   }, []);
 
   useEffect(() => {
@@ -103,11 +124,16 @@ const RateAndReview = ({ product_id }) => {
     <div data-testid="rating-main">
       <h2>Ratings And Reviews</h2>
       <div>
-      <RatingBreakdown ratingOverall={ratingOverall} productRatings={productRatings} recommendPercentage={recommendPercentage}/>
+      <RatingBreakdown ratingOverall={ratingOverall}
+        productRatings={productRatings}
+        recommendPercentage={recommendPercentage}/>
       <ProductBreakdown productChar={productChar}/>
       <ReviewsList reviewsShown={reviewsShown}
-      showMoreReviews={showMoreReviews}
-      markHelpful={markHelpful}/>
+        showMoreReviews={showMoreReviews}
+        markHelpful={markHelpful}
+        charArray={charArray}
+        charChoice={charChoice}
+        setCharChoice={setCharChoice}/>
       </div>
     </div>
   )
