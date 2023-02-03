@@ -4,10 +4,11 @@ import Dropdown from './Dropdown.jsx';
 import Style from './Style.jsx';
 import QDropdown from './QDropdown.jsx'
 
+import {StyledStarRating} from '../styled/StarRating.styled.js'
 import "./OverviewCss/productInformation.css";
 import "./OverviewCss/dropdown.css";
 
-const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck}) => {
+const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating}) => {
 
   const [sizeSelector, setSizeSelector] = useState('Select Size');
   const [quantity, setQuantitySelector] = useState(1);
@@ -16,6 +17,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
   let size = [];
   let quantityObj = {};
   let cart = [];
+  const ratingPercent = (productRating * 100) / 5;
 
   Object.keys(itemStyle.skus).map(styleId => {
     return itemStyle.skus[styleId]
@@ -46,7 +48,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
 
   return (
       <div id="productInformation">
-        <div> &#9733;&#9733;&#9733;&#9734;&#9734; Read all [#] reviews</div>
+        <div><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all [#] reviews</a></div>
         <div id="category">{item.category}</div>
         <h1 id="itemName">{item.name}</h1>
         {itemStyle.sale_price ?

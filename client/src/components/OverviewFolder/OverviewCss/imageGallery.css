@@ -27,12 +27,17 @@
   object-fit: fill;
 }
 
-.horizontalCarousel {
+#horizontalCarousel {
   position: absolute;
   width: 10%;
   height: 80%;
   top: 5%;
   left: 5%;
+  overflow-y: scroll;
+}
+
+#horizontalCarousel::-webkit-scrollbar {
+  display: none;
 }
 
 .topThumbnailButton {

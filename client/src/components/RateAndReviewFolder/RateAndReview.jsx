@@ -154,7 +154,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating }) => {
 
 
   return (
-    <StyledRatingsAndReviews data-testid="rating-main">
+    <StyledRatingsAndReviews id="rlink" data-testid="rating-main">
       <h3>Ratings And Reviews</h3>
       <div>
       <RatingBreakdown productRating={productRating}
