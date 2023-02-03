@@ -19,11 +19,9 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
     lastPhotoInCarousel = array[array.length - 1];
     return array;
   }
-  // console.log('this is from', photos);
 
   return (
       <div>
-        {zoom ? null :
             <div className="horizontalCarousel" >
             {index === 0 ? null : <button className='topThumbnailButton' type="button" onClick={() => { setIndex(index - 1); }}>▲</button>}
             <div id="carouselThumbnail">
@@ -37,7 +35,8 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, zoom}) => {
             </div>
             {lastPhoto === lastPhotoInCarousel ? null : <button className='botThumbnailButton' type="button" onClick={() => { setIndex(index + 1); }}>▼</button>}
           </div>
-        }
+           {index === 0 ? null : <button id='leftScroll' type="button" onClick={() => { setIndex(index - 1); }}>«</button>}
+           {lastPhoto === lastPhotoInCarousel ? null : <button id='rightScroll' type="button" onClick={() => { setIndex(index + 1); }}>»</button>}
       </div>
   )
 }
