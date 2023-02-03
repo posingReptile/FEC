@@ -11,6 +11,7 @@ const RateAndReview = ({ product_id }) => {
   const [productRatings, setRating] = useState({});
   const [recommendPercentage, setPercentage] = useState(0);
   const [productChar, setChar] = useState([])
+  const [charWords, setCharWords] = useState({});
   const [charArray, setCharArr] = useState([]);
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
@@ -66,13 +67,25 @@ const RateAndReview = ({ product_id }) => {
       }
       setChar(charArr);
 
+      // characteristics word selection
+      let words = {}
+      charArr.forEach(char => {
+        let wordArr = [];
+        wordArr.push(charOptions[char.name][0])
+        wordArr.push(charOptions[char.name][2])
+        wordArr.push(charOptions[char.name][4])
+        words[char.name] = wordArr;
+      });
+      setCharWords(words)
+
+
       // characteristics options for new review
-      let charOptions = charArr.map(char => {
+      let characteristicsOptions = charArr.map(char => {
         const { name, id } = char;
         const object = { rating: '', name, id};
         return object;
       });
-      setCharArr(charOptions);
+      setCharArr(characteristicsOptions);
 
       charArr.forEach(obj => {
         const { name, id } = obj;
@@ -136,7 +149,7 @@ const RateAndReview = ({ product_id }) => {
       <RatingBreakdown ratingOverall={ratingOverall}
         productRatings={productRatings}
         recommendPercentage={recommendPercentage}/>
-      <ProductBreakdown productChar={productChar} charOptions={charOptions}/>
+      <ProductBreakdown productChar={productChar} charWords={charWords}/>
       <ReviewsList reviewsShown={reviewsShown}
         showMoreReviews={showMoreReviews}
         markHelpful={markHelpful}
