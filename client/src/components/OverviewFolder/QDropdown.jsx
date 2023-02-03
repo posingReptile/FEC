@@ -5,7 +5,7 @@ const QDropdown = ({option, sizeSelector, quantity, setQuantitySelector}) => {
   let qFunc = () => {
     if (document.getElementById('qSelect')) {
       const x = document.getElementById('qSelect').value;
-      console.log(x, document.getElementById('qSelect'))
+      // console.log(x, document.getElementById('qSelect'))
       setQuantitySelector(x);
     }
   };
@@ -15,7 +15,7 @@ const QDropdown = ({option, sizeSelector, quantity, setQuantitySelector}) => {
   return (
     <div className="dropdown-container" >
       {
-        !option[sizeSelector] ? <select id="qSelect" disabled><option value="-" selected> - </option></select> :
+        !option[sizeSelector] ? <select id="qSelect" disabled defaultValue="-"><option value="-">-</option></select> :
         <select id="qSelect" onChange={qFunc}>
           {quantityArray.slice(0, 15).map((item, index) => (
               <option value={item} key={index} className="dropdown-item">{item}</option>
