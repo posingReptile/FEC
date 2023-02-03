@@ -5,7 +5,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import NewAnswer from './NewAnswer.jsx';
 import TimeAgo from 'react-timeago';
-
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import "./IndividualQuestion.css";
 
 const IndividualQuestion = (props) => {
@@ -16,6 +16,7 @@ const IndividualQuestion = (props) => {
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
   const [searchInput, setSearchInput] = useState('')
+
 
 
   let openModal = (e) => {
@@ -45,6 +46,10 @@ const IndividualQuestion = (props) => {
     setHtmlQAList([]),
     getReviews()
   }
+
+
+
+
   const getReviews = () => {
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
@@ -73,14 +78,12 @@ const IndividualQuestion = (props) => {
 
     for (let key in finalQAObj) {
       let mappedAnswers = finalQAObj[key][0].slice(0, finalQAObj[key][0].length - 1).map((answer, index) => {
-
         return (
           <div className="answerBlock" key={index}>
             <div className="answerBody">
-              <h3><strong>A:</strong></h3>
+              <h3><strong>A:&nbsp;</strong></h3>
               {answer.body}
             </div>
-
             {answer.photos ? answer.photos.map(photo => {
               return (
                 <div key={photo} style={{ width: '10%', position: 'relative' }}>
@@ -89,7 +92,6 @@ const IndividualQuestion = (props) => {
               )
             }) : null}
             <div className="answerInfo">
-
             &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US"/>&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
               <u>Yes</u>
               ({answer.helpfulness})&nbsp; &nbsp; | &nbsp; &nbsp;
@@ -118,7 +120,6 @@ const IndividualQuestion = (props) => {
 
   const renderQuestionAnswerElements =
     htmlQAList.slice(0, props.numberOfQuestions).map((q) => {
-
       let answers = q[1].slice(0, q[2]).map((a) => {
         return a
       })
@@ -134,16 +135,22 @@ const IndividualQuestion = (props) => {
 
   useEffect(() => {
     getReviews();
+
   }, [])
 
   useEffect(() => {
-    getFinalHtmlElements();
+    getFinalHtmlElements()
   }, [questions])
+
+  useEffect(() => {
+    props.handleChangeQuestionCount(htmlQAList.length)
+  }, [htmlQAList])
+
 
   return (
     <div className="individualQuestion">
      <input className="QuestionSearch" onChange={(e)=> {setSearchInput(e.target.value)}} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
-      <button className="SearchButton" onClick={handleSearch}>Search</button>
+      <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
       {htmlQAList.length > 0
         ? renderQuestionAnswerElements
         : 'No questions matching that search'
