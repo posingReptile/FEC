@@ -110,7 +110,7 @@ const IndividualQuestion = (props) => {
             Helpful? &nbsp;
             <u>Yes</u>
             ({finalQAObj[key][0].pop()})&nbsp; &nbsp; |&nbsp; &nbsp;
-            <u id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
+            <u className="AddAnswerButton"id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
           </div>
         </div>,
         mappedAnswers, 2]])

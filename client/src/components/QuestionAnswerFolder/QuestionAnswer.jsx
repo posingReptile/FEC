@@ -27,7 +27,6 @@ const QuestionAnswer = (props) => {
   const handleChangeQuestionCount = (count) => {
     setQuestionCount(count)
   }
-  console.log(questionCount)
   return (
     <div className="QuestionAnswersBlock">
       <h3>Questions & Answers</h3>
