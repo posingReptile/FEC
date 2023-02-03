@@ -17,6 +17,16 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
   const [recommend, setRecommend] = useState({ name: '', value: ''});
   const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
 
+  //characteristics items
+  const charOptions = {
+    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
+    Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
+    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
+    Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
+    Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
+  }
+
   // image upload
   const [imageURL, setImageURL] = useState('');
 
@@ -72,6 +82,7 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
           Characteristics
           <br/>
           <CharReview charArray={charArray}
+          charOptions={charOptions}
           charChoice={charChoice}
           setCharChoice={setCharChoice}/>
           <br />

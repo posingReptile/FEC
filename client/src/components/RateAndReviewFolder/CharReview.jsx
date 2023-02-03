@@ -1,14 +1,7 @@
 import React from 'react';
 
-const CharReview = ({charArray, charChoice, setCharChoice}) => {
-  const charOptions = {
-    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
-    Width: ['Too narrow', 'slightly narrow', 'Perfect', 'Slightly Wide', 'Too wide'],
-    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
-    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
-    Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs Long'],
-    Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slighty loose', 'Runs loose']
-  }
+const CharReview = ({charArray, charChoice, setCharChoice, charOptions}) => {
+
   const arr = Array(5).fill(0);
 
   const handleCharClick = (e, ratingId, value) => {
@@ -26,12 +19,14 @@ const CharReview = ({charArray, charChoice, setCharChoice}) => {
           <fieldset>
             <legend>{obj.name}</legend>
             {arr.map((_, index) => (
-            <label key={index}>
-              <input type="radio"
-                   name={charOptions[obj.name][index]}
-                   onChange={(e) => handleCharClick(e, obj.id, index + 1)}
-                   checked={charChoice[`${obj.id}`].checked === (index + 1)} />
-                 {charOptions[obj.name][index]}</label>
+
+                <label key={index}>
+                  <input type="radio"
+                      // value={}
+                      name={charOptions[obj.name][index]}
+                      onChange={(e) => handleCharClick(e, obj.id, index + 1)}
+                      checked={charChoice[`${obj.id}`].checked === (index + 1)}/>
+                    {charOptions[obj.name][index]}</label>
              ))}
             <br/>
         </fieldset></div>
@@ -41,3 +36,36 @@ const CharReview = ({charArray, charChoice, setCharChoice}) => {
 }
 
 export default CharReview
+
+{/* <input type="radio"
+  name={charOptions[obj.name][0]}
+  onChange={(e) => handleCharClick(e, obj.id, 1)}
+  checked={charChoice[`${obj.id}`].checked === 1}/>
+  <label>{charOptions[obj.name][0]}</label>
+
+<input type="radio"
+  name={charOptions[obj.name][1]}
+  onChange={(e) => handleCharClick(e, obj.id, 2)}
+  checked={charChoice[`${obj.id}`].checked === 2}/>
+  <label>{charOptions[obj.name][1]}</label>
+
+
+<input type="radio"
+  name={charOptions[obj.name][2]}
+  onChange={(e) => handleCharClick(e, obj.id, 3)}
+  checked={charChoice[`${obj.id}`].checked === 3}/>
+  <label>{charOptions[obj.name][2]}</label>
+
+
+<input type="radio"
+  name={charOptions[obj.name][3]}
+  onChange={(e) => handleCharClick(e, obj.id, 4)}
+  checked={charChoice[`${obj.id}`].checked === 4}/>
+  <label>{charOptions[obj.name][3]}</label>
+
+
+<input type="radio"
+  name={charOptions[obj.name][4]}
+  onChange={(e) => handleCharClick(e, obj.id, 5)}
+  checked={charChoice[`${obj.id}`].checked === 5}/>
+  <label>{charOptions[obj.name][4]}</label> */}
