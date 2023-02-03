@@ -5,9 +5,13 @@ import NewReview from './NewReview.jsx';
 import Modal from 'react-modal';
 
 
-const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
+const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice }) => {
   // const [reviewButton, setReviewState] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
+
+
+  Modal.setAppElement('#root')
+
 
   let openModal = () => {
     setModal(true);
@@ -33,7 +37,9 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful }) => {
 
     <button onClick={openModal}>Add New Review</button>
     <Modal  isOpen={modalIsOpen} onRequestClose={closeModal}>
-      <NewReview />
+      <NewReview charArray={charArray}
+        charChoice={charChoice}
+        setCharChoice={setCharChoice}/>
       <button onClick={closeModal} style={{"display": "flex"}}>close</button>
     </Modal>
     </div>

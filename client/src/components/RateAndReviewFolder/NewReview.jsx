@@ -1,26 +1,30 @@
 import React, {useState} from 'react';
+import CharReview from './CharReview.jsx';
 import { Container, HorizontalList } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
-const NewReview = (/*props*/) => {
+const NewReview = ({charArray, charChoice, setCharChoice}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+
   // overall Rating
   const [starRating, setRating] = useState(0);
   const [hovered, setHovered] = useState(undefined);
+  const stars = Array(5).fill(0);
+
   // recommendation
   const [recommend, setRecommend] = useState({ name: '', value: ''});
+  const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
+
+  // image upload
+  const [imageURL, setImageURL] = useState('');
 
   const handleRecClick = (e) => {
     const obj = {name: e.target.value, value: e.target.name };
     setRecommend(obj);
   }
 
-  const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
-
-
-  const stars = Array(5).fill(0);
 
   return (
     <div>
@@ -56,8 +60,31 @@ const NewReview = (/*props*/) => {
       </label> <br/>
         Do you recommend this product?
         {recommendOptions.map((valueObj, k) => (
-          <label key={k}><input type="radio" value={valueObj.value} name={valueObj.name} onChange={handleRecClick} checked={recommend.name === valueObj.value}/>{valueObj.value}</label>
+          <label key={k}>{valueObj.value}
+            <input type="radio"
+            value={valueObj.value}
+            name={valueObj.name}
+            onChange={handleRecClick}
+            checked={recommend.name === valueObj.value}/>
+          </label>
         ))} <br/>
+
+          Characteristics
+          <br/>
+          <CharReview charArray={charArray}
+          charChoice={charChoice}
+          setCharChoice={setCharChoice}/>
+          <br />
+          <fieldset>
+            <legend>Review Summary</legend>
+              <textarea required></textarea>
+          </fieldset>
+          <fieldset>
+            <legend>Review Body</legend>
+              <textarea required></textarea>
+          </fieldset>
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => setImageURL(URL.createObjectURL(e.target.files[0]))} />
+
       </form>
       </Container>
     </div>
@@ -65,21 +92,3 @@ const NewReview = (/*props*/) => {
 }
 
 export default NewReview;
-
-// let createArrayWithNumbers = (max) => {
-//   return Array.from({max}, (_, i) => i + 1);
-// }
-// const stars = createArrayWithNumbers(5);
-
-// const fillingStars = (i) => {
-//   // console.log('inside of filling stars')
-//   if (i < starRating) {
-//     return 100
-//   } else {
-//     return 0;
-//   }
-// }
-
-// const clickRatingHelper = (e) => {
-//   setRating(e.target.key + 1)
-// }
