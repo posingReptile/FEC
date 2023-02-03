@@ -1,0 +1,46 @@
+.QBlock, .answerBody, .answerInfo {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.answerBlock {
+  display: flex;
+  flex-direction: column;
+}
+.QABoldStyle {
+  font-size: '20px';
+  font-weight: 'bold';
+}
+.QBlock{
+  position: relative;
+  margin-top: 10px;
+}
+.Qhelpful {
+  position: absolute;
+  right: 0px;
+}
+.QuestionSearch {
+  font-weight: 'bold';
+  text-align: center;
+  align-self: center;
+  width:1280px;
+  height:62px;
+}
+.individualQuestion {
+  display: flex;
+  flex-direction: column;
+}
+
+.SearchButton {
+  width:fit-content;
+}
+
+.LoadMoreAnswers, .LoadFewerAnswers {
+  margin-top: 20px;
+  text-align: left;
+  font-weight: bold;
+  background: none;
+	border: none;
+	padding: 0;
+	outline: inherit;
+}
