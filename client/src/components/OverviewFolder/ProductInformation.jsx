@@ -40,7 +40,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
       curCart.size = sizeSelector;
       curCart.Quantity = quantity;
       cart.push(curCart);
-      console.log(curCart);
+      // console.log(curCart);
     }
   }
 
