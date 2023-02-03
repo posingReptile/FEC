@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import { IoIosCheckbox } from "react-icons/io";
 
-const Style = ({allStyleResult, setItemStyle, setMainPhoto}) => {
-  const [check, setCheck] = useState(allStyleResult[0].style_id);
+const Style = ({allStyleResult, setItemStyle, setMainPhoto, check, setCheck}) => {
 
   return (
       <div className="styleIcons">

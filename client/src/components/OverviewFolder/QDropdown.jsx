@@ -1,32 +1,31 @@
 import React, {useState} from "react";
-import { IoIosArrowDown } from "react-icons/io";
 
+const QDropdown = ({option, sizeSelector, quantity, setQuantitySelector}) => {
 
-const QDropdown = ({option, sizeSelector }) => {
-  const [quantity, setQuantitySelector] = useState('-')
-  let [showDrop, setShowDrop] = useState(false);
-
-  let style = {
-    visibility: showDrop ? null : 'hidden'
-  }
-  // console.log(option, sizeSelector, option[sizeSelector]);
+  let qFunc = () => {
+    if (document.getElementById('qSelect')) {
+      const x = document.getElementById('qSelect').value;
+      console.log(x, document.getElementById('qSelect'))
+      setQuantitySelector(x);
+    }
+  };
 
   let quantityArray = Array.from({length: option[sizeSelector]}, (_, i) => i + 1) || 0;
+
   return (
     <div className="dropdown-container" >
-      <div className="dropdown-input" onClick={()=>{setShowDrop(!showDrop)}}>
-        <div className="dropdown-selected-value">{quantity}</div>
-        <div className="dropdown-tools">
-            <IoIosArrowDown />
-        </div>
-      </div>
-        <div className="dropdown-menu" style={style}>
+      {
+        !option[sizeSelector] ? <select id="qSelect" disabled><option value="-" selected> - </option></select> :
+        <select id="qSelect" onChange={qFunc}>
           {quantityArray.slice(0, 15).map((item, index) => (
-            <div key={index} className="dropdown-item" onClick={() => {setQuantitySelector(item)}}>{item}</div>
-          ))}
-      </div>
+              <option value={item} key={index} className="dropdown-item">{item}</option>
+            ))}
+        </select>
+      }
     </div>
   );
 };
 
 export default QDropdown;
+
+
