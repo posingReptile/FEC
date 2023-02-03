@@ -1,4 +1,4 @@
-.AddQuestion, .MoreQuestionsButton {
+.AddQuestion, .MoreQuestionsButton, .loadFewerQuestionsButton {
   font-weight: bold;
   width:280px;
   height: 60px;

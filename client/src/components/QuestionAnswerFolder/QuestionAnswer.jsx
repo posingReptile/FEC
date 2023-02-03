@@ -30,7 +30,7 @@ const QuestionAnswer = (props) => {
       <div>
         <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
         {numberOfQuestions > 2 ?
-          <button onClick={() => { setNumberOfQuestions(2) }}>Load Fewer Questions</button>
+          <button className="loadFewerQuestionsButton" onClick={() => { setNumberOfQuestions(2) }}>Load Fewer Questions</button>
           : <button hidden={true}></button>
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>

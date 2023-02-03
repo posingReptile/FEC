@@ -73,7 +73,7 @@ const IndividualQuestion = (props) => {
 
     for (let key in finalQAObj) {
       let mappedAnswers = finalQAObj[key][0].slice(0, finalQAObj[key][0].length - 1).map((answer, index) => {
-        console.log(answer.date)
+
         return (
           <div className="answerBlock" key={index}>
             <div className="answerBody">
