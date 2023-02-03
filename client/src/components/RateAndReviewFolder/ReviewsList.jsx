@@ -5,7 +5,7 @@ import NewReview from './NewReview.jsx';
 import Modal from 'react-modal';
 
 
-const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice, product_id }) => {
+const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
   // const [reviewButton, setReviewState] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
 
@@ -40,7 +40,8 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, ch
       <NewReview charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}
-        product_id={product_id}/>
+        product_id={product_id}
+        charOptions={charOptions}/>
       <button onClick={closeModal} style={{"display": "flex"}}>close</button>
     </Modal>
     </div>

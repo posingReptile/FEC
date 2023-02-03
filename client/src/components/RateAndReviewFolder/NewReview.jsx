@@ -5,7 +5,7 @@ import { Container, HorizontalStarList, HorizontalImgList, StyledImgList,StyledR
 import { FaStar } from 'react-icons/fa';
 
 
-const NewReview = ({charArray, charChoice, setCharChoice, product_id}) => {
+const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOptions}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
@@ -17,16 +17,6 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id}) => {
   // recommendation
   const [recommend, setRecommend] = useState({ name: '', value: ''});
   const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
-
-  //characteristics items
-  const charOptions = {
-    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
-    Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
-    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
-    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
-    Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
-    Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
-  }
 
   // Review Summary
   const [summary, setSummary] = useState('');
@@ -42,7 +32,6 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id}) => {
       URL.createObjectURL(target.files[0])
     ]))
 
-    // setImg(URL.createObjectURL(e.target.files))
   }
 
   const handleRecClick = (e) => {

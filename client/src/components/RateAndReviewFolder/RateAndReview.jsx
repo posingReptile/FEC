@@ -119,6 +119,15 @@ const RateAndReview = ({ product_id }) => {
     return avg;
   }
 
+  const charOptions = {
+    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
+    Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
+    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
+    Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
+    Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
+  }
+
 
   return (
     <div data-testid="rating-main">
@@ -127,14 +136,15 @@ const RateAndReview = ({ product_id }) => {
       <RatingBreakdown ratingOverall={ratingOverall}
         productRatings={productRatings}
         recommendPercentage={recommendPercentage}/>
-      <ProductBreakdown productChar={productChar}/>
+      <ProductBreakdown productChar={productChar} charOptions={charOptions}/>
       <ReviewsList reviewsShown={reviewsShown}
         showMoreReviews={showMoreReviews}
         markHelpful={markHelpful}
         charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}
-        product_id={product_id}/>
+        product_id={product_id}
+        charOptions={charOptions}/>
       </div>
     </div>
   )
