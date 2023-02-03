@@ -31,7 +31,6 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
       ...prev,
       URL.createObjectURL(target.files[0])
     ]))
-
   }
 
   const handleRecClick = (e) => {
