@@ -14,6 +14,8 @@ const QuestionAnswer = (props) => {
 
   const [searchInput, setSearchInput] = useState('');
 
+  const [questionCount, setQuestionCount] = useState(0);
+
   let openModal = () => {
     setModal(true);
   }
@@ -22,15 +24,20 @@ const QuestionAnswer = (props) => {
     setModal(false);
   }
 
-
+  const handleChangeQuestionCount = (count) => {
+    setQuestionCount(count)
+  }
   return (
     <div className="QuestionAnswersBlock">
       <h3>Questions & Answers</h3>
-      <QuestionList searchInput={searchInput} productId={props.product_id} numberOfQuestions={numberOfQuestions} />
+      <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} searchInput={searchInput} productId={props.product_id} numberOfQuestions={numberOfQuestions} />
       <div>
-        <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
-        {numberOfQuestions > 2 ?
-          <button className="loadFewerQuestionsButton" onClick={() => { setNumberOfQuestions(2) }}>Load Fewer Questions</button>
+        {questionCount > 2
+          ? <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
+          : <button hidden={true}></button>
+        }
+        {numberOfQuestions > 2
+          ? <button className="loadFewerQuestionsButton" onClick={() => { setNumberOfQuestions(2) }}>Load Fewer Questions</button>
           : <button hidden={true}></button>
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>
