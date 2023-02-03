@@ -1,43 +1,83 @@
 import React, {useState} from 'react';
-import { Container, HorizontalList } from '../styled/SelectRating.styled.js';
+import axios from 'axios';
+import CharReview from './CharReview.jsx';
+import { Container, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
-const NewReview = (/*props*/) => {
+const NewReview = ({charArray, charChoice, setCharChoice, product_id}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+
   // overall Rating
   const [starRating, setRating] = useState(0);
   const [hovered, setHovered] = useState(undefined);
+  const stars = Array(5).fill(0);
+
   // recommendation
   const [recommend, setRecommend] = useState({ name: '', value: ''});
+  const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
+
+  //characteristics items
+  const charOptions = {
+    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
+    Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
+    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
+    Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
+    Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
+  }
+
+  // Review Summary
+  const [summary, setSummary] = useState('');
+
+  // Review Body
+  const [body, setBody] = useState('');
+
+  // image upload
+  const [img, setImg] = useState([]);
+  const handleImageSelection = (target) => {
+    setImg((prev) => ([
+      ...prev,
+      URL.createObjectURL(target.files[0])
+    ]))
+
+    // setImg(URL.createObjectURL(e.target.files))
+  }
 
   const handleRecClick = (e) => {
     const obj = {name: e.target.value, value: e.target.name };
     setRecommend(obj);
   }
 
-  const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
+  const handleTextInput = (e, changeFunc) => {
+    changeFunc(e.target.value);
+  }
 
+  const handleReviewSubmit = () => {
+    axios.post('/addReview', { product_id, username, email, starRating, recommend, summary, body, charChoice, img})
+      .catch(err => console.log('error in axios post add review', err));
+  }
 
-  const stars = Array(5).fill(0);
 
   return (
     <div>
       <Container>
       <h4>Add New Review</h4>
-      <form>
+      <form onSubmit={handleReviewSubmit}>
       <label>
         Username
-        <input name="username" value={username} onChange={setUsername} required/>
+        <input name="username" placeholder="Example: jackson11!" onChange={(e) => handleTextInput(e, setUsername)} required/>
       </label><br/>
+      <h5>For privacy reasons, do not use your full name or email address</h5><br/>
       <label>
         Email
-        <input name="email" type ="email" value={email} onChange={setEmail} required/>
+        <input name="email" placeholder="Example: jackson11@email.com" type ="email" onChange={(e) => handleTextInput(e, setEmail)} required/>
       </label><br/>
+      <h5>For authentication reasons, you will not be emailed</h5><br/>
       <label>Overall Rating
           <div>
-            <HorizontalList>
+            <HorizontalStarList>
             {stars.map((_, index) => {
               return (
                 <li key={index}>
@@ -47,17 +87,59 @@ const NewReview = (/*props*/) => {
                   onClick={() => setRating(index + 1)}
                   onMouseOver={() => setHovered(index + 1)}
                   onMouseLeave={() => setHovered(undefined)}
-                  />
+                  required/>
                   </li>
               )
             })}
-            </HorizontalList>
+            </HorizontalStarList>
          </div>
       </label> <br/>
         Do you recommend this product?
         {recommendOptions.map((valueObj, k) => (
-          <label key={k}><input type="radio" value={valueObj.value} name={valueObj.name} onChange={handleRecClick} checked={recommend.name === valueObj.value}/>{valueObj.value}</label>
+          <label key={k}>{valueObj.value}
+            <input type="radio"
+            value={valueObj.value}
+            name={valueObj.name}
+            onChange={handleRecClick}
+            checked={recommend.name === valueObj.value}
+            />
+          </label>
         ))} <br/>
+
+          Characteristics
+          <br/>
+          <CharReview charArray={charArray}
+          charOptions={charOptions}
+          charChoice={charChoice}
+          setCharChoice={setCharChoice}/>
+          <br />
+          <fieldset>
+            <legend>Review Summary</legend>
+              <StyledReviewSummary name="summary"
+              placeholder="Example: Best purchase ever!"
+              maxLength="60"
+              onChange={(e) => handleTextInput(e, setSummary)}></StyledReviewSummary>
+          </fieldset>
+          <fieldset>
+            <legend>Review Body</legend>
+              <StyledReviewBody name="body"
+              placeholder="Why did you like the product or not?"
+              onChange={(e) => handleTextInput(e, setBody)}
+              minLength="50"
+              maxLength="1000" required></StyledReviewBody>
+          </fieldset>
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => handleImageSelection(e.target)} />
+          <fieldset>
+            <legend>Photo Preview</legend>
+            <HorizontalImgList>
+            {img.map((image, index) => (
+            <StyledImgList key={index}>
+              <img src={image} height="100" width="100" alt=""/>
+            </StyledImgList>
+          ))}
+          </HorizontalImgList>
+          </fieldset>
+        <input type="submit" />
       </form>
       </Container>
     </div>
@@ -65,21 +147,3 @@ const NewReview = (/*props*/) => {
 }
 
 export default NewReview;
-
-// let createArrayWithNumbers = (max) => {
-//   return Array.from({max}, (_, i) => i + 1);
-// }
-// const stars = createArrayWithNumbers(5);
-
-// const fillingStars = (i) => {
-//   // console.log('inside of filling stars')
-//   if (i < starRating) {
-//     return 100
-//   } else {
-//     return 0;
-//   }
-// }
-
-// const clickRatingHelper = (e) => {
-//   setRating(e.target.key + 1)
-// }

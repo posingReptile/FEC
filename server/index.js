@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -54,6 +55,29 @@ app.get('/getReviewsMeta', (req, res) => {
       res.json(data.data)
     })
     .catch(err => console.log(err));
+})
+
+app.post('/addReview', (req, res) => {
+  let charObject = {};
+  let char = req.body.charChoice;
+  for (let charKey in char) {
+    charObject[charKey] = JSON.parse(char[charKey].rating);
+  }
+
+  postAnswer('reviews', {
+    product_id: req.body.product_id,
+    rating: req.body.starRating,
+    summary: req.body.summary,
+    body: req.body.body,
+    recommend: req.body.recommend.value,
+    name: req.body.username,
+    email: req.body.email,
+    characteristics: charObject,
+    photos: req.body.img
+  })
+    .then(() => console.log('review posted'))
+    .catch(err => console.log('error in express addReview', err))
+    res.send('review posted')
 })
 
 app.post('/addQuestion', (req, res) => {
