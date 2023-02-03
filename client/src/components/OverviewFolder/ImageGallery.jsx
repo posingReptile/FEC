@@ -17,7 +17,7 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
       const y = e.clientY - e.target.offsetTop;
       mainContainer.style.transition = "transform 0.5s";
       mainContainer.style.transformOrigin = `${x}px ${y}px`;
-      mainContainer.style.transform = "scale(2)";
+      mainContainer.style.transform = "scale(2.5)";
     }, [])
     var offZoom = useCallback(e => {
       mainContainer.style.transform = "scale(1)";

@@ -1,17 +1,25 @@
+#overviewFooter {
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-around;
+  display: flex;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
 .productDescription {
-  width: 70%;
+  width: 77%;
+  border-style: none solid none none;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .socialMedia {
-  width: 30%;
+  width: 25%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-
-
-.checkout {
-  display: flex;
-  justify-content: center;
-}
 .smIcon {
   display: flex;
   justify-content: space-around;
