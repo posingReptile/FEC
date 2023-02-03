@@ -11,16 +11,15 @@ const RateAndReview = ({ product_id }) => {
   const [productRatings, setRating] = useState({});
   const [recommendPercentage, setPercentage] = useState(0);
   const [productChar, setChar] = useState([])
+  const [charWords, setCharWords] = useState({});
   const [charArray, setCharArr] = useState([]);
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
+  const [totalNumReviews, setTotalNumReviews] = useState(0);
+  const [sortBy, setSortBy] = useState('relevant');
 
   useEffect(() => {
-    axios.get(`getReviews/?product_id=${product_id}`)
-    .then(data => {
-      setReviews(data.data.results);
-      setShownReviews(data.data.results.slice(0, reviewCount))
-    });
+    getReviewsHelper()
 
     axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
@@ -66,13 +65,25 @@ const RateAndReview = ({ product_id }) => {
       }
       setChar(charArr);
 
+      // characteristics word selection
+      let words = {}
+      charArr.forEach(char => {
+        let wordArr = [];
+        wordArr.push(charOptions[char.name][0])
+        wordArr.push(charOptions[char.name][2])
+        wordArr.push(charOptions[char.name][4])
+        words[char.name] = wordArr;
+      });
+      setCharWords(words)
+
+
       // characteristics options for new review
-      let charOptions = charArr.map(char => {
+      let characteristicsOptions = charArr.map(char => {
         const { name, id } = char;
         const object = { rating: '', name, id};
         return object;
       });
-      setCharArr(charOptions);
+      setCharArr(characteristicsOptions);
 
       charArr.forEach(obj => {
         const { name, id } = obj;
@@ -89,6 +100,19 @@ const RateAndReview = ({ product_id }) => {
   useEffect(() => {
     setShownReviews(productReviews.slice(0, reviewCount))
   },[reviewCount])
+
+  useEffect(() => {
+    getReviewsHelper()
+  }, [sortBy]);
+
+  let getReviewsHelper = () => {
+    return axios.get(`getReviews/?product_id=${product_id}&sort=${sortBy}`)
+    .then(data => {
+      setReviews(data.data.results);
+      setShownReviews(data.data.results.slice(0, reviewCount))
+      setTotalNumReviews(data.data.results.length);
+    });
+  }
 
   const markHelpful = (reviewId) => {
     axios.put(`markReviewHelpful/?review_id=${reviewId}`)
@@ -119,6 +143,15 @@ const RateAndReview = ({ product_id }) => {
     return avg;
   }
 
+  const charOptions = {
+    Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
+    Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
+    Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
+    Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
+    Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
+  }
+
 
   return (
     <div data-testid="rating-main">
@@ -127,14 +160,17 @@ const RateAndReview = ({ product_id }) => {
       <RatingBreakdown ratingOverall={ratingOverall}
         productRatings={productRatings}
         recommendPercentage={recommendPercentage}/>
-      <ProductBreakdown productChar={productChar}/>
-      <ReviewsList reviewsShown={reviewsShown}
+      <ProductBreakdown productChar={productChar} charWords={charWords}/>
+      <ReviewsList setSortBy={setSortBy}
+        totalNumReviews={totalNumReviews}
+        reviewsShown={reviewsShown}
         showMoreReviews={showMoreReviews}
         markHelpful={markHelpful}
         charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}
-        product_id={product_id}/>
+        product_id={product_id}
+        charOptions={charOptions}/>
       </div>
     </div>
   )

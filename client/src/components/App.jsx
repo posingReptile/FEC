@@ -1,5 +1,5 @@
-import React, { useState, useEffect }  from 'react';
-import axios from 'axios';
+import React, { useState }  from 'react';
+// import axios from 'axios';
 
 
 import Overview from './OverviewFolder/Overview.jsx';
@@ -8,7 +8,7 @@ import RateAndReview from './RateAndReviewFolder/RateAndReview.jsx';
 
 
 
-const App = (props) => {
+const App = () => {
   const [product_id, setProductId] = useState('37311');
 
   return (

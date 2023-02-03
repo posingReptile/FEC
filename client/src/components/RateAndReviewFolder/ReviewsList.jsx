@@ -5,13 +5,10 @@ import NewReview from './NewReview.jsx';
 import Modal from 'react-modal';
 
 
-const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice, product_id }) => {
-  // const [reviewButton, setReviewState] = useState(false);
+const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
   const [modalIsOpen, setModal] = useState(false);
 
-
   Modal.setAppElement('#root')
-
 
   let openModal = () => {
     setModal(true);
@@ -21,12 +18,11 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, ch
     setModal(false);
   }
 
-
   return (
     <div data-testid='review-list'>
       <h3>Reviews List</h3>
     <div>
-    <SortOptions />
+    <SortOptions setSortBy={setSortBy} totalNumReviews={totalNumReviews}/>
     {reviewsShown.map((review) =>  (
         <div key={review['review_id']}>
           <ReviewTile review={review} markHelpful={markHelpful}/>
@@ -40,7 +36,8 @@ const ReviewsList = ({ reviewsShown, showMoreReviews, markHelpful, charArray, ch
       <NewReview charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}
-        product_id={product_id}/>
+        product_id={product_id}
+        charOptions={charOptions}/>
       <button onClick={closeModal} style={{"display": "flex"}}>close</button>
     </Modal>
     </div>

@@ -38,8 +38,10 @@ app.get('/questions', (req, res) => {
 app.get('/getReviews', (req, res) => {
   let query = '';
   query += req.query.product_id;
+  let sortQuery = '';
+  sortQuery += req.query.sort;
 
-  getProducts(`reviews/?product_id=${query}&count=100`)
+  getProducts(`reviews/?product_id=${query}&sort=${sortQuery}&count=250`)
     .then(data => {
       res.json(data.data);
     })
