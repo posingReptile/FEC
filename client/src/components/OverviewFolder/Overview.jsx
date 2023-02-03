@@ -12,7 +12,7 @@ import OverviewFooter from "./OverviewFooter.jsx";
 
 
 
-const Overview = (props) => {
+const Overview = ({product_id}) => {
 
   let [item, setItem] = useState(Static.productId);
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
@@ -22,7 +22,7 @@ const Overview = (props) => {
   let [zoom, setZoom] = useState(false);
   let [check, setCheck] = useState(allStyleResult[0].style_id);
 
-  let curProduct = 37311 //37323 //37311;
+  let curProduct = product_id //37323 //37311;
   useEffect(() => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
     .then((data) => {
