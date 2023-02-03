@@ -133,7 +133,8 @@ const RateAndReview = ({ product_id }) => {
         markHelpful={markHelpful}
         charArray={charArray}
         charChoice={charChoice}
-        setCharChoice={setCharChoice}/>
+        setCharChoice={setCharChoice}
+        product_id={product_id}/>
       </div>
     </div>
   )
