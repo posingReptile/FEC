@@ -1,18 +1,22 @@
 #productInformation {
-  align-self: center;
   border:1px black solid;
   width: 30%;
-  height: 100%;
-  margin-right: 1%;
-  margin-left: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: white;
 }
 
 .styleIcons {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 4%;
+  padding-bottom: 5%;
 }
 #itemPrice {
   display: flex;
+  font-size: 24px;
 }
 .styleDiv {
   padding: 5px;
@@ -24,15 +28,33 @@
   height: 75px;
   object-fit: cover;
   object-position: 30% 30%;
-  border-radius: 15%;
+  border-radius: 50%;
   border:1px black solid;
   box-shadow: 2px 2px 4px grey;
 }
-
-
+#itemName{
+  font-size: 36px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 
 .check {
   position: absolute;
   width: auto;
   color: brown;
+}
+
+.checkout {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 5%
+}
+
+#sizeDropdown {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  padding-top: 5%;
+  padding-bottom: 5%
 }

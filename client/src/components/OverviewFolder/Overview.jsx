@@ -40,7 +40,7 @@ const Overview = (props) => {
   // console.log(Static.productId)
   return (
     <div id="overview">
-      <h1>Overview</h1>
+      <div id="titleDiv"><h1 id="title">Product Overview</h1></div>
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}/>
             {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto}/>}

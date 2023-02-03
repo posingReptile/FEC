@@ -13,12 +13,6 @@
   justify-content: center;
 }
 
-#sizeDropdown {
-  border:1px black solid;
-  display: flex;
-  flex-direction:row;
-  justify-content: space-around;
-}
 .dropdown-menu {
   position: absolute;
   transform: translateY(4px);
