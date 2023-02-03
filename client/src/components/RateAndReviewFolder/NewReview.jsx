@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import CharReview from './CharReview.jsx';
 import { Container, HorizontalList } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
@@ -79,24 +79,3 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
 }
 
 export default NewReview;
-
-
-// {charArray.map(obj => (
-//   <label key={obj.id} style={{padding: '10px'}}>{obj.name}
-//       {stars.map((_, index) => {
-//         let ratingVal = index + 1;
-//         // let stringy = JSON.stringify(obj.id);
-//         return (
-//         <label key={index}>
-//           {ratingVal}
-//           <input type="radio"
-//             value={ratingVal}
-//             name={charOptions[obj.name][index]}
-//             onChange={(e) => handleCharClick(e, obj.id)}/>
-
-//         </label>
-
-//       )})
-//     }<br/>
-//   </label>
-// ))}
