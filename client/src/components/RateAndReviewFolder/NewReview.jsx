@@ -17,6 +17,8 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
   const [recommend, setRecommend] = useState({ name: '', value: ''});
   const recommendOptions = [ { value: "yes", name: "true"}, { value: "no", name: "false"}]
 
+  // image upload
+  const [imageURL, setImageURL] = useState('');
 
   const handleRecClick = (e) => {
     const obj = {name: e.target.value, value: e.target.name };
@@ -81,7 +83,7 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
             <legend>Review Body</legend>
               <textarea required></textarea>
           </fieldset>
-          {/* <input capture/> */}
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => setImageURL(URL.createObjectURL(e.target.files[0]))} />
 
       </form>
       </Container>
