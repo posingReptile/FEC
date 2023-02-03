@@ -72,6 +72,17 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
           <CharReview charArray={charArray}
           charChoice={charChoice}
           setCharChoice={setCharChoice}/>
+          <br />
+          <fieldset>
+            <legend>Review Summary</legend>
+              <textarea required></textarea>
+          </fieldset>
+          <fieldset>
+            <legend>Review Body</legend>
+              <textarea required></textarea>
+          </fieldset>
+          {/* <input capture/> */}
+
       </form>
       </Container>
     </div>

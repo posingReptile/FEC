@@ -30,7 +30,7 @@ const CharReview = ({charArray, charChoice, setCharChoice}) => {
               <input type="radio"
                    name={charOptions[obj.name][index]}
                    onChange={(e) => handleCharClick(e, obj.id, index + 1)}
-                   checked={charChoice[`${obj.id}`].checked === (index + 1)}/>
+                   checked={charChoice[`${obj.id}`].checked === (index + 1)} />
                  {charOptions[obj.name][index]}</label>
              ))}
             <br/>
