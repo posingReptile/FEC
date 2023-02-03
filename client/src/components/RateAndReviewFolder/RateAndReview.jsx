@@ -5,7 +5,7 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import { StyledRatingsAndReviews } from '../styled/RAndR.styled.js';
 
-const RateAndReview = ({ product_id, productRating, setProductRating }) => {
+const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews }) => {
   const [productReviews, setReviews] = useState([]);
   const [reviewsShown, setShownReviews] = useState([]);
   const [productRatings, setRating] = useState({});
@@ -15,7 +15,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating }) => {
   const [charArray, setCharArr] = useState([]);
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
-  const [totalNumReviews, setTotalNumReviews] = useState(0);
   const [sortBy, setSortBy] = useState('relevant');
 
   useEffect(() => {
