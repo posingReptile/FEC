@@ -29,21 +29,24 @@ const IndividualQuestion = (props) => {
 
   const handleLoadFewerAnswer = (q) => {
     q[2] = 2
-    getReviews()
+    setQuestions({})
   }
 
   const handleLoadMoreAnswer = (q) => {
     if (q[2] >= q[1].length && q[1].length > 2) {
     }
     q[2] += 2
-    getReviews()
+    setQuestions({})
   }
 
+  const handleSearch = () => {
+    setQuestions({}),
+    setHtmlQAList([]),
+    getReviews()
+  }
   const getReviews = () => {
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
-        setQuestions({})
-        setHtmlQAList([])
         for (let i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i].question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
             setQuestions((previous) => ({
@@ -136,10 +139,10 @@ const IndividualQuestion = (props) => {
   return (
     <div>
      <input onChange={(e)=> {setSearchInput(e.target.value)}} placeholder="Search Questions and Answers"></input>
-      <button onClick={()=> {getReviews(), getFinalHtmlElements()}}>Search</button>
+      <button onClick={handleSearch}>Search</button>
       {htmlQAList.length > 0
         ? renderQuestionAnswerElements
-        : 'Loading'
+        : 'No questions matching that search'
       }
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <NewAnswer questionId={questionId} />
