@@ -8,7 +8,7 @@ import {StyledStarRating} from '../styled/StarRating.styled.js'
 import "./OverviewCss/productInformation.css";
 import "./OverviewCss/dropdown.css";
 
-const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating}) => {
+const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating, totalNumReviews}) => {
 
   const [sizeSelector, setSizeSelector] = useState('Select Size');
   const [quantity, setQuantitySelector] = useState(1);
@@ -48,7 +48,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
 
   return (
       <div id="productInformation">
-        <div><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all [#] reviews</a></div>
+        <div><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all {totalNumReviews} reviews</a></div>
         <div id="category">{item.category}</div>
         <h1 id="itemName">{item.name}</h1>
         {itemStyle.sale_price ?
