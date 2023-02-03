@@ -50,7 +50,7 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
         {expandView ?
         <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto}></img></div> :
         <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto}></img></div>}
-        <div className="expand" onClick={() => {setExpandView(!expandView)}}><IoIosExpand /></div>
+        {expandView && !zoom ? <div className="expand" onClick={() => {setExpandView(!expandView)}}><IoIosExpand /></div> : null}
       </div>
       <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto} zoom={zoom}/>
     </div>
