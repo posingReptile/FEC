@@ -14,8 +14,8 @@ const App = (props) => {
   return (
     <div>
       <Overview product_id={product_id}/>
-      {/* <QuestionAnswer product_id={product_id}/>
-      <RateAndReview product_id={product_id}/> */}
+      <QuestionAnswer product_id={product_id}/>
+      <RateAndReview product_id={product_id}/>
     </div>
   );
 }
