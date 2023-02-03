@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import CharReview from './CharReview.jsx';
-import { Container, HorizontalList } from '../styled/SelectRating.styled.js';
+import { Container, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
-const NewReview = ({charArray, charChoice, setCharChoice}) => {
+const NewReview = ({charArray, charChoice, setCharChoice, product_id}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
@@ -27,12 +28,35 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
     Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
   }
 
+  // Review Summary
+  const [summary, setSummary] = useState('');
+
+  // Review Body
+  const [body, setBody] = useState('');
+
   // image upload
-  const [imageURL, setImageURL] = useState('');
+  const [img, setImg] = useState([]);
+  const handleImageSelection = (target) => {
+    setImg((prev) => ([
+      ...prev,
+      URL.createObjectURL(target.files[0])
+    ]))
+
+    // setImg(URL.createObjectURL(e.target.files))
+  }
 
   const handleRecClick = (e) => {
     const obj = {name: e.target.value, value: e.target.name };
     setRecommend(obj);
+  }
+
+  const handleTextInput = (e, changeFunc) => {
+    changeFunc(e.target.value);
+  }
+
+  const handleReviewSubmit = () => {
+    axios.post('/addReview', { product_id, username, email, starRating, recommend, summary, body, charChoice, img})
+      .catch(err => console.log('error in axios post add review', err));
   }
 
 
@@ -40,18 +64,20 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
     <div>
       <Container>
       <h4>Add New Review</h4>
-      <form>
+      <form onSubmit={handleReviewSubmit}>
       <label>
         Username
-        <input name="username" value={username} onChange={setUsername} required/>
+        <input name="username" placeholder="Example: jackson11!" onChange={(e) => handleTextInput(e, setUsername)} required/>
       </label><br/>
+      <h5>For privacy reasons, do not use your full name or email address</h5><br/>
       <label>
         Email
-        <input name="email" type ="email" value={email} onChange={setEmail} required/>
+        <input name="email" placeholder="Example: jackson11@email.com" type ="email" onChange={(e) => handleTextInput(e, setEmail)} required/>
       </label><br/>
+      <h5>For authentication reasons, you will not be emailed</h5><br/>
       <label>Overall Rating
           <div>
-            <HorizontalList>
+            <HorizontalStarList>
             {stars.map((_, index) => {
               return (
                 <li key={index}>
@@ -61,11 +87,11 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
                   onClick={() => setRating(index + 1)}
                   onMouseOver={() => setHovered(index + 1)}
                   onMouseLeave={() => setHovered(undefined)}
-                  />
+                  required/>
                   </li>
               )
             })}
-            </HorizontalList>
+            </HorizontalStarList>
          </div>
       </label> <br/>
         Do you recommend this product?
@@ -75,7 +101,8 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
             value={valueObj.value}
             name={valueObj.name}
             onChange={handleRecClick}
-            checked={recommend.name === valueObj.value}/>
+            checked={recommend.name === valueObj.value}
+            />
           </label>
         ))} <br/>
 
@@ -88,14 +115,31 @@ const NewReview = ({charArray, charChoice, setCharChoice}) => {
           <br />
           <fieldset>
             <legend>Review Summary</legend>
-              <textarea required></textarea>
+              <StyledReviewSummary name="summary"
+              placeholder="Example: Best purchase ever!"
+              maxLength="60"
+              onChange={(e) => handleTextInput(e, setSummary)}></StyledReviewSummary>
           </fieldset>
           <fieldset>
             <legend>Review Body</legend>
-              <textarea required></textarea>
+              <StyledReviewBody name="body"
+              placeholder="Why did you like the product or not?"
+              onChange={(e) => handleTextInput(e, setBody)}
+              minLength="50"
+              maxLength="1000" required></StyledReviewBody>
           </fieldset>
-          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => setImageURL(URL.createObjectURL(e.target.files[0]))} />
-
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => handleImageSelection(e.target)} />
+          <fieldset>
+            <legend>Photo Preview</legend>
+            <HorizontalImgList>
+            {img.map((image, index) => (
+            <StyledImgList key={index}>
+              <img src={image} height="100" width="100" alt=""/>
+            </StyledImgList>
+          ))}
+          </HorizontalImgList>
+          </fieldset>
+        <input type="submit" />
       </form>
       </Container>
     </div>

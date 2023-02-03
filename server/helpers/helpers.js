@@ -46,6 +46,31 @@ let postAnswer = (query, data) => {
       'Authorization': `${process.env.TOKEN}`
     },
     data: {
+      "product_id": JSON.parse(data.product_id),
+      "rating": JSON.parse(data.rating),
+      "recommend": JSON.parse(data.recommend),
+      "summary": data.summary,
+      "body": data.body,
+      "name": data.name,
+      "email": data.email,
+      "photos": ["https://64.media.tumblr.com/332f0b22d4eac658a2e87c73fd7db145/tumblr_inline_oujv3l9kfD1swtfnl_500.png"],
+      "characteristics": data.characteristics
+    }
+  };
+  return axios(options).catch(err => {
+    console.error(err);
+    });
+};
+
+let postReview = (query, data) => {
+  let options = {
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/${query}`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': `${process.env.TOKEN}`
+    },
+    data: {
       "body": data.body,
       "name": data.name,
       "email": data.email,
@@ -55,7 +80,7 @@ let postAnswer = (query, data) => {
   return axios(options).catch(err => {
     console.error(err);
     });
-};
+}
 
 let markReviewHelpful = (query) => {
   let options = {

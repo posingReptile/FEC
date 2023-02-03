@@ -11,16 +11,14 @@ export const Container = styled.div`
   & > form > label {
     padding: 20px;
   }
-
   `
 
-export const HorizontalList = styled.ul`
+export const HorizontalStarList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style-type: none;
   width: 50%
 `
-
 
 export const StyledStarLabel = styled.label`
   display: block;
@@ -28,6 +26,27 @@ export const StyledStarLabel = styled.label`
   margin: 10px 0;
   user-select: none;
 `
+export const HorizontalImgList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  width: 100%;
+  justify-content: space-around;
+`
+export const StyledImgList = styled.li`
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+`
+export const StyledReviewSummary = styled.textarea`
+  width: 100%;
+`
+
+export const StyledReviewBody = styled.textarea`
+  width: 100%;
+`
+
+
 export const ReviewRating = styled.input.attrs(() => ({
   type: "radio"
 }))`
