@@ -1,29 +1,37 @@
 import React from 'react';
 import StarBar from './StarBar.jsx'
-import { StyledStarRating } from '../styled/StarRating.styled.js';
+import { StyledStarRating, StyledHeadingDiv, StyledRatingDiv } from '../styled/StarRating.styled.js';
 
-const RatingBreakdown = ({ productRating, productRatings, recommendPercentage}) => {
-  // console.log('this is recommendPercentage', recommendPercentage);
+const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, filter, setFilter}) => {
   const ratingPercent = (productRating * 100) / 5;
+
+  // const handleStarClick = (e) => {
+  //   console.log('this is e.target.value: ', e.target)
+  //   // setFilter(prev => ([
+  //   //   ...prev,
+  //   //   e.target.value
+  //   // ]))
+  // }
+
 
   return (
     <div data-testid='rating-breakdown'>
-      <h3>Rating Breakdown</h3>
-      <div data-testid='rating-bd-sum'>
-        <h5>Rating Summary</h5>
-        <h5>{productRating} <StyledStarRating ratingPercent={ratingPercent}/></h5>
+      <StyledHeadingDiv data-testid='rating-bd-sum'>
+        <h5>{productRating} </h5>
+        <StyledStarRating ratingPercent={ratingPercent}/>
 
-      </div>
+      </StyledHeadingDiv>
       <div data-testid='rating-bd-rec'>
         <p>{recommendPercentage}% of reviewers recommend this product</p>
       </div>
-      <div data-testid='rating-bd-stars'>
-        <a>5 Stars</a> <StarBar starRating={productRatings['5']} height={15}/><br/>
-        <a>4 Stars</a> <StarBar starRating={productRatings['4']} height={15}/> <br/>
-        <a>3 Stars</a> <StarBar starRating={productRatings['3']} height={15}/> <br/>
-        <a>2 Stars</a> <StarBar starRating={productRatings['2']} height={15}/> <br/>
-        <a>1 Stars</a> <StarBar starRating={productRatings['1']} height={15}/> <br/>
-      </div>
+      {filter.length > 0 ? <button onClick={() => setFilter([])}>clear all filters</button> : null}
+      <StyledRatingDiv data-testid='rating-bd-stars'>
+        <StarBar starValue={5} starRating={productRatings['5']} setFilter={setFilter}/>
+        <StarBar starValue={4} starRating={productRatings['4']} setFilter={setFilter}/>
+        <StarBar starValue={3} starRating={productRatings['3']} setFilter={setFilter}/>
+        <StarBar starValue={2} starRating={productRatings['2']} setFilter={setFilter}/>
+        <StarBar starValue={1} starRating={productRatings['1']} setFilter={setFilter}/>
+      </StyledRatingDiv>
     </div>
   )
 }
