@@ -22,6 +22,7 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
   let [zoom, setZoom] = useState(false);
   let [check, setCheck] = useState(allStyleResult[0].style_id);
 
+  // console.log(check, allStyleResult[0].style_id);
   let curProduct = product_id //37323 //37311;
   useEffect(() => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
@@ -38,14 +39,18 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
     })
   }, []);
 
+  useEffect(() => {
+    setCheck(allStyleResult[0].style_id);
+  }, [allStyleResult])
+
   return (
     <div>
       <div id="overview">
       <div id="titleDiv"><h1 id="title">Product Overview</h1></div>
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}/>
-            {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle} allStyleResult={allStyleResult}
-            setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check}
+            {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle}
+            allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check}
             setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews}/>}
         </div>
       <OverviewFooter item={item}/>
