@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 // import axios from 'axios';
 
-
+import NavBar from './NavBar.jsx';
 import Overview from './OverviewFolder/Overview.jsx';
 import QuestionAnswer from './QuestionAnswerFolder/QuestionAnswer.jsx';
 import RateAndReview from './RateAndReviewFolder/RateAndReview.jsx';
@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <div>
+      <NavBar />
       <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews}/>
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}

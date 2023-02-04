@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
+import { HorizontalImgListTile, StyledImgList } from '../styled/SelectRating.styled.js';
 
 const ReviewTile = ({ review, markHelpful, reportReview }) => {
   const [helpfulCount, setHelpfulCount] = useState(review.helpfulness);
@@ -41,14 +42,14 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         {review.recommend ? <p>{'✓ I recommend this product'}</p> : null}
       </div>
       <p>{review.body}</p>
-      <div>
+      <HorizontalImgListTile>
       {review.photos ? review.photos.map(photo => {
         return (
-        <div key={photo.id} style={{width: '10%', position: 'relative'}}>
+        <StyledImgList key={photo.id} style={{width: '10%', position: 'relative'}}>
           <img src={photo.url} alt="placeholder"/>
-        </div>
+        </StyledImgList>
       )}) : null}
-      </div>
+      </HorizontalImgListTile>
       <div>
         {review.response ? <p>review.response</p> : null }
       </div>
