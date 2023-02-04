@@ -19,6 +19,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   // to filter reviews
   const [filter, setFilter] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
+  const [reviewReported, setReviewReported] = useState(false);
 
   useEffect(() => {
     getReviewsHelper()
@@ -107,7 +108,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     } else {
       setShownReviews(productReviews.slice(0, reviewCount))
     }
-  },[reviewCount, filter, sortBy])
+  },[reviewCount, filter, sortBy, reviewReported])
 
   // change reviews shown by star value
   // useEffect(() => {
@@ -145,6 +146,14 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     axios.put(`markReviewHelpful/?review_id=${reviewId}`)
       .then(() => console.log('marked!'))
       .catch(err => console.log(err));
+  }
+
+  const reportReview = (reviewId) => {
+    axios.put(`reportReview/?review_id=${reviewId}`)
+    .then(() => {
+      console.log('marked!')
+      setReviewReported((prev) => !prev)})
+    .catch(err => console.log(err));
   }
 
   const showMoreReviews = () => {
@@ -195,6 +204,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
         reviewsShown={reviewsShown}
         showMoreReviews={showMoreReviews}
         markHelpful={markHelpful}
+        reportReview={reportReview}
         charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}

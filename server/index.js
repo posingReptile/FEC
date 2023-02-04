@@ -114,6 +114,15 @@ app.put('/markReviewHelpful', (req, res) => {
     .then(() => console.log(`Review ${query} was marked helpful!`))
     .catch(err => console.log(err));
 })
+app.put('/reportReview', (req, res) => {
+  let query = '';
+  query += req.query.review_id;
+  // console.log(query)
+
+  markHelpfulOrReport(`reviews/${query}/report`)
+    .then(() => console.log(`Review ${query} reported`))
+    .catch(err => console.log(err));
+})
 
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
