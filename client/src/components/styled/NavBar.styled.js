@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  background-color: #556b2f;
-  padding: 20px 0;
+padding: 20px 0;
+background-color: #556b2f;
+color: black;
 `
+// background-color: #556b2f;
 
 // justify-content: space-between;
 export const Nav = styled.nav`

@@ -23,4 +23,18 @@
 .smIcon {
   display: flex;
   justify-content: space-around;
+  color: black;
+  font-size: 24px;
+}
+
+#facebook:hover {
+  color: blue;
+}
+
+#twitter:hover {
+  color: lightskyblue;
+}
+
+#pinterest:hover {
+  color: red;
 }

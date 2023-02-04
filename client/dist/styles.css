@@ -5,6 +5,7 @@
 * {
   margin: 0;
 }
+
 html, body {
   height: 100%;
   scroll-behavior: smooth;
@@ -12,7 +13,14 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: rgba(210, 180, 140, 0.05);
+  color: rgb(39, 50, 39)
 }
+
+#nav-bar {
+  background-image: url("../images/background.jpg");
+}
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;

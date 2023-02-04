@@ -9,7 +9,7 @@
 }
 
 #main{
-  background-color: hwb(0 91% 7%);
+  background-color: hwb(12 91% 7%);
   width: 100%;
   height: 650px;
   display: flex;
@@ -77,13 +77,18 @@
   right: 10%;
   top: 50%;
   font-size: 40px;
-  border: none;
+  opacity: .50;
   border: 2px solid;
   color: white;
+  border-radius: 50%;
+  border: none;
+  mix-blend-mode: difference;
 }
 
 #rightScroll:hover {
   color: brown;
+  opacity: 1;
+  mix-blend-mode: normal;
 }
 
 #leftScroll {
@@ -92,11 +97,17 @@
   top: 50%;
   font-size: 40px;
   border: 2px solid;
+  opacity: .50;
   color: white;
+  border-radius: 50%;
+  border: none;
+  mix-blend-mode: difference;
 }
 
 #leftScroll:hover {
   color: brown;
+  opacity: 1;
+  mix-blend-mode: normal;
 }
 
 #carouselThumbnail {

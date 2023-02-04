@@ -2,10 +2,12 @@
   width: 50%;
 }
 #qSelect {
-  width: 100%;
+  text-align: center;
+width: 30%;
   height: 50px;
 }
 #sizeSelect {
-  width: 100%;
+  text-align: center;
+  width: 70%;
   height: 50px;
 }

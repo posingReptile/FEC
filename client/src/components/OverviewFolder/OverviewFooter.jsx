@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
+import { BsPinterest, BsFacebook, BsTwitter } from "react-icons/bs";
 
 const OverviewFooter = ({item}) => {
 
@@ -10,11 +11,10 @@ const OverviewFooter = ({item}) => {
           <div>{item.description}</div>
         </div>
         <div className="socialMedia">
-          <h2>Follow Us</h2>
           <div className="smIcon">
-            <img src="https://img.icons8.com/color/48/null/facebook.png"/>
-            <img src="https://img.icons8.com/color/48/null/twitter--v2.png"/>
-            <img src="https://img.icons8.com/color/48/null/pinterest--v1.png"/>
+            <BsFacebook id="facebook"/>
+            <BsTwitter id="twitter"/>
+            <BsPinterest id="pinterest"/>
           </div>
         </div>
       </div>

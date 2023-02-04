@@ -8,3 +8,5 @@ export const StyledRatingsAndReviews = styled.div`
   display: border-box;
 
   `
+
+  // background-color: rgba(210, 180, 140, 0.05 );

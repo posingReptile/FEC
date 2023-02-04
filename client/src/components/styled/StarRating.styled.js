@@ -12,7 +12,7 @@ export const StyledStarRating = styled.h5`
   &::before {
     content: "★★★★★";
     letter-spacing: 1px;
-    background: linear-gradient(90deg, #fc0 ${({ratingPercent}) => ratingPercent || '70'}%, lightgray ${({ratingPercent}) => ratingPercent || '70'}%);
+    background: linear-gradient(90deg, #daa520 ${({ratingPercent}) => ratingPercent || '70'}%, lightgray ${({ratingPercent}) => ratingPercent || '70'}%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
