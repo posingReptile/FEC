@@ -3,7 +3,7 @@ import { IoIosExpand } from "react-icons/io";
 import "./OverviewCss/imageGallery.css";
 import CarouselThumbnail from './CarouselThumbnail.jsx';
 
-const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandView, zoom, setZoom}) => {
+const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandView, zoom, setZoom, photoIndex, setPhotoIndex}) => {
 
   const mainContainer = document.getElementById("test");
   const img = document.getElementById("expandview");
@@ -36,16 +36,16 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
       img.removeEventListener("mouseleave", offZoom);
     }
   }
-
+  // console.log(mainPhoto);
   return (
     <div id="imageGallery">
       <div id="main">
         {expandView ?
-        <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto} alt="placeHolder" ></img></div> :
-        <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto} alt="placeHolder"></img></div>}
+        <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url} alt="placeHolder" ></img></div> :
+        <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto[photoIndex].url} alt="placeHolder"></img></div>}
         {expandView && !zoom ? <div className="expand" onClick={() => {setExpandView(!expandView)}}><IoIosExpand /></div> : null}
       </div>
-      {zoom ? null : <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto} zoom={zoom}/>}
+      {zoom ? null : <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto} zoom={zoom} photoIndex={photoIndex} setPhotoIndex={setPhotoIndex}/>}
     </div>
   );
 };

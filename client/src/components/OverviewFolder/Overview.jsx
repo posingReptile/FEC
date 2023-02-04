@@ -17,13 +17,16 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
   let [item, setItem] = useState(Static.productId);
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
-  let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos[0].url)
+
+  let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos);
   let [expandView, setExpandView] = useState(false)
   let [zoom, setZoom] = useState(false);
   let [check, setCheck] = useState(allStyleResult[0].style_id);
 
+  const [photoIndex, setPhotoIndex] = useState(0);
   // console.log(check, allStyleResult[0].style_id);
   let curProduct = product_id //37323 //37311;
+
   useEffect(() => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
     .then((data) => {
@@ -34,27 +37,36 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
     .then((data) => {
      let productData = data.data.results;
       setItemStyle(productData[0]);
-      setMainPhoto(productData[0].photos[0].url);
+      setMainPhoto(productData[0].photos);
       setStyleResult(productData);
     })
   }, []);
+
+  // console.log(Static.productStyle.results[0].photos);
 
   useEffect(() => {
     setCheck(allStyleResult[0].style_id);
   }, [allStyleResult])
 
+  useEffect(() => {
+    setMainPhoto(itemStyle.photos);
+  }, [itemStyle])
+
   return (
     <div>
-      <div id="overview">
+      {item && itemStyle ? <div id="overview">
       <div id="titleDiv"><h1 id="title">Product Overview</h1></div>
           <div id="overviewHeader">
-            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto} expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}/>
+            <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}
+            expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}
+            photoIndex={photoIndex} setPhotoIndex={setPhotoIndex}/>
+
             {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle}
             allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check}
-            setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews}/>}
+            setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews} setPhotoIndex={setPhotoIndex}/>}
         </div>
       <OverviewFooter item={item}/>
-      </div>
+      </div>: null }
     </div>
   );
 };

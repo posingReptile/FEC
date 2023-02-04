@@ -76,16 +76,27 @@
   position: absolute;
   right: 10%;
   top: 50%;
-  font-size: 24px;
+  font-size: 40px;
   border: none;
+  border: 2px solid;
+  color: white;
+}
+
+#rightScroll:hover {
+  color: brown;
 }
 
 #leftScroll {
   position: absolute;
   left: 18%;
   top: 50%;
-  font-size: 24px;
-  border: none;
+  font-size: 40px;
+  border: 2px solid;
+  color: white;
+}
+
+#leftScroll:hover {
+  color: brown;
 }
 
 #carouselThumbnail {
