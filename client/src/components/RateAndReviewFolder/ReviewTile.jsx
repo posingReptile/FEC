@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
 
-const ReviewTile = ({ review, markHelpful }) => {
+const ReviewTile = ({ review, markHelpful, reportReview }) => {
   const [helpfulCount, setHelpfulCount] = useState(review.helpfulness);
   const [helpClicked, setClicked] = useState(false);
 
@@ -42,17 +42,19 @@ const ReviewTile = ({ review, markHelpful }) => {
       </div>
       <p>{review.body}</p>
       <div>
-      {review.photos ? review.photos.map(photo => (
+      {review.photos ? review.photos.map(photo => {
+        return (
         <div key={photo.id} style={{width: '10%', position: 'relative'}}>
           <img src={photo.url} alt="placeholder"/>
         </div>
-      )) : null}
+      )}) : null}
       </div>
       <div>
         {review.response ? <p>review.response</p> : null }
       </div>
       <div>
         <span>Helpful? <a onClick={() => clickHelper()}>Yes({helpfulCount})</a></span>
+        <span><a onClick={()=> reportReview(review.review_id)}>Report</a></span>
       </div>
     </div>
 

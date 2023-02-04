@@ -5,7 +5,7 @@ import NewReview from './NewReview.jsx';
 import Modal from 'react-modal';
 
 
-const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
+const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
   const [modalIsOpen, setModal] = useState(false);
 
   Modal.setAppElement('#root')
@@ -25,7 +25,7 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
     <SortOptions setSortBy={setSortBy} totalNumReviews={totalNumReviews}/>
     {reviewsShown.map((review) =>  (
         <div key={review['review_id']}>
-          <ReviewTile review={review} markHelpful={markHelpful}/>
+          <ReviewTile review={review} markHelpful={markHelpful} reportReview={reportReview}/>
         </div>
       ))}
     </div>
