@@ -55,7 +55,6 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
   return (
     <div>
       {item && itemStyle ? <div id="overview">
-      <div id="titleDiv"><h1 id="title">Product Overview</h1></div>
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}
             expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}
