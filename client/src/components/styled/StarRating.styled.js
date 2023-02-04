@@ -18,6 +18,38 @@ export const StyledStarRating = styled.h5`
   }
 `
 
+export const StyledHeadingDiv = styled.div`
+  display: flex;
+  flex-direction: row;
 
-
+  & > h5 {
+    padding-right: 5px;
+    font-size: 20px;
+  }
+`
 // slate gray : #2f4f4f
+
+export const StyledRatingDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+
+`
+export const HoverAndFilter = styled.div`
+  &:hover {
+    color: darkgreen;
+  }
+`
+
+export const StyledParentStarBar = styled.div`
+  height: 15px;
+  width: 20%;
+  background-color: lightgray;
+`
+
+export const StyledChildStarBar = styled.div`
+  height: 100%;
+  width: ${({starRating}) => starRating}%;
+  background-color: green;
+  text-align: right;
+`

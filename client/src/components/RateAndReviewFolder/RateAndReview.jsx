@@ -16,6 +16,9 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
+  // to filter reviews
+  const [filter, setFilter] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
 
   useEffect(() => {
     getReviewsHelper()
@@ -92,23 +95,48 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
       }))
       })
 
-
     });
   }, []);
 
+  // should maintain sort value, filter, and number of shown reviews
   useEffect(() => {
-    setShownReviews(productReviews.slice(0, reviewCount))
-  },[reviewCount])
+    getReviewsHelper();
 
-  useEffect(() => {
-    getReviewsHelper()
-  }, [sortBy]);
+    if (filter.length > 0) {
+      setShownReviews(filteredReviews.slice(0, reviewCount))
+    } else {
+      setShownReviews(productReviews.slice(0, reviewCount))
+    }
+  },[reviewCount, filter, sortBy])
+
+  // change reviews shown by star value
+  // useEffect(() => {
+  //   if (filter.length > 0) {
+  //   }
+  // }, [filter])
+
+  //change sorting of reviews list
+  // useEffect(() => {
+  //   getReviewsHelper()
+  // }, [sortBy]);
 
   let getReviewsHelper = () => {
     return axios.get(`getReviews/?product_id=${product_id}&sort=${sortBy}`)
     .then(data => {
       setReviews(data.data.results);
-      setShownReviews(data.data.results.slice(0, reviewCount))
+      if (filter.length > 0) {
+        let sortedArr = []
+        data.data.results.forEach(review => {
+          if (filter.includes(review.rating)) {
+            sortedArr.push(review);
+          }
+        });
+        setFilteredReviews(sortedArr)
+        setShownReviews(sortedArr.slice(0, reviewCount))
+      } else {
+        setShownReviews(data.data.results.slice(0, reviewCount))
+      }
+
       setTotalNumReviews(data.data.results.length);
     });
   }
@@ -158,7 +186,9 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
       <div>
       <RatingBreakdown productRating={productRating}
         productRatings={productRatings}
-        recommendPercentage={recommendPercentage}/>
+        recommendPercentage={recommendPercentage}
+        filter={filter}
+        setFilter={setFilter}/>
       <ProductBreakdown productChar={productChar} charWords={charWords}/>
       <ReviewsList setSortBy={setSortBy}
         totalNumReviews={totalNumReviews}

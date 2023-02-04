@@ -69,3 +69,10 @@ export const StyledStar = styled(FaStar).attrs(() => ({
       ? "rgba(255, 165, 0, 0.5)"
       : "#eee"};
 `
+export const VerticalList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  width: 100%
+  justify-content: flex-start
+`

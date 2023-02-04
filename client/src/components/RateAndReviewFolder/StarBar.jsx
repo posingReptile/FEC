@@ -1,28 +1,23 @@
 import React from 'react'
+import { StyledParentStarBar, StyledChildStarBar, HoverAndFilter } from '../styled/StarRating.styled.js';
 
-const StarBar = ({ starRating, height }) => {
-  const parentDiv = {
-    height: height,
-    width: '20%',
-    backgroundColor: 'lightgray',
-    // borderRadius: 40,
-    // margin: 50
-  }
-
-  const childDiv ={
-    height: '100%',
-    width: `${starRating}%`,
-    backgroundColor: 'green',
-    // borderRadius: 40,
-    textAlign: 'right'
+const StarBar = ({ starValue, starRating, setFilter }) => {
+  const handleStarClick = () => {
+    // console.log('this is starValue: ', starValue)
+    setFilter(prev => ([
+      ...prev,
+      starValue
+    ]))
   }
 
   return (
-    <div style={parentDiv}>
-      <div style={childDiv}>
-        {/* <span>{`${starRating}`}</span> */}
-      </div>
-    </div>
+    <HoverAndFilter onClick={() => handleStarClick()}>
+      <h5> <u>{starValue} stars</u></h5>
+        <StyledParentStarBar >
+          <StyledChildStarBar starRating={starRating}>
+          </StyledChildStarBar>
+        </StyledParentStarBar>
+    </HoverAndFilter>
   )
 }
 
