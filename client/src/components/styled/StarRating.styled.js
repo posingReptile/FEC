@@ -17,6 +17,7 @@ export const StyledStarRating = styled.h5`
     -webkit-text-fill-color: transparent;
   }
 `
+// slate gray : #2f4f4f
 
 export const StyledHeadingDiv = styled.div`
   display: flex;
@@ -27,7 +28,6 @@ export const StyledHeadingDiv = styled.div`
     font-size: 20px;
   }
 `
-// slate gray : #2f4f4f
 
 export const StyledRatingDiv = styled.div`
   display: flex;
