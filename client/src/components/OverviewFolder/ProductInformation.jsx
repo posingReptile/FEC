@@ -8,7 +8,7 @@ import {StyledStarRating} from '../styled/StarRating.styled.js'
 import "./OverviewCss/productInformation.css";
 import "./OverviewCss/dropdown.css";
 
-const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating, totalNumReviews}) => {
+const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating, totalNumReviews, setPhotoIndex}) => {
 
   const [sizeSelector, setSizeSelector] = useState('Select Size');
   const [quantity, setQuantitySelector] = useState(1);
@@ -54,7 +54,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
           <p style={{color: 'red'}}>${itemStyle.sale_price}</p>
         </div> : <div id="itemPrice">${itemStyle.original_price}</div>}
         <div><strong>STYLE &gt; </strong>{itemStyle.name}</div>
-        <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check} setCheck={setCheck}/>
+        <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check} setCheck={setCheck} setPhotoIndex={setPhotoIndex}/>
         {displayErr ? <p>Please select a size</p> : null}
         <div id="sizeDropdown">
           <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector}/>
