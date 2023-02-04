@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar id="nav-bar"/>
       <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews}/>
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}
