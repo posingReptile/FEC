@@ -1,3 +1,7 @@
+#overview button{
+  background-color: transparent;
+}
+
 #imageGallery {
   position: relative;
   width: 70%;
@@ -29,10 +33,10 @@
 
 #horizontalCarousel {
   position: absolute;
-  width: 10%;
-  height: 80%;
-  top: 5%;
+  top: 7%;
   left: 5%;
+  width: 90px;
+  height: 580px;
   overflow-y: scroll;
 }
 
@@ -40,12 +44,48 @@
   display: none;
 }
 
-.topThumbnailButton {
-  width: 100%;
+#topScroll {
+  position: absolute;
+  top: 1.8%;
+  left: 8%;
+  color: white;
+  font-size: 21px;
+  opacity: .50;
+  border: none;
 }
 
-.botThumbnailButton {
-  width: 100%;
+#topScroll:hover {
+  opacity: 1;
+}
+
+#botScroll {
+  position: absolute;
+  bottom: 1.8%;
+  left: 8%;
+  color: white;
+  font-size: 21px;
+  opacity: .50;
+  border: none;
+}
+
+#botScroll:hover {
+  opacity: 1;
+}
+
+#rightScroll {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  font-size: 24px;
+  border: none;
+}
+
+#leftScroll {
+  position: absolute;
+  left: 18%;
+  top: 50%;
+  font-size: 24px;
+  border: none;
 }
 
 #carouselThumbnail {
@@ -59,7 +99,7 @@
   object-position: 30% 30%;
   border-radius: 5%;
   opacity: .90;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   margin-bottom: 10%;
   border: 1px solid black;
 
@@ -94,17 +134,4 @@
   transform-origin: center center;
   height: 100%;
   width: 100%;
-}
-
-#rightScroll {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  font-size: 24px;
-}
-#leftScroll {
-  position: absolute;
-  left: 18%;
-  top: 50%;
-  font-size: 24px;
 }

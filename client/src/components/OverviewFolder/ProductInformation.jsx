@@ -32,8 +32,6 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
     if(sizeSelector === 'Select Size') {
       setDisplayErr(!displayErr)
       setTimeout(() => {setDisplayErr(displayErr)}, 1000);
-      // console.log(!displayErr)
-      // setTimeout(() => {console.log(displayErr)}, 1000);
     } else {
       let curCart = {};
       curCart.Name = item.name;
@@ -42,7 +40,6 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
       curCart.size = sizeSelector;
       curCart.Quantity = quantity;
       cart.push(curCart);
-      // console.log(curCart);
     }
   }
 
@@ -64,8 +61,8 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
           <QDropdown option={quantityObj} sizeSelector={sizeSelector} setQuantitySelector={setQuantitySelector} quantity={quantity}/>
         </div>
         <div className="checkout">
-        {size.length > 0 ? <button onClick={addCart}>Add To Bag</button> : null}
-        <button onClick={() => {console.log(cart)}}>Show Cart</button>
+        {size.length > 0 ? <button id="addToBag" onClick={addCart}>Add To Bag</button> : null}
+        <button id="addToCart" onClick={() => {console.log(cart)}}>Show Cart</button>
         </div>
       </div>
   );
