@@ -82,7 +82,7 @@ let postReview = (query, data) => {
     });
 }
 
-let markReviewHelpful = (query) => {
+let markHelpfulOrReport = (query) => {
   let options = {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/${query}`,
@@ -100,6 +100,6 @@ let markReviewHelpful = (query) => {
 
 
 module.exports.getProducts = getProducts;
-module.exports.markReviewHelpful = markReviewHelpful;
+module.exports.markHelpfulOrReport = markHelpfulOrReport;
 module.exports.postProducts = postProducts;
 module.exports.postAnswer = postAnswer;

@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const {getProducts, markReviewHelpful, postProducts, postAnswer} = require('./helpers/helpers.js')
+const {getProducts, markHelpfulOrReport, postProducts, postAnswer} = require('./helpers/helpers.js')
 
 
 const app = express();
@@ -110,7 +110,7 @@ app.put('/markReviewHelpful', (req, res) => {
   query += req.query.review_id;
   // console.log(query)
 
-  markReviewHelpful(`reviews/${query}/helpful`)
+  markHelpfulOrReport(`reviews/${query}/helpful`)
     .then(() => console.log(`Review ${query} was marked helpful!`))
     .catch(err => console.log(err));
 })

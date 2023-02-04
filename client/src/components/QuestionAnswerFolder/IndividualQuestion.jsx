@@ -47,6 +47,9 @@ const IndividualQuestion = (props) => {
     getReviews()
   }
 
+  const handleMarkAnswerHelpful = (id) => {
+    console.log(id)
+  }
 
 
 
@@ -93,7 +96,7 @@ const IndividualQuestion = (props) => {
             }) : null}
             <div className="answerInfo">
             &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US"/>&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
-              <u>Yes</u>
+              <u onClick={ () => {handleMarkAnswerHelpful(answer.id)} }>Yes</u>
               ({answer.helpfulness})&nbsp; &nbsp; | &nbsp; &nbsp;
               <u>Report</u>
             </div>
@@ -110,7 +113,7 @@ const IndividualQuestion = (props) => {
             Helpful? &nbsp;
             <u>Yes</u>
             ({finalQAObj[key][0].pop()})&nbsp; &nbsp; |&nbsp; &nbsp;
-            <u className="AddAnswerButton"id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
+            <u className="AddAnswerButton" id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
           </div>
         </div>,
         mappedAnswers, 2]])
