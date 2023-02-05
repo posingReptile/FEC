@@ -9,7 +9,7 @@ let getProducts = (query) => {
       'Authorization': `${process.env.TOKEN}`
     },
     // params: {
-    //   count: 15
+    //   count: 10
     // }
   };
   return axios(options).catch(err => {

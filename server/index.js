@@ -124,6 +124,16 @@ app.put('/reportReview', (req, res) => {
     .catch(err => console.log(err));
 })
 
+app.get('/productsList', (req, res) => {
+  let count = req.query.count;
+  let query = count || 10;
+  getProducts(`products/?count=${query}`).then((data) => {
+    res.json(data.data);
+  }).catch((err) => console.log(err));
+});
+
+
+
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
 console.log(`listening on port http://localhost:${process.env.PORT}`);

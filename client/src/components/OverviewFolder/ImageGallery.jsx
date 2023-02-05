@@ -36,13 +36,14 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
       img.removeEventListener("mouseleave", offZoom);
     }
   }
-  // console.log(mainPhoto);
+  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
+
   return (
     <div id="imageGallery">
       <div id="main">
         {expandView ?
-        <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url} alt="placeHolder" ></img></div> :
-        <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto[photoIndex].url} alt="placeHolder"></img></div>}
+        <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder" ></img></div> :
+        <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder"></img></div>}
         {expandView && !zoom ? <div className="expand" onClick={() => {setExpandView(!expandView)}}><IoIosExpand /></div> : null}
       </div>
       {zoom ? null : <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto} zoom={zoom} photoIndex={photoIndex} setPhotoIndex={setPhotoIndex}/>}

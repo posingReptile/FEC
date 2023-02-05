@@ -2,52 +2,49 @@ import React, {useState, useEffect} from 'react';
 
 
 const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhotoIndex}) => {
+  const currentHeightDiv = document.getElementById('current');
+  const scrollDiv = document.getElementById('horizontalCarousel');
+
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
 
-  if (document.getElementById('horizontalCarousel')) {
-    const scrollDiv = document.getElementById('horizontalCarousel');
 
-    // useEffect(() => {
+  useEffect(() => {
+    currentHeightDiv ? scrollFunc() : null
+  }, [mainPhoto])
 
-    // }, [])
-
-    let currentHeight = document.getElementById('current');
-    // let count = 0;
-    // console.log(currentHeight.offsetHeight, count);
-    // if (currentHeight.offsetHeight < 570 && !last && count === 0) {
-    //   setLast(true);
-    //   count++
-    //   console.log('from true', currentHeight.offsetHeight, count);
-    // } else if (currentHeight.offsetHeight > 570 && last && count === 0) {
-    //   setLast(false);
-    //   count++
-    //   console.log('from false', currentHeight.offsetHeight, count);
-    // }
-
-    var scrollFunc = () => {
-      var totalHeight = scrollDiv.scrollHeight - scrollDiv.offsetHeight;
-      var currentHeight = scrollDiv.scrollTop;
-      if (currentHeight < totalHeight) {
-        setFirst(false);
-        setLast(false);
-      }
-      if (currentHeight === 0) {
-        setFirst(true);
-      }
-      if (Math.ceil(currentHeight) === totalHeight) {
+  var scrollFunc = () => {
+    var totalHeight = scrollDiv.scrollHeight - scrollDiv.offsetHeight;
+    var currentHeight = scrollDiv.scrollTop;
+    console.log('from func', currentHeightDiv.offsetHeight)
+    if (currentHeight < totalHeight) {
+      setFirst(false);
+      setLast(false);
+    }
+    if (currentHeight === 0) {
+      setFirst(true);
+    }
+    if (Math.ceil(currentHeight) === totalHeight) {
+      setLast(true);
+    }
+    if (currentHeightDiv.offsetHeight < 580 && last !== true) {
         setLast(true);
-      }
     }
-    var scroll = (number) => {
-      var currentHeight = scrollDiv.scrollTop;
-      scrollDiv.scrollBy({
-        top: number,
-        behavior: 'smooth'
-      })
-    }
+  }
+
+  var scroll = (number) => {
+    var currentHeight = scrollDiv.scrollTop;
+    scrollDiv.scrollBy({
+      top: number,
+      behavior: 'smooth'
+    })
+  }
+
+  if (document.getElementById('horizontalCarousel')) {
     scrollDiv.addEventListener('scroll', scrollFunc);
   }
+
+  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
 
   return (
       <div>
@@ -56,8 +53,8 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
               {mainPhoto.map(({thumbnail_url, url}, index) => (
                 <div key={index}>
                   {photoIndex !== index ?
-                    <img className="column" src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img> :
-                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img>}
+                    <img className="column" src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img> :
+                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img>}
                 </div>
               ))}
             </div>
