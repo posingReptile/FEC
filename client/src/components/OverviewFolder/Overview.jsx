@@ -27,20 +27,20 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
   // console.log(check, allStyleResult[0].style_id);
   let curProduct = product_id //37323 //37311;
 
-  useEffect(() => {
-    axios.get(`/getProducts/?product_id=${curProduct}`)
-    .then((data) => {
-      setItem(data.data)
-    })
+  // useEffect(() => {
+  //   axios.get(`/getProducts/?product_id=${curProduct}`)
+  //   .then((data) => {
+  //     setItem(data.data)
+  //   })
 
-    axios.get(`/getProducts/?product_id=${curProduct}&style=true`)
-    .then((data) => {
-     let productData = data.data.results;
-      setItemStyle(productData[0]);
-      setMainPhoto(productData[0].photos);
-      setStyleResult(productData);
-    })
-  }, []);
+  //   axios.get(`/getProducts/?product_id=${curProduct}&style=true`)
+  //   .then((data) => {
+  //    let productData = data.data.results;
+  //     setItemStyle(productData[0]);
+  //     setMainPhoto(productData[0].photos);
+  //     setStyleResult(productData);
+  //   })
+  // }, []);
 
   // console.log(Static.productStyle.results[0].photos);
 
