@@ -45,7 +45,7 @@ const RelatedProducts = ({ product_id, setProductId }) => {
       console.log(error);
     }
   }, []);
-  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
+  const outOfStock = "https://as1.ftcdn.net/v2/jpg/01/11/31/90/1000_F_111319094_45lQykCJGSnEg60dFt4TNxYVgAAofxkZ.jpg"
   // console.log(photoList);
   return (
     <div id="relatedProduct">
