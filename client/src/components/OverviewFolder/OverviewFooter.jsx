@@ -8,13 +8,13 @@ const OverviewFooter = ({item}) => {
       <div id="overviewFooter">
         <div className="productDescription">
           <h2>Product description</h2>
-          <div>{item.description}</div>
+          <div id="itemDescription">{item.description}</div>
         </div>
         <div className="socialMedia">
           <div className="smIcon">
-            <BsFacebook id="facebook"/>
-            <BsTwitter id="twitter"/>
-            <BsPinterest id="pinterest"/>
+          <a href="https://www.facebook.com/"><BsFacebook id="facebook"/></a>
+          <a href="https://twitter.com/?lang=en"><BsTwitter id="twitter"/></a>
+          <a href="https://www.pinterest.com/"><BsPinterest id="pinterest"/></a>
           </div>
         </div>
       </div>

@@ -45,7 +45,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
 
   return (
       <div id="productInformation">
-        <div><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all {totalNumReviews} reviews</a></div>
+        <div id="productRating"><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all {totalNumReviews} reviews</a></div>
         <div id="category">{item.category}</div>
         <h1 id="itemName">{item.name}</h1>
         {itemStyle.sale_price ?
@@ -56,7 +56,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
         <div><strong>STYLE &gt; </strong>{itemStyle.name}</div>
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check} setCheck={setCheck} setPhotoIndex={setPhotoIndex}/>
         {displayErr ? <p>Please select a size</p> : null}
-        <div id="sizeDropdown">
+        <div id="dropdown">
           <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector}/>
           <QDropdown option={quantityObj} sizeSelector={sizeSelector} setQuantitySelector={setQuantitySelector} quantity={quantity}/>
         </div>

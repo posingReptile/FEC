@@ -11,7 +11,7 @@ const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
   };
 
   return (
-    <div className="dropdown-container" >
+    <div id="sizeDropdown" >
       {sizeOption.length > 0 ? <select id="sizeSelect" onChange={selectFunc} defaultValue="Select Size">
         <option value="" hidden>Select Size</option>
         {sizeOption.map((item, index) => (

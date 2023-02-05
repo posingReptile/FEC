@@ -6,12 +6,6 @@
   font-family: "adobe-clean", sans-serif;
  }
 
- #titleDiv {
-  background-color: #383737;
-  color:whitesmoke;
-  padding-top: 10px;
-  padding-bottom: 10px;
- }
 
  #title {
   margin-left: 10px;
@@ -22,7 +16,7 @@
   justify-content: center;
   margin-bottom: 3%;
   margin-top: 3%;
-  background-color: hwb(0 91% 7%);
+  background-color: hwb(10 81% 16%);
   max-height: 675px;
  }
 
