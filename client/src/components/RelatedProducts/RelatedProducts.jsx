@@ -45,7 +45,7 @@ const RelatedProducts = ({ product_id, setProductId }) => {
       console.log(error);
     }
   }, []);
-
+  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
   // console.log(photoList);
   return (
     <div id="relatedProduct">
@@ -57,11 +57,11 @@ const RelatedProducts = ({ product_id, setProductId }) => {
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
       // onSwiper={(swiper) => console.log(swiper)}
-      // onSlideChange={() => console.log('slide change')}
+      // onSlideChange={() => console.log('slide change')}  .src !== outOfStock ? this.src = outOfStock : null
     >
       {relatedProductIds.map((item, index) => (
         <SwiperSlide className="relatedPhotos" key={index} onClick={() => {setProductId(item.id.toString())}}>
-          <img className="rPhoto" src={photoList[index]}></img>
+          <img className="rPhoto" src={photoList[index] || outOfStock}></img>
           <div className="rCategory">{item.category}</div>
           <div className="rName">{item.name}</div>
           <div className="rPrice">${item.default_price}</div>

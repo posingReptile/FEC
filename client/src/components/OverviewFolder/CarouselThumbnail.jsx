@@ -49,6 +49,8 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
     scrollDiv.addEventListener('scroll', scrollFunc);
   }
 
+  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
+
   return (
       <div>
           <div id="horizontalCarousel">
@@ -56,8 +58,8 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
               {mainPhoto.map(({thumbnail_url, url}, index) => (
                 <div key={index}>
                   {photoIndex !== index ?
-                    <img className="column" src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img> :
-                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img>}
+                    <img className="column" src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img> :
+                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img>}
                 </div>
               ))}
             </div>
