@@ -17,7 +17,7 @@ const App = () => {
     <div>
       <NavBar id="nav-bar"/>
       <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews}/>
-      <RelatedProducts product_id={product_id} />
+      <RelatedProducts product_id={product_id} setProductId={setProductId}/>
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}
         productRating={productRating}

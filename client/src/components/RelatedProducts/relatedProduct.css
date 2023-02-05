@@ -1,0 +1,47 @@
+#relatedProduct {
+  margin: 0 auto;
+  font-family: "adobe-clean", sans-serif;
+  width: calc( 100% - 50px );
+  max-width: 1280px;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.relatedPhotos {
+  width: 100px;
+  height: 400px;
+  background-color: hwb(12 91% 7%);
+  box-shadow: 1px 1px 5px grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.swiper-wrapper {
+  /* overflow-x: scroll; */
+}
+
+.rPhoto{
+  height: 70%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8%;
+  object-fit: cover;
+  object-position: 30% 30%;
+}
+
+.rCategory{
+  margin: 0 auto;
+}
+
+.rName{
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.rPrice{
+  font-size: 24px;
+  margin: 0 auto;
+}
