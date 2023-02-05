@@ -3,8 +3,8 @@ import StarBar from './StarBar.jsx'
 import { StyledStarRating, StyledHeadingDiv, StyledRatingDiv } from '../styled/StarRating.styled.js';
 
 const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, filter, setFilter}) => {
-  const ratingPercent = (productRating * 100) / 5;
-
+  let ratingPercent = (productRating * 100) / 5;
+  ratingPercent = (ratingPercent % 5) >= 2.5 ? parseInt(ratingPercent / 5) * 5 + 5 : parseInt(ratingPercent / 5) * 5
   // const handleStarClick = (e) => {
   //   console.log('this is e.target.value: ', e.target)
   //   // setFilter(prev => ([
