@@ -17,7 +17,9 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
   let size = [];
   let quantityObj = {};
   let cart = [];
-  const ratingPercent = (productRating * 100) / 5;
+
+  let ratingPercent = (productRating * 100) / 5;
+  ratingPercent = (ratingPercent % 5) >= 2.5 ? parseInt(ratingPercent / 5) * 5 + 5 : parseInt(ratingPercent / 5) * 5
 
   Object.keys(itemStyle.skus).map(styleId => {
     return itemStyle.skus[styleId]
