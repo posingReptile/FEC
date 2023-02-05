@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductRatingBar from './ProductRatingBar.jsx';
 // import { StyledWordList, StyledWordItem, StyledProductBreakdown } from '../styled/ProductRatingBar.styled.js';
+import './RateAndReview.css';
 
 const ProductBreakdown = ({ productChar, charWords}) => {
 
@@ -9,8 +10,7 @@ const ProductBreakdown = ({ productChar, charWords}) => {
   // var three = []
 
   return (
-    <div data-testid='rating-product'>
-      <h4>Product Breakdown</h4>
+    <div id="product-breakdown" data-testid='rating-product'>
         {productChar.map((char) => (
           <div key={char.id} data-testid='product-bars'>
             <ProductRatingBar name={char.name} productRating={char.percent} height={15}/>

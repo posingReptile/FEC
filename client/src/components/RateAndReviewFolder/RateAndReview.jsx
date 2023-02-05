@@ -4,6 +4,7 @@ import ReviewsList from './ReviewsList.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import { StyledRatingsAndReviews } from '../styled/RAndR.styled.js';
+import './RateAndReview.css';
 
 const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews }) => {
   const [productReviews, setReviews] = useState([]);
@@ -191,14 +192,16 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
 
   return (
     <StyledRatingsAndReviews id="rlink" data-testid="rating-main">
-      <h3>Ratings And Reviews</h3>
-      <div>
-      <RatingBreakdown productRating={productRating}
-        productRatings={productRatings}
-        recommendPercentage={recommendPercentage}
-        filter={filter}
-        setFilter={setFilter}/>
-      <ProductBreakdown productChar={productChar} charWords={charWords}/>
+      <h4>Ratings & Reviews</h4>
+      <div id="randr">
+        <div id="breakdown">
+          <RatingBreakdown id="rating-breakdown" productRating={productRating}
+            productRatings={productRatings}
+            recommendPercentage={recommendPercentage}
+            filter={filter}
+            setFilter={setFilter}/>
+          <ProductBreakdown productChar={productChar} charWords={charWords}/>
+        </div>
       <ReviewsList setSortBy={setSortBy}
         totalNumReviews={totalNumReviews}
         reviewsShown={reviewsShown}
