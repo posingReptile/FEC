@@ -16,9 +16,6 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.swiper-wrapper {
-  /* overflow-x: scroll; */
-}
 
 .rPhoto{
   height: 70%;
