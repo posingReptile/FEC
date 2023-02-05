@@ -9,7 +9,7 @@ import RateAndReview from './RateAndReviewFolder/RateAndReview.jsx';
 
 
 const App = () => {
-  const [product_id, setProductId] = useState('37318');
+  const [product_id, setProductId] = useState('37312');
   const [productRating, setProductRating] = useState(0);
   const [totalNumReviews, setTotalNumReviews] = useState(0);
 

@@ -1,13 +1,16 @@
-.dropdown-container {
-  width: 50%;
+#qDropdown {
+  width: 30%;
+}
+#sizeDropdown {
+  width: 60%;
 }
 #qSelect {
   text-align: center;
-width: 30%;
+  width: 100%;
   height: 50px;
 }
 #sizeSelect {
   text-align: center;
-  width: 70%;
+  width: 100%;
   height: 50px;
 }

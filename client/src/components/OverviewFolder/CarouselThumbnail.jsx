@@ -6,7 +6,12 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
   const [last, setLast] = useState(false);
 
   if (document.getElementById('horizontalCarousel')) {
-    let scrollDiv = document.getElementById('horizontalCarousel');
+    const scrollDiv = document.getElementById('horizontalCarousel');
+
+    // useEffect(() => {
+
+    // }, [])
+
     let currentHeight = document.getElementById('current');
     // let count = 0;
     // console.log(currentHeight.offsetHeight, count);
@@ -52,15 +57,15 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
                 <div key={index}>
                   {photoIndex !== index ?
                     <img className="column" src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img> :
-                    <img className="column" style={{border: '2px yellow solid'}} src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img>}
+                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url} onClick={e => setPhotoIndex(index)}></img>}
                 </div>
               ))}
             </div>
           </div>
            {first ? null : <button id='topScroll' type="button" onClick={() => {scroll(-85)}}>▲</button>}
            {last ? null : <button id='botScroll' type="button" onClick={() => {scroll(85)}}>▼</button>}
-           {photoIndex === 0 ? null : <button id='leftScroll' type="button" onClick={() => { setPhotoIndex(photoIndex - 1); }}>«</button>}
-           {mainPhoto.length - 1 === photoIndex ? null : <button id='rightScroll' type="button" onClick={() => { setPhotoIndex(photoIndex + 1); }}>»</button>}
+           {photoIndex === 0 ? null : <button id='leftScroll' type="button" onClick={() => { setPhotoIndex(photoIndex - 1); scroll(-82)}}>«</button>}
+           {mainPhoto.length - 1 === photoIndex ? null : <button id='rightScroll' type="button" onClick={() => { setPhotoIndex(photoIndex + 1); scroll(82)}}>»</button>}
       </div>
   )
 }

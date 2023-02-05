@@ -13,7 +13,7 @@ const QDropdown = ({option, sizeSelector, quantity, setQuantitySelector}) => {
   let quantityArray = Array.from({length: option[sizeSelector]}, (_, i) => i + 1) || 0;
 
   return (
-    <div className="dropdown-container" >
+    <div id="qDropdown" >
       {
         !option[sizeSelector] ? <select id="qSelect" disabled defaultValue="-"><option value="-">-</option></select> :
         <select id="qSelect" onChange={qFunc}>

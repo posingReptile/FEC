@@ -1,23 +1,28 @@
 #overviewFooter {
   width: 80%;
   margin: 0 auto;
-  justify-content: space-around;
   display: flex;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  margin-bottom: 1%;
 }
 
 .productDescription {
   width: 77%;
   border-style: none solid none none;
-  padding-left: 5%;
-  padding-right: 5%;
 }
 
 .socialMedia {
   width: 25%;
-  padding-left: 5%;
-  padding-right: 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+#itemDescription {
+  display: flex;
+  padding-top: 1%;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-right: 7px;
 }
 
 .smIcon {
@@ -25,6 +30,9 @@
   justify-content: space-around;
   color: black;
   font-size: 24px;
+}
+a {
+  color: black;
 }
 
 #facebook:hover {

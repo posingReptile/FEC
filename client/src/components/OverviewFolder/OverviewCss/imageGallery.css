@@ -1,15 +1,13 @@
-#overview button{
-  background-color: transparent;
-}
 
 #imageGallery {
   position: relative;
   width: 70%;
   padding: 1%;
+  box-shadow: 1px 1px 3px grey;
 }
 
 #main{
-  background-color: hwb(12 91% 7%);
+  background-color: hwb(10 81% 16%);
   width: 100%;
   height: 650px;
   display: flex;
@@ -45,6 +43,7 @@
 }
 
 #topScroll {
+  background-color: transparent;
   position: absolute;
   top: 1.8%;
   left: 8%;
@@ -59,6 +58,7 @@
 }
 
 #botScroll {
+  background-color: transparent;
   position: absolute;
   bottom: 1.8%;
   left: 8%;
@@ -73,6 +73,7 @@
 }
 
 #rightScroll {
+  background-color: transparent;
   position: absolute;
   right: 10%;
   top: 50%;
@@ -92,6 +93,7 @@
 }
 
 #leftScroll {
+  background-color: transparent;
   position: absolute;
   left: 18%;
   top: 50%;
