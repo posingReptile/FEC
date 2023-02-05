@@ -5,7 +5,7 @@ import NavBar from './NavBar.jsx';
 import Overview from './OverviewFolder/Overview.jsx';
 import QuestionAnswer from './QuestionAnswerFolder/QuestionAnswer.jsx';
 import RateAndReview from './RateAndReviewFolder/RateAndReview.jsx';
-
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
     <div>
       <NavBar id="nav-bar"/>
       <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews}/>
+      <RelatedProducts product_id={product_id} />
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}
         productRating={productRating}

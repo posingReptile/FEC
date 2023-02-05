@@ -8,9 +8,9 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
   if (document.getElementById('horizontalCarousel')) {
     const scrollDiv = document.getElementById('horizontalCarousel');
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    // }, [])
+    }, [])
 
     let currentHeight = document.getElementById('current');
     // let count = 0;
