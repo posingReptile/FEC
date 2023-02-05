@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledProductBar = styled.div`
   display: flex;
   height: ${({height}) => height}px;
-  width: 20%;
+  width: 80%;
   background-color: lightgray;
   margin-bottom: 5px;
 `

@@ -1,6 +1,6 @@
 import React from 'react';
 import StarBar from './StarBar.jsx'
-import { StyledStarRating, StyledHeadingDiv, StyledRatingDiv } from '../styled/StarRating.styled.js';
+import { StyledStarRating, StyledHeadingDiv, StyledRatingDiv, StyledRecommendPercentage } from '../styled/StarRating.styled.js';
 
 const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, filter, setFilter}) => {
   let ratingPercent = (productRating * 100) / 5;
@@ -19,11 +19,12 @@ const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, f
       <StyledHeadingDiv data-testid='rating-bd-sum'>
         <h5>{productRating} </h5>
         <StyledStarRating ratingPercent={ratingPercent}/>
-
       </StyledHeadingDiv>
+
       <div data-testid='rating-bd-rec'>
-        <p>{recommendPercentage}% of reviewers recommend this product</p>
+        <StyledRecommendPercentage>{recommendPercentage}% of reviewers recommend this product</StyledRecommendPercentage>
       </div>
+
       {filter.length > 0 ? <button onClick={() => setFilter([])}>clear all filters</button> : null}
       <StyledRatingDiv data-testid='rating-bd-stars'>
         <StarBar starValue={5} starRating={productRatings['5']} setFilter={setFilter}/>

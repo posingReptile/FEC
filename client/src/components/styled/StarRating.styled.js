@@ -19,6 +19,11 @@ export const StyledStarRating = styled.h5`
 `
 // slate gray : #2f4f4f
 
+export const StyledRecommendPercentage = styled.p`
+  font-size: 12px;
+  color: rgba(39, 50, 39, 0.7);
+`
+
 export const StyledHeadingDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -43,7 +48,7 @@ export const HoverAndFilter = styled.div`
 
 export const StyledParentStarBar = styled.div`
   height: 15px;
-  width: 20%;
+  width: 80%;
   background-color: lightgray;
 `
 

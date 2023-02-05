@@ -3,6 +3,7 @@ import ReviewTile from './ReviewTile.jsx';
 import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
 import Modal from 'react-modal';
+import './RateAndReview.css';
 
 
 const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
@@ -19,8 +20,7 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
   }
 
   return (
-    <div data-testid='review-list'>
-      <h3>Reviews List</h3>
+    <div id="review-list" data-testid='review-list'>
     <div>
     <SortOptions setSortBy={setSortBy} totalNumReviews={totalNumReviews}/>
     {reviewsShown.map((review) =>  (
