@@ -4,19 +4,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import NewAnswer from './NewAnswer.jsx';
-import TimeAgo from 'react-timeago';
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import "./IndividualQuestion.css";
+import IndividualAnswers from './IndividualAnswers.jsx'
+
+import "./QuestionAnswerCss/IndividualQuestion.css";
 
 const IndividualQuestion = (props) => {
   Modal.setAppElement('#root')
   let productId = props.productid
-  const [questions, setQuestions] = useState({})
-  const [htmlQAList, setHtmlQAList] = useState([])
+  let question = props.question
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
-  const [searchInput, setSearchInput] = useState('')
-
+  const [numOfAnswers, setNumOfAnswers] = useState(2);
+  const [markedHelpful, setMarkedHelpful] = useState(false);
 
 
   let openModal = (e) => {
@@ -30,138 +29,60 @@ const IndividualQuestion = (props) => {
   }
 
   const handleLoadFewerAnswer = (q) => {
-    q[2] = 2
-    setQuestions({})
+    setNumOfAnswers(2)
   }
 
   const handleLoadMoreAnswer = (q) => {
-    if (q[2] >= q[1].length && q[1].length > 2) {
-    }
-    q[2] += 2
-    setQuestions({})
+    setNumOfAnswers(numOfAnswers + 2)
   }
 
-  const handleSearch = () => {
-    setQuestions({}),
-    setHtmlQAList([]),
-    getReviews()
-  }
-
-  const handleMarkAnswerHelpful = (id) => {
-    console.log(id)
-  }
-
-
-
-  const getReviews = () => {
-    axios.get('/questions', { params: { product_id: productId } })
-      .then((data) => {
-        for (let i = 0; i < data.data.results.length; i++) {
-          if (data.data.results[i].question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
-            setQuestions((previous) => ({
-              ...previous, [data.data.results[i].question_body]:
-                [[data.data.results[i].answers, data.data.results[i].question_id], data.data.results[i].question_helpfulness]
-            }))
-          }
-        }
-      })
-      .catch(err => console.log('err in axios get reviews', err))
-  }
-
-  const getFinalHtmlElements = () => {
-    let finalQAObj = {}
-    for (let key in questions) {
-      finalQAObj[key] = [[]];
-      finalQAObj[key].push(questions[key][0][1])
-      for (let ansKey in questions[key][0][0]) {
-        finalQAObj[key][0].push(questions[key][0][0][ansKey])
-      }
-      finalQAObj[key][0].push(questions[key][1])
-    }
-
-    for (let key in finalQAObj) {
-      let mappedAnswers = finalQAObj[key][0].slice(0, finalQAObj[key][0].length - 1).map((answer, index) => {
-        return (
-          <div className="answerBlock" key={index}>
-            <div className="answerBody">
-              <h3><strong>A:&nbsp;</strong></h3>
-              {answer.body}
-            </div>
-            {answer.photos ? answer.photos.map(photo => {
-              return (
-                <div key={photo} style={{ width: '10%', position: 'relative' }}>
-                  <img src={photo} alt="placeholder" />
-                </div>
-              )
-            }) : null}
-            <div className="answerInfo">
-            &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US"/>&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
-              <u onClick={ () => {handleMarkAnswerHelpful(answer.id)} }>Yes</u>
-              ({answer.helpfulness})&nbsp; &nbsp; | &nbsp; &nbsp;
-              <u>Report</u>
-            </div>
-          </div>
-        )
-      });
-
-
-
-      setHtmlQAList(previous => [...previous, [
-        <div className="QBlock" key={key}>
-          <h3><strong>Q: {key}</strong></h3>
-          <div className="Qhelpful">
-            Helpful? &nbsp;
-            <u>Yes</u>
-            ({finalQAObj[key][0].pop()})&nbsp; &nbsp; |&nbsp; &nbsp;
-            <u className="AddAnswerButton" id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
-          </div>
-        </div>,
-        mappedAnswers, 2]])
+  const handleMarkQuestionHelpful = (e) => {
+    if (!markedHelpful) {
+      setMarkedHelpful(true)
+      let id = e.target.id
+      axios.put('/QAHelpfulOrReport', { query: `questions/${id}/helpful` })
+        .catch((err) => console.log('err in handleMarkQuestionHelpful axios Request', err))
     }
   }
 
+  let answers = [];
+  for (let key in question.answers) {
+    answers.push(question.answers[key])
+  }
 
-  const renderQuestionAnswerElements =
-    htmlQAList.slice(0, props.numberOfQuestions).map((q) => {
-      let answers = q[1].slice(0, q[2]).map((a) => {
-        return a
-      })
-      if (q[2] >= q[1].length && q[1].length > 2) {
-        return ([q[0], answers, <button className="LoadFewerAnswers" key="loadFewerAnswers" onClick={() => { handleLoadFewerAnswer(q) }}>Load Fewer Answers</button>])
-      } else if (q[1].length > 2) {
-        return ([q[0], answers, <button className="LoadMoreAnswers" key="loadMoreAnswers" onClick={() => { handleLoadMoreAnswer(q) }}>Load More Answers</button>])
-      } else {
-        return ([q[0], answers])
-      }
-    })
-
-
-  useEffect(() => {
-    getReviews();
-
-  }, [])
-
-  useEffect(() => {
-    getFinalHtmlElements()
-  }, [questions])
-
-  useEffect(() => {
-    props.handleChangeQuestionCount(htmlQAList.length)
-  }, [htmlQAList])
-
+  const mappedAnswers = answers.slice(0, numOfAnswers).map((answer) => {
+    return (
+      <IndividualAnswers key={answer.id} answer={answer} />
+    )
+  })
 
   return (
-    <div className="individualQuestion">
-     <input className="QuestionSearch" onChange={(e)=> {setSearchInput(e.target.value)}} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
-      <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
-      {htmlQAList.length > 0
-        ? renderQuestionAnswerElements
-        : 'No questions matching that search'
-      }
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-        <NewAnswer questionId={questionId} />
-        <button onClick={closeModal}>close</button>
-      </Modal>
+    <div className="QBlock" key={question.question_id}>
+      <h3><strong>Q: {question.question_body}</strong></h3>
+      <div className="Qhelpful">
+        Helpful? &nbsp;
+        <u className="questionYes" id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
+        { markedHelpful
+        ?  <div>({question.question_helpfulness + 1})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
+        :  <div>({question.question_helpfulness})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
+        }
+        <u className="AddAnswerButton" id={question.question_id} onClick={(e) => { openModal(e) }}>Add Answer</u>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <NewAnswer productId={props.productid} />
+          <button onClick={closeModal}>close</button>
+        </Modal>
+      </div>
+      <div className="answer">{mappedAnswers}</div>
+      <div className="LoadMoreAnswers">
+        {answers.length > 2 && numOfAnswers < answers.length
+          ? <div className="MoreAnswer" onClick={handleLoadMoreAnswer}>Load More Answers &nbsp; &nbsp;</div>
+          : <div hidden={true}></div>
+        }
+        {numOfAnswers > 2 && answers.length > 2
+          ? <div onClick={handleLoadFewerAnswer}> Load Fewer Answers </div>
+          : <div hidden={true}></div>
+        }
+      </div>
     </div>
   )
 }
