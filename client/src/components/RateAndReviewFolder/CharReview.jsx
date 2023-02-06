@@ -1,7 +1,7 @@
 import React from 'react';
-import { CharRadioDiv, StyledFieldset } from '../styled/NewReview.styled.js';
+import { CharRadioDiv, StyledFieldset, SingleCharOption } from '../styled/NewReview.styled.js';
 
-const CharReview = ({charArray, charChoice, setCharChoice, charOptions}) => {
+const CharReview = ({charArray, charChoice, setCharChoice, charOptions }) => {
 
   const arr = Array(5).fill(0);
 
@@ -22,7 +22,8 @@ const CharReview = ({charArray, charChoice, setCharChoice, charOptions}) => {
             <CharRadioDiv>
             {arr.map((_, index) => (
 
-                <label key={index}>
+              <SingleCharOption key={index}>
+                <label >
 
                     <input type="radio"
                         // value={}
@@ -32,6 +33,7 @@ const CharReview = ({charArray, charChoice, setCharChoice, charOptions}) => {
                       {charOptions[obj.name][index]}
 
                 </label>
+                </SingleCharOption>
              ))}
              </CharRadioDiv>
         </StyledFieldset></div>
