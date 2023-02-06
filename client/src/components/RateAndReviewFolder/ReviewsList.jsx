@@ -31,7 +31,7 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
         ))}
     </div>
     </div>
-    <button onClick={() => showMoreReviews()}>More Reviews</button>
+    {reviewsShown.length === totalNumReviews ? null : <button onClick={() => showMoreReviews()}>More Reviews</button>}
 
     <button onClick={openModal}>Add New Review</button>
     <Modal  isOpen={modalIsOpen} onRequestClose={closeModal}>
