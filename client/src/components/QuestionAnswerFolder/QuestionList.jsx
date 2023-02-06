@@ -15,6 +15,7 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
   useEffect(() => {
     getReviews();
   }, [productId])
+
   useEffect(() => {
     handleChangeQuestionCount(questions.length)
   }, [questions])
@@ -25,7 +26,11 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
       .then((data) => {
         for (let i = 0; i < data.data.results.length; i++) {
           let questionAnswerObjs = data.data.results[i]
-          if (questionAnswerObjs.question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+          if (searchInput.length > 2) {
+            if (questionAnswerObjs.question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
+              setQuestions(previous => [...previous, questionAnswerObjs])
+            }
+          } else {
             setQuestions(previous => [...previous, questionAnswerObjs])
           }
         }
@@ -36,9 +41,16 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
     setQuestions([])
     getReviews()
   }
+
+  useEffect(() => {
+    if (searchInput.length > 2 || searchInput.length === 0) {
+    handleSearch()
+    }
+  }, [searchInput])
+
   const mappedQuestions = questions.slice(0, numberOfQuestions).map((question, index) => {
     return (
-      <IndividualQuestion key={index} question={question} productid={productId} />
+      <IndividualQuestion key={index} searchInput={searchInput} question={question} productid={productId} />
     )
   })
 
@@ -46,9 +58,12 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
     <div>
       <div className="SearchBar">
         <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
-        <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
+        <HiMagnifyingGlass className="SearchButton" />
       </div>
-      <div>{mappedQuestions}</div>
+      {questions.length === 0
+        ? <div>No Results. Please try a different search term.</div>
+        : <div>{mappedQuestions}</div>
+      }
     </div>
   )
 }

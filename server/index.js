@@ -66,7 +66,7 @@ app.post('/addReview', (req, res) => {
     charObject[charKey] = JSON.parse(char[charKey].rating);
   }
 
-  postAnswer('reviews', {
+  postReview('reviews', {
     product_id: req.body.product_id,
     rating: req.body.starRating,
     summary: req.body.summary,

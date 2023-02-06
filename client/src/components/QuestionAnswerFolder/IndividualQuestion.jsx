@@ -5,13 +5,13 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import NewAnswer from './NewAnswer.jsx';
 import IndividualAnswers from './IndividualAnswers.jsx'
+import Highlighter from 'react-highlight-words';
 
 import "./QuestionAnswerCss/IndividualQuestion.css";
 
-const IndividualQuestion = (props) => {
+const IndividualQuestion = ( {question, productid, searchInput} ) => {
   Modal.setAppElement('#root')
-  let productId = props.productid
-  let question = props.question
+
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
   const [numOfAnswers, setNumOfAnswers] = useState(2);
@@ -52,13 +52,13 @@ const IndividualQuestion = (props) => {
 
   const mappedAnswers = answers.slice(0, numOfAnswers).map((answer) => {
     return (
-      <IndividualAnswers key={answer.id} answer={answer} />
+      <IndividualAnswers searchInput={searchInput} key={answer.id} answer={answer} />
     )
   })
 
   return (
     <div className="QBlock" key={question.question_id}>
-      <h3><strong>Q: {question.question_body}</strong></h3>
+      <h3><strong>Q:<Highlighter searchWords={[searchInput]} textToHighlight={question.question_body} /></strong></h3>
       <div className="Qhelpful">
         Helpful? &nbsp;
         <u className="questionYes" id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
@@ -68,7 +68,7 @@ const IndividualQuestion = (props) => {
         }
         <u className="AddAnswerButton" id={question.question_id} onClick={(e) => { openModal(e) }}>Add Answer</u>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <NewAnswer productId={props.productid} />
+          <NewAnswer questionId={questionId} />
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>
