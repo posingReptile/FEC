@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, {useState} from 'react';
 import TimeAgo from 'react-timeago';
-import { HorizontalImgListTile, StyledImgList } from '../styled/SelectRating.styled.js';
+import { HorizontalImgListTile, StyledImgList } from '../styled/ReviewTile.styled.js';
 
 const ReviewTile = ({ review, markHelpful, reportReview }) => {
   const [helpfulCount, setHelpfulCount] = useState(review.helpfulness);

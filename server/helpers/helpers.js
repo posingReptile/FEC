@@ -103,3 +103,4 @@ module.exports.getProducts = getProducts;
 module.exports.markHelpfulOrReport = markHelpfulOrReport;
 module.exports.postProducts = postProducts;
 module.exports.postAnswer = postAnswer;
+module.exports.postReview = postReview;
