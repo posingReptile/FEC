@@ -8,6 +8,7 @@ import TimeAgo from 'react-timeago';
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import "./IndividualQuestion.css";
 
+
 const IndividualQuestion = (props) => {
   Modal.setAppElement('#root')
   let productId = props.productid
@@ -16,9 +17,7 @@ const IndividualQuestion = (props) => {
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
   const [searchInput, setSearchInput] = useState('')
-
-
-
+  const [helpfulness, setHelpfulness] = useState(false)
   let openModal = (e) => {
     setQuestionId(e.target.id)
     setModal(true);
@@ -42,21 +41,35 @@ const IndividualQuestion = (props) => {
   }
 
   const handleSearch = () => {
-    setQuestions({}),
-    setHtmlQAList([]),
-    getReviews()
+      setQuestions({}),
+      setHtmlQAList([]),
+      getReviews()
   }
 
   const handleMarkAnswerHelpful = (id) => {
-    console.log(id)
+    axios.put('/QAHelpfulOrReport', { query: `answers/${id}/helpful` })
+
+      .catch((err) => console.log('err in handleMarkAnswerHelpful axios Request', err))
+
   }
 
+  const handleReportAnswer = (id) => {
+    axios.put('/QAHelpfulOrReport', { query: `answers/${id}/report` })
+      .catch((err) => console.log('err in handleReportAnswer axios Request', err))
+  }
 
+  const handleMarkQuestionHelpful = (e) => {
+    let id = e.target.id
+    axios.put('/QAHelpfulOrReport', { query: `questions/${id}/helpful` })
+      .catch((err) => console.log('err in handleMarkQuestionHelpful axios Request', err))
+  }
 
   const getReviews = () => {
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
+        console.log(data.data.results)
         for (let i = 0; i < data.data.results.length; i++) {
+          let questionAnswerObjs = data.data.results[i]
           if (data.data.results[i].question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
             setQuestions((previous) => ({
               ...previous, [data.data.results[i].question_body]:
@@ -66,6 +79,7 @@ const IndividualQuestion = (props) => {
         }
       })
       .catch(err => console.log('err in axios get reviews', err))
+
   }
 
   const getFinalHtmlElements = () => {
@@ -95,28 +109,27 @@ const IndividualQuestion = (props) => {
               )
             }) : null}
             <div className="answerInfo">
-            &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US"/>&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
-              <u onClick={ () => {handleMarkAnswerHelpful(answer.id)} }>Yes</u>
-              ({answer.helpfulness})&nbsp; &nbsp; | &nbsp; &nbsp;
-              <u>Report</u>
+              &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
+              <u onClick={ () => { handleMarkAnswerHelpful(answer.id), setHtmlQAList(htmlQAList) } }>Yes</u>
+              ({answer.helpfulness})
+              &nbsp; &nbsp; | &nbsp; &nbsp;
+              <u onClick={ () => { handleReportAnswer(answer.id)} }>Report</u>
             </div>
           </div>
         )
       });
-
-
-
       setHtmlQAList(previous => [...previous, [
         <div className="QBlock" key={key}>
           <h3><strong>Q: {key}</strong></h3>
           <div className="Qhelpful">
             Helpful? &nbsp;
-            <u>Yes</u>
+            <u id={finalQAObj[key][1]} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
             ({finalQAObj[key][0].pop()})&nbsp; &nbsp; |&nbsp; &nbsp;
             <u className="AddAnswerButton" id={finalQAObj[key][1]} onClick={(e) => { openModal(e) }}>Add Answer</u>
           </div>
         </div>,
         mappedAnswers, 2]])
+
     }
   }
 
@@ -136,9 +149,11 @@ const IndividualQuestion = (props) => {
     })
 
 
+
+
+
   useEffect(() => {
     getReviews();
-
   }, [])
 
   useEffect(() => {
@@ -152,7 +167,7 @@ const IndividualQuestion = (props) => {
 
   return (
     <div className="individualQuestion">
-     <input className="QuestionSearch" onChange={(e)=> {setSearchInput(e.target.value)}} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
+      <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
       <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
       {htmlQAList.length > 0
         ? renderQuestionAnswerElements

@@ -115,6 +115,14 @@ app.put('/markReviewHelpful', (req, res) => {
     .catch(err => console.log(err));
 })
 
+app.put('/QAHelpfulOrReport', (req, res) => {
+  let query = req.body.query
+  markHelpfulOrReport(`qa/${query}`)
+  .then(() => console.log('qa helpful or report put request success'))
+  .catch(err => console.log('err in QA Put', err))
+  res.send('put complete')
+})
+
 // const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT);
 console.log(`listening on port http://localhost:${process.env.PORT}`);
