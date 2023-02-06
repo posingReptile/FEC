@@ -35,7 +35,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
   })
 
   useEffect(() => {
-    console.log('from prouduct Info', cart);
+    // console.log('from prouduct Info', cart);
   }, [cart]);
 
   const addCart = () => {

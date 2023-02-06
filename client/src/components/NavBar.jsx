@@ -10,7 +10,7 @@ const [cartSize, setCartSize] = useState("68");
 
 useEffect(() => {
   setCartSize(cart.length);
-  console.log('from cart', cart);
+  // console.log('from cart', cart);
 }, [cart]);
 
   return (
