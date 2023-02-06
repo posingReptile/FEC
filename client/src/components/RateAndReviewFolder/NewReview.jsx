@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import CharReview from './CharReview.jsx';
-import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
+import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/NewReview.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
@@ -27,12 +27,17 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
   // image upload
   const [img, setImg] = useState([]);
   const handleImageSelection = (target) => {
-    for (let file = 0; file < target.files.length; file++) {
-      setImg((prev) => ([
-        ...prev,
-        URL.createObjectURL(target.files[file])
-      ]))
+    if (parseInt(target.files.length) > 5) {
+      alert("you are only allowed to add 5 photos")
+    } else {
+      for (let file = 0; file < target.files.length; file++) {
+        setImg((prev) => ([
+          ...prev,
+          URL.createObjectURL(target.files[file])
+        ]))
+      }
     }
+
   }
 
   const handleRecClick = (e) => {

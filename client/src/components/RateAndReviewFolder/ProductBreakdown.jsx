@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductRatingBar from './ProductRatingBar.jsx';
-// import { StyledWordList, StyledWordItem, StyledProductBreakdown } from '../styled/ProductRatingBar.styled.js';
+
 import './RateAndReview.css';
 
 const ProductBreakdown = ({ productChar, charWords}) => {
