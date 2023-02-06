@@ -4,16 +4,12 @@ import QuestionList from './QuestionList.jsx'
 import Modal from 'react-modal';
 import NewQuestion from './NewQuestion.jsx'
 
-import "./QuestionAnswer.css";
+import "./QuestionAnswerCss/QuestionAnswer.css";
 
-const QuestionAnswer = (props) => {
+const QuestionAnswer = ( {product_id} ) => {
   Modal.setAppElement('#root')
   const [numberOfQuestions, setNumberOfQuestions] = useState(2)
-
   const [modalIsOpen, setModal] = useState(false);
-
-  const [searchInput, setSearchInput] = useState('');
-
   const [questionCount, setQuestionCount] = useState(0);
 
   let openModal = () => {
@@ -31,7 +27,7 @@ const QuestionAnswer = (props) => {
   return (
     <div className="QuestionAnswersBlock">
       <h3>Questions & Answers</h3>
-      <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} searchInput={searchInput} productId={props.product_id} numberOfQuestions={numberOfQuestions} />
+      <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} productId={product_id} numberOfQuestions={numberOfQuestions} />
       <div>
         {questionCount > 2
           ? <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
@@ -43,7 +39,7 @@ const QuestionAnswer = (props) => {
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <NewQuestion productId={props.product_id} />
+          <NewQuestion productId={product_id} />
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>

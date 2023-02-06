@@ -1,0 +1,13 @@
+.AddAnswerButton, .answerYes, .Report{
+  cursor: pointer;
+}
+
+.answerBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.answerBody, .answerInfo {
+  display: flex;
+  margin-top: 10px;
+}
