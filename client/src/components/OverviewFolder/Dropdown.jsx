@@ -5,7 +5,6 @@ const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
   let selectFunc = () => {
     if (document.getElementById('sizeSelect')) {
       const x = document.getElementById('sizeSelect').value;
-      // console.log('from size', x)
       setSizeSelector(x);
     }
   };

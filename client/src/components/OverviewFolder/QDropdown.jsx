@@ -5,7 +5,6 @@ const QDropdown = ({option, sizeSelector, quantity, setQuantitySelector}) => {
   let qFunc = () => {
     if (document.getElementById('qSelect')) {
       const x = document.getElementById('qSelect').value;
-      // console.log(x, document.getElementById('qSelect'))
       setQuantitySelector(x);
     }
   };

@@ -86,9 +86,24 @@
   justify-content: space-between;
 }
 
-#shoppingModal {
+.slide{
   width: 20%;
-  height: 60%;
-  right: 0px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
 
+@keyframes popup {
+  0%{
+    left:0;
+  }
+  30%{
+    left: -300%;
+  }
+  70%{
+    left: -200%;
+  }
+  100%{
+    left: 0%;
+  }
 }

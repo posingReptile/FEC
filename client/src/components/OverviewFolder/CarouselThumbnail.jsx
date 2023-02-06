@@ -16,7 +16,6 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
   var scrollFunc = () => {
     var totalHeight = scrollDiv.scrollHeight - scrollDiv.offsetHeight;
     var currentHeight = scrollDiv.scrollTop;
-    // console.log('from func', currentHeightDiv.offsetHeight)
     if (currentHeight < totalHeight) {
       setFirst(false);
       setLast(false);
