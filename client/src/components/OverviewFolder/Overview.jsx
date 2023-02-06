@@ -12,9 +12,8 @@ import OverviewFooter from "./OverviewFooter.jsx";
 
 
 
-const Overview = ({product_id, productRating, totalNumReviews}) => {
+const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, item, setItem}) => {
 
-  let [item, setItem] = useState(Static.productId);
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
 
@@ -62,7 +61,7 @@ const Overview = ({product_id, productRating, totalNumReviews}) => {
 
             {expandView ? null : <ProductInformation item={item} itemStyle={itemStyle}
             allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check}
-            setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews} setPhotoIndex={setPhotoIndex}/>}
+            setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews} setPhotoIndex={setPhotoIndex} cart={cart} setCart={setCart}/>}
         </div>
       <OverviewFooter item={item}/>
       </div>: null }

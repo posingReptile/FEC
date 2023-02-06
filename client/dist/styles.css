@@ -34,3 +34,18 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+#shoppingCart {
+  display: flex;
+  margin-left: auto;
+  font-size: 30px;
+}
+
+#shoppingCart:hover {
+  color:  rgb(218, 165, 32);
+}
+
+#cartIcon {
+  margin-top: 8px;
+  margin-right: 5px;
+}

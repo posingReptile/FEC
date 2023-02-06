@@ -17,6 +17,7 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
       mainContainer.style.transform = "scale(2.5)";
     }, [])
     var offZoom = useCallback(e => {
+      mainContainer.style.transformOrigin = "center, center"
       mainContainer.style.transform = "scale(1)";
     }, []);
  }
@@ -36,7 +37,8 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
       img.removeEventListener("mouseleave", offZoom);
     }
   }
-  const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
+
+  const outOfStock = "https://www.sourcecon.com/wp-content/uploads/sites/3/2018/10/top-secret-700x467.png"
 
   return (
     <div id="imageGallery">

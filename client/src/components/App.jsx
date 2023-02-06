@@ -12,11 +12,13 @@ const App = () => {
   const [product_id, setProductId] = useState('37311');
   const [productRating, setProductRating] = useState(0);
   const [totalNumReviews, setTotalNumReviews] = useState(0);
+  const [item, setItem] = useState({id: 37311, name: "", slogan: "", description: "", category: "", default_price: ""});
+  const [cart, setCart] = useState([]);
 
   return (
     <div>
-      <NavBar id="nav-bar"/>
-      <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews}/>
+      <NavBar id="nav-bar" cart={cart}/>
+      <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews} cart={cart} setCart={setCart} item={item} setItem={setItem}/>
       <RelatedProducts product_id={product_id} setProductId={setProductId}/>
       <QuestionAnswer product_id={product_id}/>
       <RateAndReview product_id={product_id}

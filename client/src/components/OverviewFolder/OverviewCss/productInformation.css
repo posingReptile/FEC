@@ -77,7 +77,18 @@
   height: 50px;
 }
 
+#productInformation button:active {
+  background-color:  hwb(12 91% 7%);
+}
+
 #productRating {
   display: flex;
   justify-content: space-between;
+}
+
+#shoppingModal {
+  width: 20%;
+  height: 60%;
+  right: 0px;
+
 }
