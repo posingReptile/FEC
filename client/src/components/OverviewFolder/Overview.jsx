@@ -12,9 +12,8 @@ import OverviewFooter from "./OverviewFooter.jsx";
 
 
 
-const Overview = ({product_id, productRating, totalNumReviews, cart, setCart}) => {
+const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, item, setItem}) => {
 
-  let [item, setItem] = useState(Static.productId);
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
 

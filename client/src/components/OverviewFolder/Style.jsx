@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { FaCheckCircle } from "react-icons/fa";
 
-const Style = ({allStyleResult, setItemStyle, setMainPhoto, check, setCheck, setPhotoIndex}) => {
+const Style = ({allStyleResult, setItemStyle, check, setCheck, setPhotoIndex}) => {
 
   const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
 
