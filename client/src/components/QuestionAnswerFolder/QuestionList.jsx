@@ -7,25 +7,26 @@ import "./QuestionAnswerCss/QuestionList.css";
 
 
 
-const QuestionList = ({productId, numberOfQuestions, handleChangeQuestionCount }) => {
+const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount }) => {
 
   const [questions, setQuestions] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     getReviews();
-  }, [])
-  useEffect(()=> {
+  }, [productId])
+  useEffect(() => {
     handleChangeQuestionCount(questions.length)
   }, [questions])
 
   const getReviews = () => {
+    setQuestions([])
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
         for (let i = 0; i < data.data.results.length; i++) {
           let questionAnswerObjs = data.data.results[i]
           if (questionAnswerObjs.question_body.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1) {
-          setQuestions(previous => [...previous, questionAnswerObjs])
+            setQuestions(previous => [...previous, questionAnswerObjs])
           }
         }
       })
@@ -43,8 +44,10 @@ const QuestionList = ({productId, numberOfQuestions, handleChangeQuestionCount }
 
   return (
     <div>
-      <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
-      <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
+      <div className="SearchBar">
+        <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
+        <HiMagnifyingGlass className="SearchButton" onClick={handleSearch} />
+      </div>
       <div>{mappedQuestions}</div>
     </div>
   )
