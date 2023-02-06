@@ -26,5 +26,10 @@
   position: relative;
   padding: 1%;
   width: 100%;
+}
 
+#reviews-list {
+  max-height: 800px;
+  overflow-y: scroll;
+  overflow: auto;
 }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import CharReview from './CharReview.jsx';
-import { Container, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
+import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
@@ -27,10 +27,12 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
   // image upload
   const [img, setImg] = useState([]);
   const handleImageSelection = (target) => {
-    setImg((prev) => ([
-      ...prev,
-      URL.createObjectURL(target.files[0])
-    ]))
+    for (let file = 0; file < target.files.length; file++) {
+      setImg((prev) => ([
+        ...prev,
+        URL.createObjectURL(target.files[file])
+      ]))
+    }
   }
 
   const handleRecClick = (e) => {
@@ -47,11 +49,13 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
       .catch(err => console.log('error in axios post add review', err));
   }
 
+  const starRatingWords = [ 'Poor','Fair','Average', 'Good', 'Great'];
 
   return (
     <div>
       <Container>
-      <h4>Add New Review</h4>
+      <h4>Write Your Review</h4>
+      <h5>About the {'ProductName'}</h5>
       <form onSubmit={handleReviewSubmit}>
       <label>
         Username
@@ -64,7 +68,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
       </label><br/>
       <h5>For authentication reasons, you will not be emailed</h5><br/>
       <label>Overall Rating
-          <div>
+          <HorizontalContainer>
             <HorizontalStarList>
             {stars.map((_, index) => {
               return (
@@ -80,7 +84,8 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
               )
             })}
             </HorizontalStarList>
-         </div>
+            {starRating > 0 ? starRatingWords[starRating - 1] : null}
+         </HorizontalContainer>
       </label> <br/>
         Do you recommend this product?
         {recommendOptions.map((valueObj, k) => (
@@ -116,7 +121,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
               minLength="50"
               maxLength="1000" required></StyledReviewBody>
           </fieldset>
-          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => handleImageSelection(e.target)} />
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg" max="5" onChange={(e) => handleImageSelection(e.target)} multiple/>
           <fieldset>
             <legend>Photo Preview</legend>
             <HorizontalImgList>
