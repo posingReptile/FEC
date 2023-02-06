@@ -23,3 +23,9 @@
 .SearchBar {
   position: relative;
 }
+
+.QuestionList {
+  max-height: 680px;
+  overflow-y: scroll;
+  overflow: auto
+}

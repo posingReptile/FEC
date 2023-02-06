@@ -6,7 +6,7 @@ import NewQuestion from './NewQuestion.jsx'
 
 import "./QuestionAnswerCss/QuestionAnswer.css";
 
-const QuestionAnswer = ( {product_id} ) => {
+const QuestionAnswer = ( {product_id, itemName} ) => {
   Modal.setAppElement('#root')
   const [numberOfQuestions, setNumberOfQuestions] = useState(2)
   const [modalIsOpen, setModal] = useState(false);
@@ -22,25 +22,24 @@ const QuestionAnswer = ( {product_id} ) => {
 
   const handleChangeQuestionCount = (count) => {
     setQuestionCount(count)
-    setNumberOfQuestions(2)
   }
 
   return (
     <div className="QuestionAnswersBlock">
       <h3>Questions & Answers</h3>
-      <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} productId={product_id} numberOfQuestions={numberOfQuestions} />
+      <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} productId={product_id} numberOfQuestions={numberOfQuestions} itemName={itemName} />
       <div>
-        {questionCount > 2
-          ? <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(numberOfQuestions + 2) }}>More Answered Questions</button>
+        {questionCount > 2 && numberOfQuestions === 2
+          ? <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(questionCount)}}>More Answered Questions</button>
           : <button hidden={true}></button>
         }
-        {numberOfQuestions > 2
+        {numberOfQuestions > 2 && questionCount > 2
           ? <button className="loadFewerQuestionsButton" onClick={() => { setNumberOfQuestions(2) }}>Load Fewer Questions</button>
           : <button hidden={true}></button>
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <NewQuestion productId={product_id} />
+          <NewQuestion productId={product_id} itemName={itemName} />
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>
