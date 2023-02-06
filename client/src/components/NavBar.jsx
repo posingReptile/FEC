@@ -6,7 +6,7 @@ import { FiShoppingCart } from "react-icons/fi"
 {/* <GiBirchTrees style={{height: '40px'}}/> */}
 const NavBar = ({cart}) => {
 
-const [cartSize, setCartSize] = useState("68");
+const [cartSize, setCartSize] = useState("0");
 
 useEffect(() => {
   setCartSize(cart.length);
