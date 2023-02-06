@@ -23,11 +23,13 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
     <div id="review-list" data-testid='review-list'>
     <div>
     <SortOptions setSortBy={setSortBy} totalNumReviews={totalNumReviews}/>
-    {reviewsShown.map((review) =>  (
-        <div key={review['review_id']}>
-          <ReviewTile review={review} markHelpful={markHelpful} reportReview={reportReview}/>
-        </div>
-      ))}
+    <div id="reviews-list">
+      {reviewsShown.map((review) =>  (
+          <div key={review['review_id']}>
+            <ReviewTile review={review} markHelpful={markHelpful} reportReview={reportReview}/>
+          </div>
+        ))}
+    </div>
     </div>
     <button onClick={() => showMoreReviews()}>More Reviews</button>
 
