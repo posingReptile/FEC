@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import CharReview from './CharReview.jsx';
-import { Container, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
+import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/SelectRating.styled.js';
 import { FaStar } from 'react-icons/fa';
 
 
@@ -47,11 +47,13 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
       .catch(err => console.log('error in axios post add review', err));
   }
 
+  const starRatingWords = [ 'Poor','Fair','Average', 'Good', 'Great'];
 
   return (
     <div>
       <Container>
-      <h4>Add New Review</h4>
+      <h4>Write Your Review</h4>
+      <h5>About the {'ProductName'}</h5>
       <form onSubmit={handleReviewSubmit}>
       <label>
         Username
@@ -64,7 +66,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
       </label><br/>
       <h5>For authentication reasons, you will not be emailed</h5><br/>
       <label>Overall Rating
-          <div>
+          <HorizontalContainer>
             <HorizontalStarList>
             {stars.map((_, index) => {
               return (
@@ -80,7 +82,8 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
               )
             })}
             </HorizontalStarList>
-         </div>
+            {starRating > 0 ? starRatingWords[starRating - 1] : null}
+         </HorizontalContainer>
       </label> <br/>
         Do you recommend this product?
         {recommendOptions.map((valueObj, k) => (

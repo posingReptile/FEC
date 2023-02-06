@@ -13,11 +13,16 @@ export const Container = styled.div`
   }
   `
 
+export const HorizontalContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 export const HorizontalStarList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  width: 50%
+  padding-right: 5px;
 `
 
 export const StyledStarLabel = styled.label`
