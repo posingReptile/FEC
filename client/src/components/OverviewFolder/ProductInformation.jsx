@@ -17,8 +17,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
   const [quantity, setQuantitySelector] = useState(1);
   const [displayErr, setDisplayErr] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
-  // const [cart, setCart] = useState([]);
-// console.log('from pi', setCart);
+
   let size = [];
   let quantityObj = {};
 
@@ -34,16 +33,14 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
     }
   })
 
-  useEffect(() => {
-    // console.log('from prouduct Info', cart);
-  }, [cart]);
-
   const addCart = () => {
     if(sizeSelector === 'Select Size') {
       setDisplayErr(!displayErr)
       setTimeout(() => {setDisplayErr(displayErr)}, 1000);
     } else {
       let curCart = {};
+      curCart.index = cart.length;
+      curCart.Photo = itemStyle.photos[0].thumbnail_url;
       curCart.Name = item.name;
       curCart.Style = itemStyle.name;
       curCart.Price = itemStyle.sale_price || itemStyle.original_price;
@@ -52,6 +49,11 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
       let newCart = cart.concat(curCart);
       setCart(newCart);
     }
+  }
+  const removeItem = (index) => {
+    let deleted = cart.slice()
+    deleted.splice(index, 1);
+    setCart(deleted);
   }
 
   return (
@@ -73,13 +75,12 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
         </div>
         <div className="checkout">
         {size.length > 0 ? <button id="addToBag" onClick={addCart}>Add To Bag</button> : null}
-        <button id="addToCart" onClick={() => {console.log(cart); setModal(true);}}>Show Cart</button>
+        <button id="addToCart" onClick={() => {setModal(true);}}>Show Cart</button>
 
         <Modal id="shoppingModal"isOpen={modalIsOpen} onRequestClose={() => {setModal(false)}}>
-          <ShoppingDisplay cart={cart} />
-          <button onClick={() => {setModal(false)}}>close</button>
+          <ShoppingDisplay cart={cart} removeItem={removeItem}/>
+          <button id="checkOut"onClick={() => {setModal(false); setCart([])}}>Check out</button>
         </Modal>
-
         </div>
       </div>
   );

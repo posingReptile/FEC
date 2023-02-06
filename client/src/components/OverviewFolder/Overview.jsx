@@ -23,7 +23,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
   let [check, setCheck] = useState(allStyleResult[0].style_id);
 
   const [photoIndex, setPhotoIndex] = useState(0);
-  // console.log(check, allStyleResult[0].style_id);
   let curProduct = product_id //37323 //37311;
 
   useEffect(() => {
@@ -40,8 +39,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
       setStyleResult(productData);
     })
   }, [product_id]);
-
-  // console.log(Static.productStyle.results[0].photos);
 
   useEffect(() => {
     setCheck(allStyleResult[0].style_id);
