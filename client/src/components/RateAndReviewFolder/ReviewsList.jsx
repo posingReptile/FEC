@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import './RateAndReview.css';
 
 
-const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions }) => {
+const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions, item }) => {
   const [modalIsOpen, setModal] = useState(false);
 
   Modal.setAppElement('#root')
@@ -35,12 +35,13 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
 
     <button onClick={openModal}>Add New Review</button>
     <Modal  isOpen={modalIsOpen} onRequestClose={closeModal}>
-      <NewReview charArray={charArray}
+      <button onClick={closeModal} style={{"position": "absolute", "right": "5px", 'top': '5px'}}>X</button>
+      <NewReview item={item}
+        charArray={charArray}
         charChoice={charChoice}
         setCharChoice={setCharChoice}
         product_id={product_id}
         charOptions={charOptions}/>
-      <button onClick={closeModal} style={{"display": "flex"}}>close</button>
     </Modal>
     </div>
   )

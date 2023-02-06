@@ -6,7 +6,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import { StyledRatingsAndReviews } from '../styled/RAndR.styled.js';
 import './RateAndReview.css';
 
-const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews }) => {
+const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews, item }) => {
   const [productReviews, setReviews] = useState([]);
   const [reviewsShown, setShownReviews] = useState([]);
   const [productRatings, setRating] = useState({});
@@ -183,7 +183,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   const charOptions = {
     Size: ['A size too small', 'A 1/2 size too small', 'Perfect', 'A 1/2 size too big','A size too big'],
     Width: ['Too narrow', 'slightly narrow', 'Perfect   ', 'Slightly Wide', 'Too wide'],
-    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortale', 'Perfect'],
+    Comfort: ['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
     Quality: ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect    '],
     Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
     Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
@@ -212,7 +212,8 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
         charChoice={charChoice}
         setCharChoice={setCharChoice}
         product_id={product_id}
-        charOptions={charOptions}/>
+        charOptions={charOptions}
+        item={item}/>
       </div>
     </StyledRatingsAndReviews>
   )

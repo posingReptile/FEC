@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import CharReview from './CharReview.jsx';
-import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody } from '../styled/NewReview.styled.js';
+import { Container, HorizontalContainer, HorizontalStarList, HorizontalImgList, StyledImgList,StyledReviewSummary, StyledReviewBody, RedAsterisk, NewReviewTopPortion, LeftAndRight, RadioDiv, StyledEmailInput,StyledSubmit } from '../styled/NewReview.styled.js';
+import './RateAndReview.css';
 import { FaStar } from 'react-icons/fa';
 
 
-const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOptions}) => {
+const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOptions, item}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
@@ -60,66 +61,74 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
     <div>
       <Container>
       <h4>Write Your Review</h4>
-      <h5>About the {'ProductName'}</h5>
+      <h5>About the {item.name}</h5>
       <form onSubmit={handleReviewSubmit}>
-      <label>
-        Username
-        <input name="username" placeholder="Example: jackson11!" onChange={(e) => handleTextInput(e, setUsername)} required/>
-      </label><br/>
-      <h5>For privacy reasons, do not use your full name or email address</h5><br/>
-      <label>
-        Email
-        <input name="email" placeholder="Example: jackson11@email.com" type ="email" onChange={(e) => handleTextInput(e, setEmail)} required/>
-      </label><br/>
-      <h5>For authentication reasons, you will not be emailed</h5><br/>
-      <label>Overall Rating
-          <HorizontalContainer>
-            <HorizontalStarList>
-            {stars.map((_, index) => {
-              return (
-                <li key={index}>
-                  <FaStar
-                  size={24}
-                  color={(hovered || starRating) > index ? "orange" : "grey"}
-                  onClick={() => setRating(index + 1)}
-                  onMouseOver={() => setHovered(index + 1)}
-                  onMouseLeave={() => setHovered(undefined)}
-                  required/>
-                  </li>
-              )
-            })}
-            </HorizontalStarList>
-            {starRating > 0 ? starRatingWords[starRating - 1] : null}
-         </HorizontalContainer>
-      </label> <br/>
-        Do you recommend this product?
-        {recommendOptions.map((valueObj, k) => (
-          <label key={k}>{valueObj.value}
-            <input type="radio"
-            value={valueObj.value}
-            name={valueObj.name}
-            onChange={handleRecClick}
-            checked={recommend.name === valueObj.value}
-            />
-          </label>
-        ))} <br/>
+      <NewReviewTopPortion>
+        <LeftAndRight>
+          <label>
+            <h5>Username<RedAsterisk>*</RedAsterisk></h5>
+            <input name="username" placeholder="Example: jackson11!" onChange={(e) => handleTextInput(e, setUsername)} required/>
+          </label><br/>
+          <h5>For privacy reasons, do not use your full name or email address</h5><br/>
+          <label>
+            <h5>Email<RedAsterisk>*</RedAsterisk></h5>
+            <StyledEmailInput name="email" placeholder="Example: jackson11@email.com" type ="email" onChange={(e) => handleTextInput(e, setEmail)} required/>
+          </label><br/>
+          <h5>For authentication reasons, you will not be emailed</h5>
+        </LeftAndRight>
+        <LeftAndRight>
+          <label><h5>Overall Rating<RedAsterisk>*</RedAsterisk></h5>
+              <HorizontalContainer>
+                <HorizontalStarList>
+                {stars.map((_, index) => {
+                  return (
+                    <li key={index}>
+                      <FaStar
+                      size={24}
+                      color={(hovered || starRating) > index ? "orange" : "grey"}
+                      onClick={() => setRating(index + 1)}
+                      onMouseOver={() => setHovered(index + 1)}
+                      onMouseLeave={() => setHovered(undefined)}
+                      required/>
+                      </li>
+                  )
+                })}
+                </HorizontalStarList>
+                {starRating > 0 ? starRatingWords[starRating - 1] : null}
+            </HorizontalContainer>
+          </label><br/>
+            <h5>Do you recommend this product?<RedAsterisk>*</RedAsterisk></h5>
+            <RadioDiv>
+              {recommendOptions.map((valueObj, k) => (
+                <label key={k}>
+                  <input type="radio"
+                  value={valueObj.value}
+                  name={valueObj.name}
+                  onChange={handleRecClick}
+                  checked={recommend.name === valueObj.value}
+                  /><br/>{valueObj.value}
+                </label>
+              ))}
+            </RadioDiv>
+          </LeftAndRight>
+        </NewReviewTopPortion>
 
-          Characteristics
           <br/>
+          <h5>Characteristics<RedAsterisk>*</RedAsterisk></h5>
           <CharReview charArray={charArray}
-          charOptions={charOptions}
-          charChoice={charChoice}
-          setCharChoice={setCharChoice}/>
+            charOptions={charOptions}
+            charChoice={charChoice}
+            setCharChoice={setCharChoice}/>
           <br />
           <fieldset>
-            <legend>Review Summary</legend>
+            <legend><h5>Review Summary</h5></legend>
               <StyledReviewSummary name="summary"
               placeholder="Example: Best purchase ever!"
               maxLength="60"
               onChange={(e) => handleTextInput(e, setSummary)}></StyledReviewSummary>
           </fieldset>
           <fieldset>
-            <legend>Review Body</legend>
+            <legend><h5>Review Body<RedAsterisk>*</RedAsterisk></h5></legend>
               <StyledReviewBody name="body"
               placeholder="Why did you like the product or not?"
               onChange={(e) => handleTextInput(e, setBody)}
@@ -128,7 +137,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
           </fieldset>
           <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg" max="5" onChange={(e) => handleImageSelection(e.target)} multiple/>
           <fieldset>
-            <legend>Photo Preview</legend>
+            <legend><h5>Photo Preview</h5></legend>
             <HorizontalImgList>
             {img.map((image, index) => (
             <StyledImgList key={index}>
@@ -137,7 +146,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
           ))}
           </HorizontalImgList>
           </fieldset>
-        <input type="submit" />
+        <StyledSubmit type="submit" />
       </form>
       </Container>
     </div>
