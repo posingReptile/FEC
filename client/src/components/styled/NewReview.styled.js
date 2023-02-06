@@ -49,6 +49,7 @@ export const StyledReviewSummary = styled.textarea`
 
 export const StyledReviewBody = styled.textarea`
   width: 100%;
+  min-height: 100px;
 `
 
 
@@ -80,4 +81,44 @@ export const VerticalList = styled.ul`
   list-style-type: none;
   width: 100%
   justify-content: flex-start
+`
+
+export const RedAsterisk = styled.i`
+  color: red;
+  font-size: 12px;
+`
+export const NewReviewTopPortion = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const LeftAndRight = styled.div`
+  position: relative;
+  width: 100%;
+  justify
+`
+export const RadioDiv = styled.div`
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-evenly;
+`
+export const CharRadioDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+`
+
+export const StyledFieldset = styled.fieldset`
+  max-height: 15%
+`
+
+export const StyledEmailInput = styled.input`
+  width: 70%;
+`
+
+export const StyledSubmit = styled.input`
+  position: absolute;
+  right: 20px;
 `
