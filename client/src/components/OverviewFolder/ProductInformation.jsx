@@ -1,22 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Dropdown from './Dropdown.jsx';
 import Style from './Style.jsx';
 import QDropdown from './QDropdown.jsx'
+import Modal from 'react-modal';
+
+import ShoppingDisplay from './ShoppingDisplay.jsx'
 
 import {StyledStarRating} from '../styled/StarRating.styled.js'
 import "./OverviewCss/productInformation.css";
 import "./OverviewCss/dropdown.css";
 
-const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating, totalNumReviews, setPhotoIndex}) => {
+const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setMainPhoto, check, setCheck, productRating, totalNumReviews, setPhotoIndex, cart, setCart}) => {
 
   const [sizeSelector, setSizeSelector] = useState('Select Size');
   const [quantity, setQuantitySelector] = useState(1);
   const [displayErr, setDisplayErr] = useState(false);
-
+  const [modalIsOpen, setModal] = useState(false);
+  // const [cart, setCart] = useState([]);
+// console.log('from pi', setCart);
   let size = [];
   let quantityObj = {};
-  let cart = [];
 
   let ratingPercent = (productRating * 100) / 5;
   ratingPercent = (ratingPercent % 5) >= 2.5 ? parseInt(ratingPercent / 5) * 5 + 5 : parseInt(ratingPercent / 5) * 5
@@ -30,6 +34,10 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
     }
   })
 
+  useEffect(() => {
+    console.log('from prouduct Info', cart);
+  }, [cart]);
+
   const addCart = () => {
     if(sizeSelector === 'Select Size') {
       setDisplayErr(!displayErr)
@@ -41,7 +49,8 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
       curCart.Price = itemStyle.sale_price || itemStyle.original_price;
       curCart.size = sizeSelector;
       curCart.Quantity = quantity;
-      cart.push(curCart);
+      let newCart = cart.concat(curCart);
+      setCart(newCart);
     }
   }
 
@@ -57,14 +66,20 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, setM
         </div> : <div id="itemPrice">${itemStyle.original_price}</div>}
         <div><strong>STYLE &gt; </strong>{itemStyle.name}</div>
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} setMainPhoto={setMainPhoto} check={check} setCheck={setCheck} setPhotoIndex={setPhotoIndex}/>
-        {displayErr ? <p>Please select a size</p> : null}
+        {displayErr ? <p style={{color: 'red'}}>Please select a size</p> : null}
         <div id="dropdown">
           <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector}/>
           <QDropdown option={quantityObj} sizeSelector={sizeSelector} setQuantitySelector={setQuantitySelector} quantity={quantity}/>
         </div>
         <div className="checkout">
         {size.length > 0 ? <button id="addToBag" onClick={addCart}>Add To Bag</button> : null}
-        <button id="addToCart" onClick={() => {console.log(cart)}}>Show Cart</button>
+        <button id="addToCart" onClick={() => {console.log(cart); setModal(true);}}>Show Cart</button>
+
+        <Modal id="shoppingModal"isOpen={modalIsOpen} onRequestClose={() => {setModal(false)}}>
+          <ShoppingDisplay cart={cart} />
+          <button onClick={() => {setModal(false)}}>close</button>
+        </Modal>
+
         </div>
       </div>
   );
