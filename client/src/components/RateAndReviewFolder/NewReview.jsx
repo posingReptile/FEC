@@ -27,10 +27,12 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
   // image upload
   const [img, setImg] = useState([]);
   const handleImageSelection = (target) => {
-    setImg((prev) => ([
-      ...prev,
-      URL.createObjectURL(target.files[0])
-    ]))
+    for (let file = 0; file < target.files.length; file++) {
+      setImg((prev) => ([
+        ...prev,
+        URL.createObjectURL(target.files[file])
+      ]))
+    }
   }
 
   const handleRecClick = (e) => {
@@ -119,7 +121,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
               minLength="50"
               maxLength="1000" required></StyledReviewBody>
           </fieldset>
-          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg"  onChange={(e) => handleImageSelection(e.target)} />
+          <input type="file" id="reviewImgUpload" name="imgUpload" accept="image/png, image/jpeg" max="5" onChange={(e) => handleImageSelection(e.target)} multiple/>
           <fieldset>
             <legend>Photo Preview</legend>
             <HorizontalImgList>
