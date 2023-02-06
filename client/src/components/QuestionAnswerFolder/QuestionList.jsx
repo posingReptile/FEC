@@ -7,7 +7,7 @@ import "./QuestionAnswerCss/QuestionList.css";
 
 
 
-const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount }) => {
+const QuestionList = ( { productId, numberOfQuestions, handleChangeQuestionCount, itemName } ) => {
 
   const [questions, setQuestions] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -21,9 +21,9 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
   }, [questions])
 
   const getReviews = () => {
-    setQuestions([])
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
+        setQuestions([])
         for (let i = 0; i < data.data.results.length; i++) {
           let questionAnswerObjs = data.data.results[i]
           if (searchInput.length > 2) {
@@ -38,19 +38,19 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
       .catch(err => console.log('err in axios get reviews', err))
   }
   const handleSearch = () => {
-    setQuestions([])
     getReviews()
   }
 
   useEffect(() => {
     if (searchInput.length > 2 || searchInput.length === 0) {
-    handleSearch()
+      getReviews()
     }
   }, [searchInput])
 
+
   const mappedQuestions = questions.slice(0, numberOfQuestions).map((question, index) => {
     return (
-      <IndividualQuestion key={index} searchInput={searchInput} question={question} productid={productId} />
+      <IndividualQuestion itemName={itemName} key={index} searchInput={searchInput} question={question} productid={productId} />
     )
   })
 
@@ -60,9 +60,10 @@ const QuestionList = ({ productId, numberOfQuestions, handleChangeQuestionCount 
         <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
         <HiMagnifyingGlass className="SearchButton" />
       </div>
+
       {questions.length === 0
         ? <div>No Results. Please try a different search term.</div>
-        : <div>{mappedQuestions}</div>
+        : <div className="QuestionList">{mappedQuestions}</div>
       }
     </div>
   )

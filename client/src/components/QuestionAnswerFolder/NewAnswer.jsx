@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 
-const NewAnswer = ({ questionId }) => {
+const NewAnswer = ({ questionId, itemName, questionBody }) => {
 
   const [imag, setImag] = useState([]);
   const [answerInput, setAnswerInput] = useState({
@@ -25,6 +25,8 @@ const NewAnswer = ({ questionId }) => {
 
   return (
     <form onSubmit={handleSubmitNewQuestion}>
+    <div>Submit Your Answer: </div>
+    <div>{itemName}: {questionBody}</div>
       <p>Email Address:</p>
       <input name="email" onChange={handleAnswerInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com"   required  ></input>
       <p>Nickname:</p>

@@ -9,7 +9,7 @@ import Highlighter from 'react-highlight-words';
 
 import "./QuestionAnswerCss/IndividualQuestion.css";
 
-const IndividualQuestion = ( {question, productid, searchInput} ) => {
+const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
   Modal.setAppElement('#root')
 
   const [modalIsOpen, setModal] = useState(false);
@@ -33,7 +33,7 @@ const IndividualQuestion = ( {question, productid, searchInput} ) => {
   }
 
   const handleLoadMoreAnswer = (q) => {
-    setNumOfAnswers(numOfAnswers + 2)
+    setNumOfAnswers(answers.length)
   }
 
   const handleMarkQuestionHelpful = (e) => {
@@ -49,6 +49,9 @@ const IndividualQuestion = ( {question, productid, searchInput} ) => {
   for (let key in question.answers) {
     answers.push(question.answers[key])
   }
+  answers.sort(function(a, b) {
+    return parseFloat(b.helpfulness) - parseFloat(a.helpfulness);
+});
 
   const mappedAnswers = answers.slice(0, numOfAnswers).map((answer) => {
     return (
@@ -68,7 +71,7 @@ const IndividualQuestion = ( {question, productid, searchInput} ) => {
         }
         <u className="AddAnswerButton" id={question.question_id} onClick={(e) => { openModal(e) }}>Add Answer</u>
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <NewAnswer questionId={questionId} />
+          <NewAnswer itemName={itemName} questionId={questionId} questionBody={question.question_body} />
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>
