@@ -30,6 +30,7 @@ const IndividualAnswers = ({ answer }) => {
         <div className="answerBody">
           <h3><strong>A:&nbsp;{answer.body}</strong></h3>
         </div>
+        <div className="answerPhotos">
         {answer.photos ? answer.photos.map(photo => {
           return (
             <div key={photo} style={{ width: '10%', position: 'relative' }}>
@@ -37,6 +38,7 @@ const IndividualAnswers = ({ answer }) => {
             </div>
           )
         }) : null}
+        </div>
         <div className="answerInfo">
           &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
           <u className="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }}>Yes</u>
