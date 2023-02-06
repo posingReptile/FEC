@@ -22,6 +22,7 @@ const QuestionAnswer = ( {product_id} ) => {
 
   const handleChangeQuestionCount = (count) => {
     setQuestionCount(count)
+    setNumberOfQuestions(2)
   }
 
   return (

@@ -37,7 +37,7 @@ let postProducts = (query, data) => {
     });
 };
 
-let postAnswer = (query, data) => {
+let postReview = (query, data) => {
   let options = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/${query}`,
@@ -62,7 +62,7 @@ let postAnswer = (query, data) => {
     });
 };
 
-let postReview = (query, data) => {
+let postAnswer = (query, data) => {
   let options = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/${query}`,

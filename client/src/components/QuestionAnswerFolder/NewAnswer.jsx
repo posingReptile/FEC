@@ -4,15 +4,17 @@ import axios from 'axios';
 
 
 
-const NewAnswer = (props) => {
-  const [imag, setImag] = useState(undefined);
+const NewAnswer = ({ questionId }) => {
+
+  const [imag, setImag] = useState([]);
   const [answerInput, setAnswerInput] = useState({
     email: '',
     nickname: '',
     answer: '',
-    question_id: props.questionId
+    question_id: questionId
   })
   const handleSubmitNewQuestion = () => {
+    console.log(answerInput)
     axios.post('/addAnswer', {value: answerInput})
     .catch(err => console.log('err in axios post add question', err))
   }
@@ -30,7 +32,7 @@ const NewAnswer = (props) => {
       <p>Answer:</p>
       <input name="answer" onChange={handleAnswerInputChange} placeholder="Example: You are the answer" minLength="5" required></input>
       <p>Upload an Image: </p>
-      <input type="file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg"  onChange={(e) => setImag(URL.createObjectURL(e.target.files[0]))} ></input>
+      <input type="file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg"  onChange={(e) => setImag(previous => [...previous, URL.createObjectURL(e.target.files[0])])} multiple />
       <img src={imag} height="200" width="200" alt="" />
       <input type="submit" />
     </form>

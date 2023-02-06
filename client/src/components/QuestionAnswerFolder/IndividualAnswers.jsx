@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import TimeAgo from 'react-timeago';
 import axios from 'axios'
 import "./QuestionAnswerCss/IndividualAnswer.css";
+import Highlighter from 'react-highlight-words';
 
-const IndividualAnswers = ({ answer }) => {
+
+const IndividualAnswers = ({ answer, searchInput }) => {
 
   const [markedHelpful, setMarkedHelpful] = useState(false);
   const [hasBeenReported, setHasBeenReported] = useState(false);
@@ -23,12 +25,12 @@ const IndividualAnswers = ({ answer }) => {
   }
 
   if (hasBeenReported) {
-    return <div hidden={true}></div>
+    return <div>Answer has been reported and sent for review.</div>
   } else {
     return (
       <div className="answerBlock" key={answer.id}>
         <div className="answerBody">
-          <h3><strong>A:&nbsp;{answer.body}</strong></h3>
+          <h3><strong>A:&nbsp;<Highlighter searchWords={[searchInput]} textToHighlight={answer.body} /></strong></h3>
         </div>
         <div className="answerPhotos">
         {answer.photos ? answer.photos.map(photo => {
