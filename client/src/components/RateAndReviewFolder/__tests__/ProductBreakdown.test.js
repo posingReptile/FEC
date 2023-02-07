@@ -17,9 +17,9 @@ const charWords = {
 }
 
 describe('Product Breakdown', () => {
-  it('should render the Product Breakdown', () => {
-        render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
+  render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
 
+  it('should render the Product Breakdown', () => {
     const ratingsElement = screen.getByTestId('rating-product');
     expect(ratingsElement).toBeTruthy();
   })

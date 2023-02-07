@@ -10,7 +10,7 @@ const ProductBreakdown = ({ productChar, charWords}) => {
   // console.log('this is charWords', charWords);
 
   return (
-    <div id="product-breakdown" data-testid='rating-product'>
+    <div id="product-breakdown" data-testid="rating-product">
         {productChar.map((char) => (
           <div key={char.id} data-testid='product-bars'>
             <ProductRatingBar name={char.name} productRating={char.percent} height={15}/>
