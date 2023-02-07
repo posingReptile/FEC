@@ -13,10 +13,6 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
     var onZoom = useCallback(e => {
       const x = e.clientX - 700;
       const y = e.clientY - 100;
-      // var dx = (e.clientX - img.getLeft()) * (2.5 - 1),
-      //     dy = (e.clientY - img.getTop()) * (2.5 - 1);
-      console.log(`x: ${x}px y: ${y}px`)
-      // console.log(`x: ${x}px y: ${y}px`, root.offsetLeft, root.scrollTop)
       img.style.transition = "transform 0.5s";
       img.style.transformOrigin = `${x > 0 ? x : 0}px ${y > 0 ? y : 0}px`;
       img.style.transform = "scale(2.5)";
