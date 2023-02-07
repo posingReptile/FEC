@@ -6,7 +6,7 @@ const Style = ({allStyleResult, setItemStyle, check, setCheck, setPhotoIndex}) =
   const outOfStock = "https://as2.ftcdn.net/v2/jpg/00/50/45/79/1000_F_50457976_7Zng8KAqYAHf9ZcOivdqg40oF5IHWIYU.jpg"
 
   return (
-      <div className="styleIcons">
+      <div className="styleIcons" data-testid="testSI">
         {allStyleResult.map((item) => (
           <div className="styleDiv" key={item.style_id}>
             {item.style_id === check ? <FaCheckCircle id="check"/>: null}
