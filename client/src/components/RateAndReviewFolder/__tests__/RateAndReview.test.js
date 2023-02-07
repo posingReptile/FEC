@@ -1,10 +1,9 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react';
-// import { act } from '"react-dom/test-utils'
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
 import {describe, expect, test} from '@jest/globals'
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 import RateAndReview from '../RateAndReview.jsx'
 import axios from 'axios';
 
@@ -21,7 +20,7 @@ const props = {
   setTotalNumReviews: '',
 }
 
-const { product_id, item, productRating, setProductRating, totalNumReviews, setTotalNumReviews} = props
+const { product_id, item, productRating, totalNumReviews} = props
 
 const metaData = {
   characteristics: {Comfort: {id: 125033, value: '3.1908045977011494'},
