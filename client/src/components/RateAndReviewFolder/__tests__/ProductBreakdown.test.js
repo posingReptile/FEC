@@ -1,7 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react'
+import '@testing-library/jest-dom';
+// import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
 import ProductBreakdown from '../ProductBreakdown.jsx'
 import {describe, expect, test} from '@jest/globals'
-import React from 'react'
 
 
 const productChar = [{name: 'Fit', percent: 61.422222222222224, value: '3.0711111111111111', id: 125031},
@@ -15,10 +17,13 @@ const charWords = {
 }
 
 describe('Product Breakdown', () => {
-  test('renders the Product Breakdown', () => {
-    render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
+  it('should render the Product Breakdown', () => {
+        render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
 
     const ratingsElement = screen.getByTestId('rating-product');
     expect(ratingsElement).toBeTruthy();
-  });
+  })
+  // test('renders the Product Breakdown', () => {
+
+  // });
 })

@@ -100,6 +100,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     });
   }, [product_id]);
 
+
   // should maintain sort value, filter, and number of shown reviews
   useEffect(() => {
     getReviewsHelper();
