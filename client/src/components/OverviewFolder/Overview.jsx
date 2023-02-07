@@ -50,7 +50,7 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
 
   return (
     <div>
-      {item && itemStyle ? <div id="overview">
+      {item && itemStyle ? <div id="overview" data-testid="testOV">
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}
             expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}

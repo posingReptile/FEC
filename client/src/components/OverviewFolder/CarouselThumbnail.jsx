@@ -47,7 +47,7 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
 
   return (
       <div>
-          <div id="horizontalCarousel">
+          <div id="horizontalCarousel" data-testid="testHC">
             <div id="current">
               {mainPhoto.map(({thumbnail_url, url}, index) => (
                 <div key={index}>

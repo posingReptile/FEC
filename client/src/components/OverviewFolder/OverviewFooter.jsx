@@ -5,7 +5,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 const OverviewFooter = ({item}) => {
   const allFeatures = item.features || [];
   return (
-      <div id="overviewFooter">
+      <div id="overviewFooter" data-testid="testOF">
         <div className="productDescription">
           <h2>Product description</h2>
           <div id="itemDescription">{item.description}</div>

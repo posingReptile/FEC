@@ -56,7 +56,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
   }
 
   return (
-      <div id="productInformation">
+      <div id="productInformation" data-testid="testPI">
         <div id="productRating"><StyledStarRating ratingPercent={ratingPercent}/>{totalNumReviews === 0 ? null : <a href="/#rlink">Read all {totalNumReviews} reviews</a>}</div>
         <div id="category">{item.category}</div>
         <h1 id="itemName">{item.name}</h1>

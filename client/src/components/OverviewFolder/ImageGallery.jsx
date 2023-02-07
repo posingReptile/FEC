@@ -44,7 +44,7 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
   const outOfStock = "https://www.sourcecon.com/wp-content/uploads/sites/3/2018/10/top-secret-700x467.png"
 
   return (
-    <div id="imageGallery">
+    <div id="imageGallery" data-testid="testIG">
       <div id="main">
         {expandView ?
         <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder" ></img></div> :
