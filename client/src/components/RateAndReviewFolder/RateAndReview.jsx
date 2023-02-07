@@ -21,9 +21,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   const [filter, setFilter] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [reviewReported, setReviewReported] = useState(false);
-  // testing only
-  const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     getReviewsHelper()
@@ -117,9 +114,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
         [id]: ({name, rating: '', checked: 0})
       }))
       })
-
-      setLoading(false);
-
     });
   }
 
@@ -189,11 +183,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     Length: ['Runs short', 'Runs slightly short', 'Perfect  ', 'Runs slightly long', 'Runs Long'],
     Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
   }
-
-  if (!loading) {
-    return "loading...";
-  }
-
 
   return (
     <StyledRatingsAndReviews data-testid="rating-main" id="rlink" >

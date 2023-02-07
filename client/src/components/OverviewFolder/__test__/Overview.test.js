@@ -27,5 +27,5 @@ describe('Jest+RTL Workshop', function() {
         expect(test).toBeTruthy();
       })
   });
-  it('sh')
+  // it('sh')
 });
