@@ -1,9 +1,14 @@
 import React from 'react'
-import '@testing-library/jest-dom';
-// import userEvent from '@testing-library/user-event';
+import ReactDOM from 'react-dom';
 import { render, screen, waitFor } from '@testing-library/react';
-import ProductBreakdown from '../ProductBreakdown.jsx'
+import '@testing-library/react/dont-cleanup-after-each';
+import '@testing-library/jest-dom';
 import {describe, expect, test} from '@jest/globals'
+import userEvent from '@testing-library/user-event';
+import ProductBreakdown from '../ProductBreakdown.jsx'
+// import axios from 'axios';
+
+
 
 
 const productChar = [{name: 'Fit', percent: 61.422222222222224, value: '3.0711111111111111', id: 125031},
@@ -16,14 +21,31 @@ const charWords = {
   'Quality': ['Poor', 'What I expected', 'Perfect    ']
 }
 
-describe('Product Breakdown', () => {
-  render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
+describe('Product Breakdown', function () {
+  // const user = userEvent.setup();
+  // const { getByTestId, getAllByTestId } =
 
-  it('should render the Product Breakdown', () => {
+  beforeEach(() => {
+    render(<ProductBreakdown productChar={productChar} charWords={charWords}/>);
+  })
+
+  test('should render the Product Breakdown', () => {
     const ratingsElement = screen.getByTestId('rating-product');
     expect(ratingsElement).toBeTruthy();
-  })
-  // test('renders the Product Breakdown', () => {
+  });
 
-  // });
+  test('should render correct number of product bars', () => {
+    const ratingBarsArr = screen.getAllByTestId('product-bars');
+    expect(ratingBarsArr.length).toEqual(4)
+  });
+
+
+  test('Should show three descriptor words per product bar', () => {
+    const productWords = screen.getAllByTestId('product-words');
+    expect(productWords.length).toEqual(12);
+  })
+
 })
+
+
+
