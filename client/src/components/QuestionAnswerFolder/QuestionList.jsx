@@ -13,14 +13,14 @@ const QuestionList = ( { productId, numberOfQuestions, handleChangeQuestionCount
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    getReviews();
+    getQuestions();
   }, [productId])
 
   useEffect(() => {
     handleChangeQuestionCount(questions.length)
   }, [questions])
 
-  const getReviews = () => {
+  const getQuestions = () => {
     axios.get('/questions', { params: { product_id: productId } })
       .then((data) => {
         setQuestions([])
@@ -35,15 +35,15 @@ const QuestionList = ( { productId, numberOfQuestions, handleChangeQuestionCount
           }
         }
       })
-      .catch(err => console.log('err in axios get reviews', err))
+      .catch(err => console.log('err in axios get questions', err))
   }
   const handleSearch = () => {
-    getReviews()
+    getQuestions()
   }
 
   useEffect(() => {
     if (searchInput.length > 2 || searchInput.length === 0) {
-      getReviews()
+      getQuestions()
     }
   }, [searchInput])
 
