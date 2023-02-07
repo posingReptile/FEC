@@ -1,24 +1,27 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import { IoIosExpand } from "react-icons/io";
-import "./OverviewCss/imageGallery.css";
 import CarouselThumbnail from './CarouselThumbnail.jsx';
+import { IoIosExpand } from "react-icons/io";
+
+import "./OverviewCss/imageGallery.css";
 
 const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandView, zoom, setZoom, photoIndex, setPhotoIndex}) => {
-
+  const root = document.getElementById("main");
   const mainContainer = document.getElementById("test");
   const img = document.getElementById("expandview");
 
   if (img && mainContainer) {
     var onZoom = useCallback(e => {
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
-      mainContainer.style.transition = "transform 0.5s";
-      mainContainer.style.transformOrigin = `${x}px ${y}px`;
-      mainContainer.style.transform = "scale(2.5)";
+      const x = e.clientX - 700;
+      const y = e.clientY - 100;
+      img.style.transition = "transform 0.5s";
+      img.style.transformOrigin = `${x > 0 ? x : 0}px ${y > 0 ? y : 0}px`;
+      img.style.transform = "scale(2.5)";
     }, [])
+
+
     var offZoom = useCallback(e => {
-      mainContainer.style.transformOrigin = "center, center"
-      mainContainer.style.transform = "scale(1)";
+      img.style.transformOrigin = "center, center"
+      img.style.transform = "scale(1)";
     }, []);
  }
 
@@ -41,7 +44,7 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
   const outOfStock = "https://www.sourcecon.com/wp-content/uploads/sites/3/2018/10/top-secret-700x467.png"
 
   return (
-    <div id="imageGallery">
+    <div id="imageGallery" data-testid="testIG">
       <div id="main">
         {expandView ?
         <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder" ></img></div> :

@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
-import Dropdown from './Dropdown.jsx';
+import SizeDropdown from './SizeDropdown.jsx';
 import Style from './Style.jsx';
 import QDropdown from './QDropdown.jsx'
 import Modal from 'react-modal';
-
 import ShoppingDisplay from './ShoppingDisplay.jsx'
-
-import {StyledStarRating} from '../styled/StarRating.styled.js'
+import {StyledStarRating} from '../styled/StarRating.styled.js';
+import { BsPinterest, BsFacebook, BsTwitter } from "react-icons/bs";
 import "./OverviewCss/productInformation.css";
 import "./OverviewCss/dropdown.css";
 
@@ -57,8 +56,8 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
   }
 
   return (
-      <div id="productInformation">
-        <div id="productRating"><StyledStarRating ratingPercent={ratingPercent}/><a href="/#rlink">Read all {totalNumReviews} reviews</a></div>
+      <div id="productInformation" data-testid="testPI">
+        <div id="productRating"><StyledStarRating ratingPercent={ratingPercent}/>{totalNumReviews === 0 ? null : <a href="/#rlink">Read all {totalNumReviews} reviews</a>}</div>
         <div id="category">{item.category}</div>
         <h1 id="itemName">{item.name}</h1>
         {itemStyle.sale_price ?
@@ -70,7 +69,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
         <Style allStyleResult={allStyleResult} setItemStyle={setItemStyle} check={check} setCheck={setCheck} setPhotoIndex={setPhotoIndex}/>
         {displayErr ? <p style={{color: 'red'}}>Please select a size</p> : null}
         <div id="dropdown">
-          <Dropdown placeHolder={sizeSelector} sizeOption={size} setSizeSelector={setSizeSelector}/>
+          <SizeDropdown sizeOption={size} setSizeSelector={setSizeSelector}/>
           <QDropdown option={quantityObj} sizeSelector={sizeSelector} setQuantitySelector={setQuantitySelector} quantity={quantity}/>
         </div>
         <div className="checkout">
@@ -81,6 +80,13 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
           <ShoppingDisplay cart={cart} removeItem={removeItem}/>
           <button id="checkOut"onClick={() => {setModal(false); setCart([])}}>Check out</button>
         </Modal>
+        </div>
+        <div className="socialMedia">
+          <div className="smIcon">
+          <a href="https://www.facebook.com/"><BsFacebook id="facebook"/></a>
+          <a href="https://twitter.com/?lang=en"><BsTwitter id="twitter"/></a>
+          <a href="https://www.pinterest.com/"><BsPinterest id="pinterest"/></a>
+          </div>
         </div>
       </div>
   );
