@@ -3,4 +3,6 @@ node_modules
 *bundle.js
 coverage
 .eslintrc.js
-__mocks__/
+__mocks__
+
+

@@ -57,12 +57,11 @@ const IndividualAnswers = ({ answer, searchInput }) => {
           }) : null}
         </div>
         <div className="answerInfo">
-          &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;helpful?&nbsp; &nbsp;
-          <u className="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }}>Yes</u>
-          {markedHelpful
-            ? <div>({answer.helpfulness + 1})&nbsp; &nbsp; | &nbsp; &nbsp;</div>
-            : <div>({answer.helpfulness})&nbsp; &nbsp; | &nbsp; &nbsp;</div>
-          }
+          &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;Helpful?&nbsp; &nbsp;
+          <div className="helpfulBlock">
+            <u className="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }} >Yes</u>
+            <span className={"marked" + markedHelpful} >({markedHelpful ? answer.helpfulness + 1 : answer.helpfulness})</span>
+          </div>
           <u className="Report" onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
           <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
             <div className="singlePhotoContainer">
