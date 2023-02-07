@@ -7,7 +7,7 @@ import NewQuestion from './NewQuestion.jsx'
 import "./QuestionAnswerCss/QuestionAnswer.css";
 
 const QuestionAnswer = ( {product_id, itemName} ) => {
-  Modal.setAppElement('#root')
+  if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
   const [numberOfQuestions, setNumberOfQuestions] = useState(2)
   const [modalIsOpen, setModal] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);

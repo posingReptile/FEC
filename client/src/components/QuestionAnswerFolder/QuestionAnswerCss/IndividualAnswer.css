@@ -44,6 +44,7 @@
 svg.close {
   margin: 0 auto;
   margin-top: 3.5px;
+  right: 15%;
   color: rgb(112, 10, 10);
 }
 svg.close:hover {
@@ -58,4 +59,19 @@ svg.close:hover {
   right: 2%;
   top: 2%;
   background-color: rgb(148, 148, 148);
+}
+
+.markedHelpful {
+  color:green
+}
+.answerYes {
+  margin-right: 3px;
+
+}
+
+.markedtrue {
+  color: green;
+}
+.helpfulBlock {
+  margin-right: 10px;
 }
