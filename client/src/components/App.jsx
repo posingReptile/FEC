@@ -22,6 +22,7 @@ const App = () => {
       <RelatedProducts product_id={product_id} setProductId={setProductId}/>
       <QuestionAnswer product_id={product_id} itemName={item.name}/>
       <RateAndReview product_id={product_id}
+        item={item}
         productRating={productRating}
         setProductRating={setProductRating}
         totalNumReviews={totalNumReviews}

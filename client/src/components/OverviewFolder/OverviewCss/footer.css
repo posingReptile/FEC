@@ -11,7 +11,8 @@
 }
 
 .socialMedia {
-  width: 25%;
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -45,4 +46,19 @@ a {
 
 #pinterest:hover {
   color: red;
+}
+
+#productFeatures {
+  width: 25%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.featureText {
+  display: flex;
+  padding-left: 5%;
+}
+
+.featureText svg {
+  font-size: 20px;
 }

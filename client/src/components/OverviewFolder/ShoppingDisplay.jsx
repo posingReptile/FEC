@@ -1,9 +1,11 @@
 import React, {useEffect} from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import "./OverviewCss/shippingDisplay.css"
+
+import "./OverviewCss/shippingDisplay.css";
+
 const ShoppingDisplay = ({cart, removeItem}) => {
   return (
-    <div id="ShoppingDisplay">
+    <div id="ShoppingDisplay" data-testid="testShopD">
       {
         cart.length === 0 ? <div id="emptyCart">Your cart is empty!</div> :
         <div id="allShoppedItem">
