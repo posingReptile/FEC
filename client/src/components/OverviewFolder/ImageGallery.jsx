@@ -1,24 +1,31 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import { IoIosExpand } from "react-icons/io";
-import "./OverviewCss/imageGallery.css";
 import CarouselThumbnail from './CarouselThumbnail.jsx';
+import { IoIosExpand } from "react-icons/io";
+
+import "./OverviewCss/imageGallery.css";
 
 const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandView, zoom, setZoom, photoIndex, setPhotoIndex}) => {
-
+  const root = document.getElementById("main");
   const mainContainer = document.getElementById("test");
   const img = document.getElementById("expandview");
 
   if (img && mainContainer) {
     var onZoom = useCallback(e => {
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
-      mainContainer.style.transition = "transform 0.5s";
-      mainContainer.style.transformOrigin = `${x}px ${y}px`;
-      mainContainer.style.transform = "scale(2.5)";
+      const x = e.clientX - 700;
+      const y = e.clientY - 100;
+      // var dx = (e.clientX - img.getLeft()) * (2.5 - 1),
+      //     dy = (e.clientY - img.getTop()) * (2.5 - 1);
+      console.log(`x: ${x}px y: ${y}px`)
+      // console.log(`x: ${x}px y: ${y}px`, root.offsetLeft, root.scrollTop)
+      img.style.transition = "transform 0.5s";
+      img.style.transformOrigin = `${x > 0 ? x : 0}px ${y > 0 ? y : 0}px`;
+      img.style.transform = "scale(2.5)";
     }, [])
+
+
     var offZoom = useCallback(e => {
-      mainContainer.style.transformOrigin = "center, center"
-      mainContainer.style.transform = "scale(1)";
+      img.style.transformOrigin = "center, center"
+      img.style.transform = "scale(1)";
     }, []);
  }
 

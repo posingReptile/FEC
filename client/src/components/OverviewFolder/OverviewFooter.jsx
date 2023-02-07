@@ -1,22 +1,23 @@
 import React from 'react';
 import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
-import { BsPinterest, BsFacebook, BsTwitter } from "react-icons/bs";
+import { AiOutlineCheck } from "react-icons/ai";
 
 const OverviewFooter = ({item}) => {
-
+  const allFeatures = item.features || [];
   return (
       <div id="overviewFooter">
         <div className="productDescription">
           <h2>Product description</h2>
           <div id="itemDescription">{item.description}</div>
         </div>
-        <div className="socialMedia">
-          <div className="smIcon">
-          <a href="https://www.facebook.com/"><BsFacebook id="facebook"/></a>
-          <a href="https://twitter.com/?lang=en"><BsTwitter id="twitter"/></a>
-          <a href="https://www.pinterest.com/"><BsPinterest id="pinterest"/></a>
-          </div>
+        <div id="productFeatures">
+        {allFeatures.map(({feature, value}, index) => (
+                <div className="feature" key={index}>
+                  {value ? <p className="featureText"><AiOutlineCheck/>&nbsp;&nbsp;{value}</p> : null}
+                </div>
+            ))}
         </div>
+
       </div>
   );
 };

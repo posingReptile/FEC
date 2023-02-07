@@ -147,15 +147,13 @@
 }
 
 #expandview {
-  transform-origin: center center;
+  /* transform-origin: center center;
   object-fit: fill;
+  margin: 0 auto; */
   height: 100%;
-  margin: 0 auto;
 }
 
 
 #test {
-  transform-origin: center center;
   height: 100%;
-  width: 100%;
 }

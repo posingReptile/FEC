@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
+const SizeDropdown = ({sizeOption, setSizeSelector}) => {
 
   let selectFunc = () => {
     if (document.getElementById('sizeSelect')) {
@@ -10,7 +10,7 @@ const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
   };
 
   return (
-    <div id="sizeDropdown" >
+    <div id="sizeDropdown" data-testid="testSD">
       {sizeOption.length > 0 ? <select id="sizeSelect" onChange={selectFunc} defaultValue="Select Size">
         <option value="" hidden>Select Size</option>
         {sizeOption.map((item, index) => (
@@ -21,4 +21,4 @@ const Dropdown = ({placeHolder, sizeOption, setSizeSelector}) => {
   );
 };
 
-export default Dropdown;
+export default SizeDropdown;

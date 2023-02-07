@@ -18,3 +18,7 @@ const Style = ({allStyleResult, setItemStyle, check, setCheck, setPhotoIndex}) =
 };
 
 export default Style;
+
+// rgb(39 50 39 / 70%);
+
+// rgb(39 50 39 / 70%);
