@@ -2,6 +2,7 @@ import styled from 'styled-components';
 //remove border prior to commit
 export const StyledRatingsAndReviews = styled.div`
   width: calc( 100% - 50px );
+  height: calc( 100% - 50px );
   margin: auto;
   max-width: 1280px;
   font-family: "adobe-clean", sans-serif;

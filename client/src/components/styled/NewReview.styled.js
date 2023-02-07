@@ -109,6 +109,9 @@ export const CharRadioDiv = styled.div`
   justify-content: space-between;
   text-align: center;
 `
+export const SingleCharOption = styled.div`
+  width: 20%;
+`
 
 export const StyledFieldset = styled.fieldset`
   max-height: 15%

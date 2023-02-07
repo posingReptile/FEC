@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, {useState} from 'react';
+import ReviewTileBody from './ReviewTileBody.jsx';
 import TimeAgo from 'react-timeago';
 import { HorizontalImgListTile, StyledImgList } from '../styled/ReviewTile.styled.js';
 
@@ -37,11 +38,12 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         <p>{review['reviewer_name']}</p>
         <TimeAgo date={review.date} locale="en-US"/>
       </div>
-      <h5>{review.summary}</h5>
+      <h5><strong>{review.summary}</strong></h5>
       <div>
         {review.recommend ? <p>{'✓ I recommend this product'}</p> : null}
       </div>
-      <p>{review.body}</p>
+      <ReviewTileBody bodyText={review.body}/>
+
       <HorizontalImgListTile>
       {review.photos ? review.photos.map(photo => {
         return (

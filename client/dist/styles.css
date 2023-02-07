@@ -4,6 +4,7 @@
 }
 * {
   margin: 0;
+  text-size-adjust: auto;
 }
 
 html, body {

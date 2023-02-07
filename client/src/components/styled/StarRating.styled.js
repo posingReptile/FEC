@@ -37,8 +37,6 @@ export const StyledHeadingDiv = styled.div`
 export const StyledRatingDiv = styled.div`
   display: flex;
   flex-direction: column;
-
-
 `
 export const HoverAndFilter = styled.div`
   &:hover {
@@ -48,7 +46,7 @@ export const HoverAndFilter = styled.div`
 
 export const StyledParentStarBar = styled.div`
   height: 15px;
-  width: 80%;
+  width: 100%;
   background-color: lightgray;
 `
 
