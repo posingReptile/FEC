@@ -25,19 +25,27 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
   const [photoIndex, setPhotoIndex] = useState(0);
   let curProduct = product_id //37323 //37311;
 
-  useEffect(() => {
+  const productAxios = () => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
     .then((data) => {
       setItem(data.data)
+    }).then(() => {
+      axios.get(`/getProducts/?product_id=${curProduct}&style=true`)
+      .then((data) => {
+       let productData = data.data.results;
+        setItemStyle(productData[0]);
+        setMainPhoto(productData[0].photos);
+        setStyleResult(productData);
+        done();
+      });
+      done();
     })
 
-    axios.get(`/getProducts/?product_id=${curProduct}&style=true`)
-    .then((data) => {
-     let productData = data.data.results;
-      setItemStyle(productData[0]);
-      setMainPhoto(productData[0].photos);
-      setStyleResult(productData);
-    })
+
+  }
+
+  useEffect(() => {
+    productAxios();
   }, [product_id]);
 
   useEffect(() => {
@@ -50,7 +58,7 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
 
   return (
     <div>
-      {item && itemStyle ? <div id="overview" data-testid="testOV">
+       <div id="overview" data-testid="testOV">
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}
             expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}
@@ -61,7 +69,7 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
             setCheck={setCheck} productRating={productRating} totalNumReviews={totalNumReviews} setPhotoIndex={setPhotoIndex} cart={cart} setCart={setCart}/>}
         </div>
       <OverviewFooter item={item}/>
-      </div>: null }
+      </div>
     </div>
   );
 };

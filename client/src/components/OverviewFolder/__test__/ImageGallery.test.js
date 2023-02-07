@@ -3,17 +3,9 @@ import { render, screen } from '@testing-library/react';
 
 import ImageGallery from '../ImageGallery.jsx';
 
-test('Renders the Size Dropdown', () => {
-  let size = [];
-  render(<ImageGallery sizeOption={size}/>);
-
-  const sDropdown = screen.getByTestId('testSD');
-  expect(sDropdown).toBeTruthy();
+test('Renders the Image Gallery', () => {
+  render(<ImageGallery expandView={false} photoIndex={0} mainPhoto={[{}]} photos={{}}/>);
+  const IG = screen.getByTestId('testIG');
+  expect(IG).toBeTruthy();
 });
 
-test('Renders the image gallery', () => {
-  const {container} = render('<ImageGallery />');
-
-  const ImageGallery = container.getElementsByClassName('');
-  expect(ImageGallery).toBeTruthy();
-});

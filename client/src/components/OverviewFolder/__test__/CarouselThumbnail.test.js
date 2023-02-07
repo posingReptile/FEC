@@ -3,17 +3,8 @@ import { render, screen } from '@testing-library/react';
 
 import CarouselThumbnail from '../CarouselThumbnail.jsx';
 
-test('Renders the Size Dropdown', () => {
-  let size = [];
-  render(<CarouselThumbnail sizeOption={size}/>);
-
-  const CThumbnail = screen.getByTestId('testSD');
-  expect(CThumbnail).toBeTruthy();
-});
-
-test('Renders the Carousel Thumbnails', () => {
-  const {container} = render('<CarouselThumbnail />');
-
-  const CarouselThumbnail = container.getElementsByClassName('');
-  expect(CarouselThumbnail).toBeTruthy();
+test('Renders the Carousel Thumbnail', () => {
+  render(<CarouselThumbnail mainPhoto={[]}/>);
+  const CT = screen.getByTestId('testHC');
+  expect(CT).toBeTruthy();
 });
