@@ -39,4 +39,13 @@ describe('Rating Breakdown', () => {
     fireEvent.click(helpfulClick)
   });
 
+  it('renders review tile body too', () => {
+    const reviewTile = screen.getByTestId("review-tile-body");
+    expect(reviewTile).toBeTruthy();
+  });
+  // it('renders two review tile bodies', () => {
+  //   const reviewTile = screen.getAllByTestId("review-tile-body");
+  //   expect(reviewTile.length).toEqual(2);
+  // });
+
 });

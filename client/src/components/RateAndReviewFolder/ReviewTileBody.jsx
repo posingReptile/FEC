@@ -11,13 +11,13 @@ const ReviewTileBody = ({ bodyText }) => {
 
 
   return (
-    <>
+    <div data-testid="review-tile-body">
     { over250 ?
       !showAllText ? <><p>{bodyText.slice(0, 251)}</p><a onClick={showMoreHelper}><u>...ShowMore</u></a></>
         : <p>{bodyText}</p>
       :<p>{bodyText}</p>
     }
-    </>
+    </div>
   )
 }
 

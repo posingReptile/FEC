@@ -9,6 +9,8 @@ import './RateAndReview.css';
 const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions, item }) => {
   const [modalIsOpen, setModal] = useState(false);
 
+  console.log(reviewsShown)
+
   if (process.env.NODE_ENV !== 'test') {
     Modal.setAppElement('#root');
   }
@@ -35,7 +37,7 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
     </div>
     {reviewsShown.length === totalNumReviews ? null : <button onClick={() => showMoreReviews()}>More Reviews</button>}
 
-    <button onClick={openModal}>Add New Review</button>
+    <button onClick={openModal} role='open-modal'>Add New Review</button>
     <Modal  isOpen={modalIsOpen} onRequestClose={closeModal}>
       <button onClick={closeModal} style={{"position": "absolute", "right": "5px", 'top': '5px'}}>X</button>
       <NewReview item={item}

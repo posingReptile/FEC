@@ -87,6 +87,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
                       <FaStar
                       size={24}
                       color={(hovered || starRating) > index ? "orange" : "grey"}
+                      role={`rating-${index}`}
                       onClick={() => setRating(index + 1)}
                       onMouseOver={() => setHovered(index + 1)}
                       onMouseLeave={() => setHovered(undefined)}
