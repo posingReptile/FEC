@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
 import {describe, expect, test} from '@jest/globals'
@@ -16,11 +16,12 @@ const productRatings = {
 }
 
 const filter = [];
+const setFilter = () => console.log('clicked')
 
 
 describe('Rating Breakdown', () => {
   beforeEach(()=> {
-    render(<RatingBreakdown productRatings={productRatings} productRating={3.9} recommendPercentage={82} filter={filter}/>);
+    render(<RatingBreakdown productRatings={productRatings} productRating={3.9} recommendPercentage={82} filter={filter} setFilter={setFilter}/>);
   })
 
   test('renders the rating breakdown section', () => {
@@ -68,6 +69,11 @@ describe('Rating Breakdown', () => {
     test('Star rating bars have labels', ()=> {
       const breakdownElement = screen.getByText('3 stars');
       expect(breakdownElement).toBeTruthy();
+    });
+
+    test('Star rating bars are clickable', ()=> {
+      const starClick = screen.getByRole('5');
+      fireEvent.click(starClick);
     });
 
     // will need to write test to verify star bars are rending correctly

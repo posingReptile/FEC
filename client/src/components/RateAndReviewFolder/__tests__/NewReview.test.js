@@ -62,6 +62,10 @@ describe('Rating Breakdown', () => {
     const reviewElement = screen.getByText('Overall Rating');
     expect(reviewElement).toBeTruthy();
   });
+  it('star rating functional', ()=> {
+    const starClick = screen.getByRole("rating-1");
+    fireEvent.click(starClick)
+  });
 
   it('Has section to click on recommend product', ()=> {
     const reviewElement = screen.getByText('Do you recommend this product?');

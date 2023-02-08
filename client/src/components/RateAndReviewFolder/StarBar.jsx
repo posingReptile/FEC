@@ -11,7 +11,7 @@ const StarBar = ({ starValue, starRating, setFilter }) => {
   }
 
   return (
-    <HoverAndFilter onClick={() => handleStarClick()} data-testid="star-filter">
+    <HoverAndFilter onClick={() => handleStarClick()} data-testid="star-filter" role={`${starValue}`}>
       <h5> <u>{starValue} stars</u></h5>
         <StyledParentStarBar >
           <StyledChildStarBar starRating={starRating}>
