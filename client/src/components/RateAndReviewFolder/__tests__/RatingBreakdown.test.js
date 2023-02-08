@@ -1,67 +1,74 @@
-import { render, screen } from '@testing-library/react';
-import RatingBreakdown from '../RatingBreakdown.jsx'
 import React from 'react'
+import { render, screen } from '@testing-library/react';
+import '@testing-library/react/dont-cleanup-after-each';
+import '@testing-library/jest-dom';
+import {describe, expect, test} from '@jest/globals'
+// import userEvent from '@testing-library/user-event';
+import RatingBreakdown from '../RatingBreakdown.jsx'
+// import axios from 'axios';
+
+const productRatings = {
+  1: 11.1,
+  2: 4.6,
+  3: 15.0,
+  4: 20.2,
+  5: 49.1
+}
+
+const filter = [];
 
 
-test('renders the rating breakdown section', () => {
-  render(<RatingBreakdown />);
+describe('Rating Breakdown', () => {
+  beforeEach(()=> {
+    render(<RatingBreakdown productRatings={productRatings} productRating={3.9} recommendPercentage={82} filter={filter}/>);
+  })
 
-  const breakdownElement = screen.getByTestId('rating-breakdown');
-  expect(breakdownElement).toBeTruthy();
-});
+  test('renders the rating breakdown section', () => {
+    const breakdownElement = screen.getByTestId('rating-breakdown');
+    expect(breakdownElement).toBeTruthy();
+  });
 
+  test('renders rating breakdown summary section', () => {
+    const breakdownElement = screen.getByTestId('rating-bd-sum');
+    expect(breakdownElement).toBeTruthy();
+  });
 
-// BD Summary tests
-test('renders rating breakdown summary section', () => {
-  render(<RatingBreakdown />);
+  test('Has product\'s correct average rating', () => {
+    const breakdownElement = screen.getByText('3.9');
+    expect(breakdownElement).toBeTruthy();
+  });
 
-  const breakdownElement = screen.getByTestId('rating-bd-sum');
-  expect(breakdownElement).toBeTruthy();
-});
-
-test('Has placeholder for product\'s average rating', () => {
-  render(<RatingBreakdown />);
-
-  const breakdownElement = screen.getByText('4.5');
-  expect(breakdownElement).toBeTruthy();
-});
-
-// test('Has placeholder for product\'s average rating star visual', () => {
-//   render(<RatingBreakdown />);
-
-//   const breakdownElement = screen.getByText('stars');
-//   expect(breakdownElement).toBeTruthy();
-// });
+  test('Has product\'s average rating star visual', () => {
+      const breakdownElement = screen.getByTestId('rating-star-visual');
+      expect(breakdownElement).toBeTruthy();
+    });
 
 
-//BD Recommendation tests
-test('renders rating breakdown recommendation section', () => {
-  render(<RatingBreakdown />);
+    //BD Recommendation tests
+    test('renders rating breakdown recommendation section', () => {
+      const breakdownElement = screen.getByTestId('rating-bd-rec');
+      expect(breakdownElement).toBeTruthy();
+    });
 
-  const breakdownElement = screen.getByTestId('rating-bd-rec');
-  expect(breakdownElement).toBeTruthy();
-});
+    test('has correct percentage for recommendation', () => {
+      const breakdownElement = screen.getByText('82% of reviewers recommend this product');
+      expect(breakdownElement).toBeTruthy();
+    });
 
-test('has placeholder for recommendation', () => {
-  render(<RatingBreakdown />);
+    test('renders rating breakdown stars section', () => {
+      const breakdownElement = screen.getByTestId('rating-bd-stars');
+      expect(breakdownElement).toBeTruthy();
+    });
 
-  const breakdownElement = screen.getByText('% of reviewers recommend this product');
-  expect(breakdownElement).toBeTruthy();
-});
+    test('Renders five stars', () => {
+      const breakdownElement = screen.getAllByTestId('star-filter');
+      expect(breakdownElement.length).toEqual(5);
+    });
 
-//BD Recommendation Star Links and Bars
-test('renders rating breakdown stars section', () => {
-  render(<RatingBreakdown />);
+    test('Star rating bars have labels', ()=> {
+      const breakdownElement = screen.getByText('3 stars');
+      expect(breakdownElement).toBeTruthy();
+    });
 
-  const breakdownElement = screen.getByTestId('rating-bd-stars');
-  expect(breakdownElement).toBeTruthy();
-});
-
-test('has placeholder for 5 stars', () => {
-  render(<RatingBreakdown />);
-
-  const breakdownElement = screen.getByText('5 Stars');
-  expect(breakdownElement).toBeTruthy();
-});
-
-// will need to write test to verify star bars are rending correctly
+    // will need to write test to verify star bars are rending correctly
+  });

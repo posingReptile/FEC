@@ -9,6 +9,7 @@ import { FaStar } from 'react-icons/fa';
 const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOptions, item}) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  // console.log(charArray, charChoice, setCharChoice, product_id, charOptions, item)
 
   // overall Rating
   const [starRating, setRating] = useState(0);
