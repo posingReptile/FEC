@@ -32,7 +32,7 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
   }
 
   return (
-    <div style={{border: '1px solid black'}}>
+    <div style={{border: '1px solid black'}} role="review-tile">
       <div className="Rating-And-Name">
         <h5>{starsMapper(review.rating)}</h5>
         <p>{review['reviewer_name']}</p>
@@ -56,7 +56,7 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         {review.response ? <p>review.response</p> : null }
       </div>
       <div>
-        <span>Helpful? <a onClick={() => clickHelper()}>Yes({helpfulCount})</a></span>
+        <span>Helpful? <a onClick={() => clickHelper() }role="click-helpful">Yes({helpfulCount})</a></span>
         <span><a onClick={()=> reportReview(review.review_id)}>Report</a></span>
       </div>
     </div>
