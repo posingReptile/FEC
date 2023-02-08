@@ -22,7 +22,7 @@ const NewQuestion = ( {productId, itemName} ) => {
   }
 
   return (
-    <form onSubmit={handleSubmitNewQuestion}>
+    <form data-testid="newQuestionForm" onSubmit={handleSubmitNewQuestion}>
       <div>Ask Your Question About the {itemName}</div>
       <p>Email Address:</p>
       <input name="email" onChange={handleQuestionInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com" required  ></input>

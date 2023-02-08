@@ -32,15 +32,15 @@ describe('Individual Answer', function () {
     expect(answerElement).toBeTruthy();
   });
 
-  // test('Yes should open modal onClick ', () => {
-  //   const yesClick = screen.getByTestId("answerYes");
-  //   fireEvent.click(yesClick);
+  test('Yes should open modal onClick ', () => {
+    const yesClick = screen.getByTestId("answerYes");
+    fireEvent.click(yesClick);
 
-  // });
+  });
 
-  // test('Should expand photo onClick ', () => {
-  //   const photo = screen.getByTestId("Photo");
-  //   fireEvent.click(photo);
-  // });
+  test('Should expand photo onClick ', () => {
+    const photo = screen.getByTestId("Photo");
+    fireEvent.click(photo);
+  });
 
 })
