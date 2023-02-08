@@ -19,7 +19,10 @@ axios.defaults.baseURL = 'http://localhost:3000';
 
 describe('Jest+RTL Workshop', function() {
   const user = userEvent.setup();
-  render(<Overview item={{}}/>)
+  beforeEach(() => {
+    render(<Overview item={{}}/>)
+  })
+
   it('should render the overview component', () => {
     return waitFor(() => expect(screen.queryByText(/Loading/)).not.toBeInTheDocument())
       .then(() => {
@@ -27,5 +30,15 @@ describe('Jest+RTL Workshop', function() {
         expect(test).toBeTruthy();
       })
   });
-  it('sh')
+
+  it('should render product description', () => {
+    return waitFor(() => expect(screen.queryByText(/Loading/)).not.toBeInTheDocument())
+      .then(() => {
+        let test = screen.getByTestId('testPI')
+        expect(test).toBeTruthy();
+      })
+  });
+
+
+
 });

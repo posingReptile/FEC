@@ -25,6 +25,13 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
   const [photoIndex, setPhotoIndex] = useState(0);
   let curProduct = product_id //37323 //37311;
 
+ function useCounter(initial = 0) {
+  const [count, setCount] = useState(initial);
+
+  return [count, () => setCount(count + 1)];
+}
+
+
   const productAxios = () => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
     .then((data) => {
@@ -40,8 +47,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
       });
       done();
     })
-
-
   }
 
   useEffect(() => {

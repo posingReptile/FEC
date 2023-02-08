@@ -8,3 +8,11 @@ test('Renders the Product Information', () => {
   const PI = screen.getByTestId('testPI');
   expect(PI).toBeTruthy();
 });
+
+describe('Button component', () => {
+  it('should render a button with the text "Click me"', () => {
+    const { getByText } = render( <button id="addToCart" onClick={() => {setModal(true);}}>Show Cart</button>);
+    const button = getByText('Show Cart');
+    expect(button).toBeInTheDocument();
+  });
+});
