@@ -7,7 +7,7 @@ let getProducts = (query) => {
     headers: {
       'User-Agent': 'request',
       'Authorization': `${process.env.TOKEN}`
-    },
+    }
     // params: {
     //   count: 10
     // }

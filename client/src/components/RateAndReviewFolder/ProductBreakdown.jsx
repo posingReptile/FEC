@@ -10,13 +10,13 @@ const ProductBreakdown = ({ productChar, charWords}) => {
   // console.log('this is charWords', charWords);
 
   return (
-    <div id="product-breakdown" data-testid='rating-product'>
+    <div id="product-breakdown" data-testid="rating-product">
         {productChar.map((char) => (
-          <div key={char.id} data-testid='product-bars'>
+          <div data-testid='product-bars' key={char.id} >
             <ProductRatingBar name={char.name} productRating={char.percent} height={15}/>
           <StyledWordList>
             {charWords[char.name].map((word, i) => (
-              <StyledWordItem key={i}>{word}</StyledWordItem>
+              <StyledWordItem key={i} data-testid="product-words">{word}</StyledWordItem>
             ))}
           </StyledWordList>
           </div>

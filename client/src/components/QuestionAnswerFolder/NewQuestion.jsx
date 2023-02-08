@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 
-
 const NewQuestion = ( {productId, itemName} ) => {
 
   const [questionInput, setQuestionInput] = useState({

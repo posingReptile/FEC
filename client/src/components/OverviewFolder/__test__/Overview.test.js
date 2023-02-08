@@ -30,7 +30,6 @@ describe('Jest+RTL Workshop', function() {
         expect(test).toBeTruthy();
       })
   });
-
   it('should render product description', () => {
     return waitFor(() => expect(screen.queryByText(/Loading/)).not.toBeInTheDocument())
       .then(() => {
@@ -38,7 +37,4 @@ describe('Jest+RTL Workshop', function() {
         expect(test).toBeTruthy();
       })
   });
-
-
-
 });

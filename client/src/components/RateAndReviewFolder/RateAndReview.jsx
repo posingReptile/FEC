@@ -25,10 +25,28 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   useEffect(() => {
     getReviewsHelper()
 
-    axios.get(`getReviewsMeta/?product_id=${product_id}`)
+    getReviewsMeta()
+
+  }, [product_id]);
+
+
+  // should maintain sort value, filter, and number of shown reviews
+  useEffect(() => {
+    getReviewsHelper();
+
+    if (filter.length > 0) {
+      setShownReviews(filteredReviews.slice(0, reviewCount))
+    } else {
+      setShownReviews(productReviews.slice(0, reviewCount))
+    }
+  },[reviewCount, filter, sortBy, reviewReported])
+
+
+  let getReviewsMeta = () => {
+    return axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
       let meta = data.data
-      // console.log(meta);
+      // console.log('this is data in rate and review', data);
 
       //overall Rating
       let avgRating = calculateAvg(meta.ratings);
@@ -96,32 +114,8 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
         [id]: ({name, rating: '', checked: 0})
       }))
       })
-
     });
-  }, [product_id]);
-
-
-  // should maintain sort value, filter, and number of shown reviews
-  useEffect(() => {
-    getReviewsHelper();
-
-    if (filter.length > 0) {
-      setShownReviews(filteredReviews.slice(0, reviewCount))
-    } else {
-      setShownReviews(productReviews.slice(0, reviewCount))
-    }
-  },[reviewCount, filter, sortBy, reviewReported])
-
-  // change reviews shown by star value
-  // useEffect(() => {
-  //   if (filter.length > 0) {
-  //   }
-  // }, [filter])
-
-  //change sorting of reviews list
-  // useEffect(() => {
-  //   getReviewsHelper()
-  // }, [sortBy]);
+  }
 
   let getReviewsHelper = () => {
     return axios.get(`getReviews/?product_id=${product_id}&sort=${sortBy}`)
@@ -190,9 +184,8 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
   }
 
-
   return (
-    <StyledRatingsAndReviews id="rlink" data-testid="rating-main">
+    <StyledRatingsAndReviews data-testid="rating-main" id="rlink" >
       <h4>Ratings & Reviews</h4>
       <div id="randr">
         <div id="breakdown">
