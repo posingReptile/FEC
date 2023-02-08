@@ -13,10 +13,10 @@ const CharReview = ({charArray, charChoice, setCharChoice, charOptions }) => {
   }
 
   return (
-    <div>
+    <div >
       {charArray.map(obj => {
         return (
-        <div key={obj.id}>
+        <div key={obj.id} role="characteristics-rating">
           <StyledFieldset>
             <legend>{obj.name}</legend>
             <CharRadioDiv>
@@ -26,7 +26,7 @@ const CharReview = ({charArray, charChoice, setCharChoice, charOptions }) => {
                 <label >
 
                     <input type="radio"
-                        // value={}
+                        role={`char-${charOptions[obj.name][index]}`}
                         name={charOptions[obj.name][index]}
                         onChange={(e) => handleCharClick(e, obj.id, index + 1)}
                         checked={charChoice[`${obj.id}`].checked === (index + 1)}/><br/>
