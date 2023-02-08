@@ -10,7 +10,7 @@ import Highlighter from 'react-highlight-words';
 import "./QuestionAnswerCss/IndividualQuestion.css";
 
 const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
-  Modal.setAppElement('#root')
+  if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
   const [modalIsOpen, setModal] = useState(false);
   const [questionId, setQuestionId] = useState(0);
@@ -44,7 +44,6 @@ const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
         .catch((err) => console.log('err in handleMarkQuestionHelpful axios Request', err))
     }
   }
-
   let answers = [];
   for (let key in question.answers) {
     answers.push(question.answers[key])
@@ -60,11 +59,11 @@ const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
   })
 
   return (
-    <div className="QBlock" key={question.question_id}>
+    <div className="QBlock" data-testid="QBlock" key={question.question_id}>
       <h3><strong>Q:<Highlighter searchWords={[searchInput]} textToHighlight={question.question_body} /></strong></h3>
       <div className="Qhelpful">
         Helpful? &nbsp;
-        <u className="questionYes" id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
+        <u className="questionYes" data-testid="questionYes"id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
         { markedHelpful
         ?  <div>({question.question_helpfulness + 1})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
         :  <div>({question.question_helpfulness})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
@@ -75,7 +74,7 @@ const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>
-      <div className="answer">{mappedAnswers}</div>
+      <div className="answer" data-testid="answer">{mappedAnswers}</div>
       <div className="LoadMoreAnswers">
         {answers.length > 2 && numOfAnswers < answers.length
           ? <div className="MoreAnswer" onClick={handleLoadMoreAnswer}>Load More Answers &nbsp; &nbsp;</div>

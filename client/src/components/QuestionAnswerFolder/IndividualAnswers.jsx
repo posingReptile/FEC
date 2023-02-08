@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { AiOutlineClose } from "react-icons/ai";
 
 const IndividualAnswers = ({ answer, searchInput }) => {
+  if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
   const [markedHelpful, setMarkedHelpful] = useState(false);
   const [hasBeenReported, setHasBeenReported] = useState(false);
@@ -43,14 +44,14 @@ const IndividualAnswers = ({ answer, searchInput }) => {
     return <div>Answer has been reported and sent for review.</div>
   } else {
     return (
-      <div className="answerBlock" key={answer.id}>
+      <div className="answerBlock" data-testid="answerBlock" key={answer.id}>
         <div className="answerBody">
           <h3><strong>A:&nbsp;<Highlighter searchWords={[searchInput]} textToHighlight={answer.body} /></strong></h3>
         </div>
         <div className="answerPhotos">
           {answer.photos ? answer.photos.map(photo => {
             return (
-              <div onClick={() => { openModal(photo) }} key={photo} style={{ width: '10%', position: 'relative' }}>
+              <div data-testid="Photo" onClick={() => { openModal(photo) }} key={photo} style={{ width: '10%', position: 'relative' }}>
                 <img src={photo} alt="placeholder" />
               </div>
             )
@@ -59,10 +60,10 @@ const IndividualAnswers = ({ answer, searchInput }) => {
         <div className="answerInfo">
           &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;Helpful?&nbsp; &nbsp;
           <div className="helpfulBlock">
-            <u className="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }} >Yes</u>
+            <u className="answerYes" data-testid="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }} >Yes</u>
             <span className={"marked" + markedHelpful} >({markedHelpful ? answer.helpfulness + 1 : answer.helpfulness})</span>
           </div>
-          <u className="Report" onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
+          <u className="Report"  onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
           <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
             <div className="singlePhotoContainer">
               <img className="singlePhoto" src={currentPhoto} alt="placeholder" />
