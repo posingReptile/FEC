@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
 import {describe, expect} from '@jest/globals'
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 import NewReview from '../NewReview.jsx'
 // import axios from 'axios';
 
