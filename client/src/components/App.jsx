@@ -38,7 +38,8 @@ const App = () => {
           productRating={productRating}
           setProductRating={setProductRating}
           totalNumReviews={totalNumReviews}
-          setTotalNumReviews={setTotalNumReviews}/>
+          setTotalNumReviews={setTotalNumReviews}
+          handleDataClick={handleDataClick}/>
       </div>
     </div>
   );

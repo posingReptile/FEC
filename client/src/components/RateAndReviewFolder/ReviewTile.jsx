@@ -12,7 +12,9 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
   const [modalIsOpen, setModal] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState('');
 
-  if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
+  if (process.env.NODE_ENV !== 'test') {
+    Modal.setAppElement('#root');
+  }
 
   let starsMapper = (rating) => {
     let starFilled = '★';
@@ -72,7 +74,7 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         <HorizontalImgListTile>
         {review.photos ? review.photos.map(photo => {
           return (
-          <StyledImgList key={photo.id} style={{width: '10%', position: 'relative'}} onClick={() => openModal(photo)}>
+          <StyledImgList key={photo.id} onClick={() => openModal(photo)}>
             <img src={photo.url} alt="placeholder"/>
           </StyledImgList>
         )}) : null}
@@ -82,8 +84,8 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         </div>
       </div>
       <div className="HelpfulOrReport">
-        <span>Helpful? <a onClick={() => clickHelper() }role="click-helpful">Yes({helpfulCount})</a></span>
-        <span><a onClick={()=> reportReview(review.review_id)}>Report</a></span>
+        <span>Helpful? <a onClick={() => clickHelper() }role="click-helpful">Yes({helpfulCount}) |</a></span>
+        <span><a onClick={()=> reportReview(review.review_id)} role="click-report">&nbsp;Report</a></span>
       </div>
       <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
           <div className="singlePhotoContainer">

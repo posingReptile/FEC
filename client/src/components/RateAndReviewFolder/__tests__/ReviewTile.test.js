@@ -39,6 +39,11 @@ describe('Rating Breakdown', () => {
     fireEvent.click(helpfulClick)
   });
 
+  it('report button functional', ()=> {
+    const reportClick = screen.getByRole('click-report');
+    fireEvent.click(reportClick)
+  });
+
   it('renders review tile body too', () => {
     const reviewTile = screen.getByTestId("review-tile-body");
     expect(reviewTile).toBeTruthy();

@@ -6,7 +6,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import { StyledRatingsAndReviews } from '../styled/RAndR.styled.js';
 import './RateAndReview.css';
 
-const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews, item }) => {
+const RateAndReview = ({ product_id, productRating, setProductRating, totalNumReviews, setTotalNumReviews, item, handleDataClick }) => {
   const [productReviews, setReviews] = useState([]);
   const [reviewsShown, setShownReviews] = useState([]);
   const [productRatings, setRating] = useState({});
@@ -17,7 +17,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   const [charChoice, setCharChoice] = useState({});
   const [reviewCount, setReviewCount] = useState(2);
   const [sortBy, setSortBy] = useState('relevant');
-  // to filter reviews
   const [filter, setFilter] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [reviewReported, setReviewReported] = useState(false);
@@ -30,7 +29,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   }, [product_id]);
 
 
-  // should maintain sort value, filter, and number of shown reviews
   useEffect(() => {
     getReviewsHelper();
 
@@ -46,7 +44,6 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     return axios.get(`getReviewsMeta/?product_id=${product_id}`)
     .then(data => {
       let meta = data.data
-      // console.log('this is data in rate and review', data);
 
       //overall Rating
       let avgRating = calculateAvg(meta.ratings);
@@ -185,7 +182,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
   }
 
   return (
-    <StyledRatingsAndReviews data-testid="rating-main" id="rlink" >
+    <StyledRatingsAndReviews data-testid="rating-main" id="rlink"  onClick={(e) => handleDataClick(e, 'Ratings&Review')}>
       <h4 id="randrtitle">Ratings & Reviews</h4>
       <div id="randr">
         <div id="breakdown">
