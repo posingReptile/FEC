@@ -2,14 +2,20 @@
 #randr {
   display: flex;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: calc(100% - 50px);
   max-width: 1280px;
+  /* padding: 1%; */
 }
 
 #rlink h4 {
   color: rgba(39, 50, 39, 0.7);
 
+}
+
+#randrtitle {
+  padding-left: 1%
 }
 
 #breakdown {
@@ -29,9 +35,10 @@
 }
 
 #reviews-list {
-  max-height: 800px;
+  max-height: 80vh;
   overflow-y: scroll;
   overflow: auto;
+  box-shadow: 1px 1px 3px grey;
 }
 
 .review-btns {
@@ -79,9 +86,37 @@
 
 /* Review Tile Styling */
 .reviewTileContainer {
-  border: 0.5px solid rgba(39, 50, 39, 0.3);
+  /* border: 0.5px solid rgba(39, 50, 39, 0.3); */
+  /* box-shadow: 1px 0.5px 2px grey; */
+  min-height: 200px;
+  padding: 0% 0% 1% 0%;
+  margin: 1% 1% 0% 1%;
+  border: 1px solid rgba(39, 50, 39, 0.3);
+  border-style: none none solid none;
 }
 
+.Rating-And-Name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgba(39, 50, 39, 0.6)
+}
+
+.Name-And-Date {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.reviewName {
+  padding-right: 5px;
+}
+
+/* .reviewDate {
+  font-size: small;
+  font-style: italic;
+} */
 
 
 /* Review Tile Expanded styling */

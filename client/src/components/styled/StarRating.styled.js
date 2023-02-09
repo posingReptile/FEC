@@ -8,6 +8,7 @@ export const StyledStarRating = styled.h5`
   font-size: ${({fontSize}) => fontSize || '20'}px;
   font-family: Times;
   line-height: 1;
+  margin-top: 10px;
 
   &::before {
     content: "★★★★★";
@@ -18,6 +19,10 @@ export const StyledStarRating = styled.h5`
   }
 `
 // slate gray : #2f4f4f
+
+// export const StyledProductRating = styled.h5`
+//   font-size: 70px;
+// `
 
 export const StyledRecommendPercentage = styled.p`
   font-size: 12px;
@@ -30,7 +35,13 @@ export const StyledHeadingDiv = styled.div`
 
   & > h5 {
     padding-right: 5px;
+    padding-top: 5px
+    margin-top: 10px
     font-size: 20px;
+  }
+  & > h4 {
+    padding-right: 5px;
+    font-size: 50px;
   }
 `
 

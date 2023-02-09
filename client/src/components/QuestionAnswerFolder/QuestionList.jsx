@@ -57,7 +57,7 @@ const QuestionList = ( { productId, numberOfQuestions, handleChangeQuestionCount
   return (
     <div>
       <div className="SearchBar">
-        <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."></input>
+        <input className="QuestionSearch" onChange={(e) => { setSearchInput(e.target.value) }} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
         <HiMagnifyingGlass className="SearchButton" />
       </div>
 
