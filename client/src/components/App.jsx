@@ -23,7 +23,6 @@ const App = () => {
     const elementClicked = e.target;
     const dateAndTime = 'Time: ' + date.getHours() + ':' + date.getMinutes() + ":" + date.getSeconds() + " Date " + date.getMonth() + ":" +date.getDay() + ":" + date.getFullYear() ;
     customerData[dateAndTime] = {elementClicked, dateAndTime, module};
-    console.log(customerData)
   };
 
   return (
