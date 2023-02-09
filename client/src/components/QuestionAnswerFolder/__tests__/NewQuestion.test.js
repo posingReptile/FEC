@@ -1,10 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
 import { describe, expect, test } from '@jest/globals'
-import userEvent from '@testing-library/user-event';
 import NewQuestion from '../NewQuestion'
 
 const itemName = 'test'
