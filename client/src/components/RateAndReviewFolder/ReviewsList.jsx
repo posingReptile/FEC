@@ -10,7 +10,6 @@ import './RateAndReview.css';
 const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews, markHelpful, reportReview, charArray, charChoice, setCharChoice, product_id, charOptions, item }) => {
   const [modalIsOpen, setModal] = useState(false);
 
-  console.log(reviewsShown)
 
   if (process.env.NODE_ENV !== 'test') {
     Modal.setAppElement('#root');
