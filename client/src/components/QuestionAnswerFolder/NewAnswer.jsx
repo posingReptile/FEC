@@ -14,7 +14,6 @@ const NewAnswer = ({ questionId, itemName, questionBody }) => {
     question_id: questionId
   })
   const handleSubmitNewQuestion = () => {
-    console.log(answerInput)
     axios.post('/addAnswer', {value: answerInput})
     .catch(err => console.log('err in axios post add question', err))
   }
@@ -24,7 +23,7 @@ const NewAnswer = ({ questionId, itemName, questionBody }) => {
   }
 
   return (
-    <form onSubmit={handleSubmitNewQuestion}>
+    <form data-testid="newAnswerForm" onSubmit={handleSubmitNewQuestion}>
     <div>Submit Your Answer: </div>
     <div>{itemName}: {questionBody}</div>
       <p>Email Address:</p>
@@ -36,7 +35,7 @@ const NewAnswer = ({ questionId, itemName, questionBody }) => {
       <p>Upload an Image: </p>
       <input type="file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg"  onChange={(e) => setImag(previous => [...previous, URL.createObjectURL(e.target.files[0])])} multiple />
       <img src={imag} height="200" width="200" alt="" />
-      <input type="submit" />
+      <input data-testid="Submit" type="submit" />
     </form>
   )
 }
