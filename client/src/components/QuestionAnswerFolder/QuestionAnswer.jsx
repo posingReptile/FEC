@@ -28,7 +28,7 @@ const QuestionAnswer = ( {product_id, itemName} ) => {
     <div className="QuestionAnswersBlock">
       <h3>Questions & Answers</h3>
       <QuestionList handleChangeQuestionCount={handleChangeQuestionCount} productId={product_id} numberOfQuestions={numberOfQuestions} itemName={itemName} />
-      <div>
+      <div className="QAButtons">
         {questionCount > 2 && numberOfQuestions === 2
           ? <button className="MoreQuestionsButton" onClick={() => { setNumberOfQuestions(questionCount)}}>More Answered Questions</button>
           : <button hidden={true}></button>
