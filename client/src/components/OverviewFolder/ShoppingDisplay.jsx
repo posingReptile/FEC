@@ -7,7 +7,7 @@ const ShoppingDisplay = ({cart, removeItem}) => {
   return (
     <div id="ShoppingDisplay" data-testid="testShopD">
       {
-        cart.length === 0 ? <div id="emptyCart">Your cart is empty!</div> :
+        cart.length === 0 ? <div id="emptyCart"><p>Your cart is empty!</p></div> :
         <div id="allShoppedItem">
           {cart.map((item, index) => (
             <div key={index} className='shoppedItem'>
