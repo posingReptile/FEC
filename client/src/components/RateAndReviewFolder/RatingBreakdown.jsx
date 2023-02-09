@@ -17,7 +17,7 @@ const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, f
   return (
     <div data-testid='rating-breakdown'>
       <StyledHeadingDiv data-testid='rating-bd-sum'>
-        <h5>{productRating} </h5>
+        <h4>{productRating} </h4>
         <StyledStarRating ratingPercent={ratingPercent} data-testid='rating-star-visual'/>
       </StyledHeadingDiv>
 

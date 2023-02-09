@@ -56,8 +56,11 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
     <div className="reviewTileContainer" role="review-tile">
       <div className="Rating-And-Name">
         <h5>{starsMapper(review.rating)}</h5>
-        <p>{review['reviewer_name']}</p>
-        <p>{date}</p>
+        <span className="Name-And-Date">
+          <p className="reviewName">{review['reviewer_name']},</p>
+          <p className="reviewDate">{date}</p>
+        </span>
+
       </div>
       <h5><strong>{review.summary}</strong></h5>
       <div>

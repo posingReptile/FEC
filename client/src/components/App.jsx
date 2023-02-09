@@ -19,7 +19,7 @@ const App = () => {
     <div>
       <NavBar id="nav-bar" cart={cart}/>
       <Overview product_id={product_id} productRating={productRating} totalNumReviews={totalNumReviews} cart={cart} setCart={setCart} item={item} setItem={setItem}/>
-      {/* <RelatedProducts product_id={product_id} setProductId={setProductId}/> */}
+      <RelatedProducts product_id={product_id} setProductId={setProductId}/>
       <QuestionAnswer product_id={product_id} itemName={item.name}/>
       <RateAndReview product_id={product_id}
         item={item}
