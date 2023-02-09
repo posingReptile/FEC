@@ -2,11 +2,9 @@ import styled from 'styled-components';
 // height: calc( 100% - 50px );
 //remove border prior to commit
 export const StyledRatingsAndReviews = styled.div`
-  width: calc( 100% - 50px );
-  margin: auto;
-  max-width: 1280px;
+  width: 100%;
   font-family: "adobe-clean", sans-serif;
-  display: border-box;
+  justify-content: center;
 
   `
 
