@@ -1,8 +1,6 @@
 #relatedProduct {
-  margin: 0 auto;
   font-family: "adobe-clean", sans-serif;
-  width: calc( 100% - 50px );
-  max-width: 1280px;
+  width: 100%;
   margin-bottom: 3%;
   margin-top: 3%;
 }
