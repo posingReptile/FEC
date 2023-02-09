@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyledSort } from '../styled/Sort.styled.js';
+import './RateAndReview.css';
 
 const SortOptions = ({ setSortBy, totalNumReviews }) => {
   return (
-    <StyledSort>
-      <h5>{totalNumReviews} reviews, &nbsp;sorted by:</h5>
+    <div className="sort-styled">
+      <h5 className="sort-label">{totalNumReviews} reviews, &nbsp;sorted by:</h5>
       <select onChange={(e) => setSortBy(e.target.value)}>
         <option value="relevant">Relevant</option>
         <option value="helpful">Helpful</option>
         <option value="newest">Newest</option>
       </select>
-    </StyledSort>
+    </div>
   )
 }
 

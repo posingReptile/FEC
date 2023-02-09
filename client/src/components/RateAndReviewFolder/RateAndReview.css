@@ -34,6 +34,25 @@
   box-shadow: 1px 1px 3px grey;
 }
 
+/* Sort Options drop down */
+
+/* sort div */
+.sort-styled {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+.sort-label {
+  padding-right: 5px;
+}
+
+select {
+  border-radius: 4px;
+  font-style: inherit;
+  background-color: rgb(255, 254, 255);
+}
+
 .review-btns {
   display: flex;
   justify-content: space-evenly;
@@ -86,13 +105,28 @@
   margin: 1% 1% 0% 1%;
   border: 1px solid rgba(39, 50, 39, 0.3);
   border-style: none none solid none;
+  text-size-adjust: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+/* .notHelpfulDiv {
+
+} */
 
 .Rating-And-Name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: rgba(39, 50, 39, 0.6)
+  color: rgba(39, 50, 39, 0.6);
+  text-size-adjust: auto;
+}
+.Rating-And-Name h5 {
+  font-size: 16px;
+  padding-bottom: 1%;
+  color:rgba(39, 50, 39, 0.8);
+  text-size-adjust: auto;
 }
 
 .Name-And-Date {
@@ -100,11 +134,44 @@
   flex-direction: row;
   font-size: 14px;
   font-style: italic;
+  text-size-adjust: auto;
 }
 
 .reviewName {
   padding-right: 5px;
+  text-size-adjust: auto;
 }
+
+.reviewDate {
+  text-size-adjust: auto;
+}
+
+.reviewSum {
+  font-size: 16px;
+  text-size-adjust: auto;
+}
+
+p.recommended {
+  color: rgba(39, 50, 39, 0.6);
+  line-height: 8px;
+  padding-top: 5px;
+  padding-bottom: 8px;
+  font-weight: 400;
+  font-style: oblique;
+  text-size-adjust: auto;
+}
+
+.HelpfulOrReport {
+  display: flex;
+  justify-self: end;
+  color: rgba(39, 50, 39, 0.7);
+  font-size: 14px;
+}
+.HelpfulOrReport a {
+  font-size: inherit;
+  color: inherit;
+}
+
 
 /* .reviewDate {
   font-size: small;
@@ -114,8 +181,8 @@
 
 /* Review Tile Expanded styling */
 .expandedPhoto {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  justify-self: end;
   max-width: 50%;
 
 }

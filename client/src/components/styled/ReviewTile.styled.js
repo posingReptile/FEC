@@ -14,3 +14,12 @@ export const StyledImgList = styled.li`
   flex-direction: row;
   width: 20%;
 `
+export const StyledATag = styled.a`
+  font-size: 14px;
+  font-weight: 400;
+
+  &:hover {
+
+    font-style: italic
+  }
+`
