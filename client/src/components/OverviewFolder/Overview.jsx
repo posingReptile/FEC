@@ -12,7 +12,7 @@ import OverviewFooter from "./OverviewFooter.jsx";
 
 
 
-const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, item, setItem}) => {
+const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, item, setItem, handleDataClick}) => {
 
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
@@ -42,9 +42,7 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
         setItemStyle(productData[0]);
         setMainPhoto(productData[0].photos);
         setStyleResult(productData);
-        done();
       });
-      done();
     })
   }
 
@@ -61,8 +59,8 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
   }, [itemStyle])
 
   return (
-    <div>
-       <div id="overview" data-testid="testOV">
+    <div onClick={(e) => handleDataClick(e, 'Overview')}>
+       <div id="overview" data-testid="testOV" >
           <div id="overviewHeader">
             <ImageGallery photos={itemStyle} mainPhoto={mainPhoto} setMainPhoto={setMainPhoto}
             expandView={expandView} setExpandView={setExpandView} zoom={zoom} setZoom={setZoom}

@@ -57,3 +57,84 @@ p, h1, h2, h3, h4, h5, h6 {
   max-width:  1280px;
   margin: 0 auto;
 }
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: whitesmoke;
+    background: #333e34;
+  }
+   h1, h3, body #rlink h4, body h5 {
+    color: rgb(218, 165, 32);
+  }
+
+  body a {
+    color: rgb(218, 165, 32);
+  }
+
+  body .hGFGsi {
+    color: #ac8219;
+    background: #242725;
+  }
+
+  body #productInformation {
+    background: #646F58;
+    box-shadow: 1px 1px 5px #614704;
+  }
+
+  body #imageGallery {
+    box-shadow: 1px 1px 3px #504B3A;
+    background-color: #242725;
+  }
+
+  body #main {
+    background-color: #504B3A;
+  }
+  #sizeSelect {
+    background: bisque;
+  }
+  body #productInformation button {
+    background: bisque;
+  }
+  body button {
+    background: bisque;
+  }
+  body .stylePhotos {
+    border: 1px gray solid;
+    box-shadow: 2px 2px 4px #44443f;
+  }
+  body .column {
+    border: 1px gray solid;
+  }
+
+  body .relatedPhotos {
+    background: #646F58;
+    box-shadow: 1px 1px 5px #614704;
+  }
+  body .QuestionSearch {
+    background: bisque;
+    /* border: 2px solid black;
+    border-style: solid none solid solid; */
+  }
+
+  body .hQxmrR {
+    color: whitesmoke;
+  }
+  body p.recommended {
+    color: whitesmoke;
+  }
+  body .Rating-And-Name h5 {
+    color: rgb(218, 165, 32);
+  }
+  /* body .HelpfulOrReport {
+    color: rgb(166, 164, 164);
+  } */
+  body #reviews-list {
+    background: #646F58;
+  }
+
+  body .reviewTileContainer {
+    background: #646F58;
+  }
+
+}
