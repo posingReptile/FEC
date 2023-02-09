@@ -10,13 +10,15 @@ const SizeDropdown = ({sizeOption, setSizeSelector}) => {
   };
 
   return (
-    <div id="sizeDropdown" data-testid="testSD">
-      {sizeOption.length > 0 ? <select id="sizeSelect" onChange={selectFunc} defaultValue="Select Size">
-        <option value="" hidden>Select Size</option>
-        {sizeOption.map((item, index) => (
-            <option key={index} value={item} className="dropdown-item">{item}</option>
-          ))}
-      </select> : <select id="sizeSelect" disabled><option value="-" selected> OUT OF STOCK </option></select> }
+    <div id="sizeDropdown">
+      {sizeOption.length > 0 ?
+        <select id="sizeSelect" data-testid="testSD" onChange={selectFunc} defaultValue="Select Size">
+          <option value="" hidden>Select Size</option>
+          {sizeOption.map((item, index) => (
+              <option data-testid="selectOption" key={index} value={item} className="dropdown-item">{item}</option>
+            ))}
+        </select> :
+        <select id="sizeSelect" disabled><option value="-" selected> OUT OF STOCK </option></select> }
     </div>
   );
 };

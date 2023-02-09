@@ -22,7 +22,7 @@ const ShoppingDisplay = ({cart, removeItem}) => {
                   <div className="cPrice">${Number(item.Price) * item.Quantity}</div>
                 </div>
               </div>
-              <AiOutlineClose className="close" onClick={() => {removeItem(index)}}/>
+              <AiOutlineClose className="closeCart" onClick={() => {removeItem(index)}}/>
             </div>
             ))}
         </div>

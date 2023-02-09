@@ -16,7 +16,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
 
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
-
   let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos);
   let [expandView, setExpandView] = useState(false)
   let [zoom, setZoom] = useState(false);
@@ -24,6 +23,13 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
 
   const [photoIndex, setPhotoIndex] = useState(0);
   let curProduct = product_id //37323 //37311;
+
+ function useCounter(initial = 0) {
+  const [count, setCount] = useState(initial);
+
+  return [count, () => setCount(count + 1)];
+}
+
 
   const productAxios = () => {
     axios.get(`/getProducts/?product_id=${curProduct}`)
@@ -40,8 +46,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
       });
       done();
     })
-
-
   }
 
   useEffect(() => {

@@ -73,7 +73,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
           <QDropdown option={quantityObj} sizeSelector={sizeSelector} setQuantitySelector={setQuantitySelector} quantity={quantity}/>
         </div>
         <div className="checkout">
-        {size.length > 0 ? <button id="addToBag" onClick={addCart}>Add To Bag</button> : null}
+        {size.length > 0 ? <button id="addToBag" data-testid="addBagButton" onClick={addCart}>Add To Bag</button> : null}
         <button id="addToCart" onClick={() => {setModal(true);}}>Show Cart</button>
 
         <Modal id="shoppingModal"isOpen={modalIsOpen} onRequestClose={() => {setModal(false)}}>
