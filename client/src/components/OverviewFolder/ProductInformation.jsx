@@ -76,7 +76,7 @@ const ProductInformation = ({item, itemStyle, allStyleResult, setItemStyle, chec
         {size.length > 0 ? <button id="addToBag" data-testid="addBagButton" onClick={addCart}>Add To Bag</button> : null}
         <button id="addToCart" onClick={() => {setModal(true);}}>Show Cart</button>
 
-        <Modal id="shoppingModal"isOpen={modalIsOpen} onRequestClose={() => {setModal(false)}}>
+        <Modal className="shoppingModal"isOpen={modalIsOpen} onRequestClose={() => {setModal(false)}}>
           <ShoppingDisplay cart={cart} removeItem={removeItem}/>
           <button id="checkOut"onClick={() => {setModal(false); setCart([])}}>Check out</button>
         </Modal>
