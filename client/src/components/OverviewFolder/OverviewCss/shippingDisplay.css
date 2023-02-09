@@ -1,6 +1,6 @@
 .shoppingModal {
-  width: 20vh;
-  height: 50vh;
+  width: 60vh;
+  height: 70vh;
   background: white;
   position: absolute;
   left: 10%;
@@ -10,7 +10,7 @@
 
 #ShoppingDisplay {
   display: flex;
-  height: 83%;
+  height: 80%;
   justify-content: center;
   margin: 5%;
   background-color: hwb(12 91% 7%);
