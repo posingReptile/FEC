@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TimeAgo from 'react-timeago';
 import axios from 'axios'
 import "./QuestionAnswerCss/IndividualAnswer.css";
 import Highlighter from 'react-highlight-words';
@@ -39,6 +38,10 @@ const IndividualAnswers = ({ answer, searchInput }) => {
     setModal(false);
   }
 
+  let date = new Date(answer.date);
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  date = date.toLocaleDateString('en-US', dateOptions);
+
 
   if (hasBeenReported) {
     return <div>Answer has been reported and sent for review.</div>
@@ -58,7 +61,7 @@ const IndividualAnswers = ({ answer, searchInput }) => {
           }) : null}
         </div>
         <div className="answerInfo">
-          &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;<TimeAgo date={answer.date} locale="en-US" />&nbsp; &nbsp; | &nbsp; &nbsp;Helpful?&nbsp; &nbsp;
+          &nbsp; &nbsp; by {answer.answerer_name}, &nbsp;{date}&nbsp; &nbsp; | &nbsp; &nbsp;Helpful?&nbsp; &nbsp;
           <div className="helpfulBlock">
             <u className="answerYes" data-testid="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }} >Yes</u>
             <span className={"marked" + markedHelpful} >({markedHelpful ? answer.helpfulness + 1 : answer.helpfulness})</span>
