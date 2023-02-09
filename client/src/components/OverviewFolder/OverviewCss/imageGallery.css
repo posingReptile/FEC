@@ -27,6 +27,7 @@
   margin-right: auto;
   height: 100%;
   object-fit: fill;
+  object-position: 30% 30%;
 }
 
 #horizontalCarousel {
@@ -147,10 +148,9 @@
 }
 
 #expandview {
-  /* transform-origin: center center;
-  object-fit: fill;
-  margin: 0 auto; */
   height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 
 
