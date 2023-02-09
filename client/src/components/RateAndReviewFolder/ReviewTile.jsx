@@ -54,32 +54,34 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
 
   return (
     <div className="reviewTileContainer" role="review-tile">
-      <div className="Rating-And-Name">
-        <h5>{starsMapper(review.rating)}</h5>
-        <span className="Name-And-Date">
-          <p className="reviewName">{review['reviewer_name']},</p>
-          <p className="reviewDate">{date}</p>
-        </span>
+      <div className="notHelpfulDiv">
+        <div className="Rating-And-Name">
+          <h5>{starsMapper(review.rating)}</h5>
+          <span className="Name-And-Date">
+            <p className="reviewName">{review['reviewer_name']},</p>
+            <p className="reviewDate">{date}</p>
+          </span>
 
-      </div>
-      <h5><strong>{review.summary}</strong></h5>
-      <div>
-        {review.recommend ? <p>{'✓ I recommend this product'}</p> : null}
-      </div>
-      <ReviewTileBody bodyText={review.body}/>
+        </div>
+        <h5 className="reviewSum"><strong>{review.summary}</strong></h5>
+        <div>
+          {review.recommend ? <p  className="recommended">{'✓ I recommend this product'}</p> : null}
+        </div>
+        <ReviewTileBody bodyText={review.body}/>
 
-      <HorizontalImgListTile>
-      {review.photos ? review.photos.map(photo => {
-        return (
-        <StyledImgList key={photo.id} style={{width: '10%', position: 'relative'}} onClick={() => openModal(photo)}>
-          <img src={photo.url} alt="placeholder"/>
-        </StyledImgList>
-      )}) : null}
-      </HorizontalImgListTile>
-      <div>
-        {review.response ? <p>review.response</p> : null }
+        <HorizontalImgListTile>
+        {review.photos ? review.photos.map(photo => {
+          return (
+          <StyledImgList key={photo.id} style={{width: '10%', position: 'relative'}} onClick={() => openModal(photo)}>
+            <img src={photo.url} alt="placeholder"/>
+          </StyledImgList>
+        )}) : null}
+        </HorizontalImgListTile>
+        <div>
+          {review.response ? <p>review.response</p> : null }
+        </div>
       </div>
-      <div>
+      <div className="HelpfulOrReport">
         <span>Helpful? <a onClick={() => clickHelper() }role="click-helpful">Yes({helpfulCount})</a></span>
         <span><a onClick={()=> reportReview(review.review_id)}>Report</a></span>
       </div>

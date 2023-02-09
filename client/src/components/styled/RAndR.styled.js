@@ -5,8 +5,5 @@ export const StyledRatingsAndReviews = styled.div`
   width: 100%;
   font-family: "adobe-clean", sans-serif;
   justify-content: center;
-
+  padding-bottom: 3%;
   `
-
-  // border: 1px solid darkgrey;
-  // background-color: rgba(210, 180, 140, 0.05 );
