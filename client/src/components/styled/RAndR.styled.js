@@ -5,6 +5,7 @@ export const StyledRatingsAndReviews = styled.div`
   width: 100%;
   font-family: "adobe-clean", sans-serif;
   justify-content: center;
+  padding-bottom: 3%;
 
   `
 
