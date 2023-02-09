@@ -47,8 +47,8 @@ const ImageGallery = ({photos, mainPhoto, setMainPhoto, expandView, setExpandVie
     <div id="imageGallery" data-testid="testIG">
       <div id="main">
         {expandView ?
-        <div id="test" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder" ></img></div> :
-        <div id="test" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder"></img></div>}
+        <div id="test" data-testid="isexpandview" onClick={() => {setZoom(!zoom); expandFunction(zoom)}} style={{cursor: 'crosshair'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder" ></img></div> :
+        <div id="test" data-testid="notexpandview" onClick={() => {setExpandView(!expandView)}} style={{cursor: 'zoom-in'}}><img id="expandview" src={mainPhoto[photoIndex].url || outOfStock} alt="placeHolder"></img></div>}
         {expandView && !zoom ? <div className="expand" onClick={() => {setExpandView(!expandView)}}><IoIosExpand /></div> : null}
       </div>
       {zoom ? null : <CarouselThumbnail photos={photos.photos} setMainPhoto={setMainPhoto} mainPhoto={mainPhoto} zoom={zoom} photoIndex={photoIndex} setPhotoIndex={setPhotoIndex}/>}

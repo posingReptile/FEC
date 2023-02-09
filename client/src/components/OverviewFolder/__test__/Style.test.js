@@ -14,7 +14,3 @@ test('Renders the Style Icons', () => {
   expect(SI).toBeTruthy();
 });
 
-test('does something' () => {
-  const SI = screen.getByTestId('testSI');
-  .toContain(qa)).toEqual(true);
-})

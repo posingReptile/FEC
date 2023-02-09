@@ -16,7 +16,6 @@ const Overview = ({product_id, productRating, totalNumReviews, cart, setCart, it
 
   let [itemStyle, setItemStyle] = useState(Static.productStyle.results[0]);
   let [allStyleResult, setStyleResult] = useState(Static.productStyle.results);
-
   let [mainPhoto, setMainPhoto] = useState(Static.productStyle.results[0].photos);
   let [expandView, setExpandView] = useState(false)
   let [zoom, setZoom] = useState(false);

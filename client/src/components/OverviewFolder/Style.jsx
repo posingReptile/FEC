@@ -7,10 +7,10 @@ const Style = ({allStyleResult, setItemStyle, check, setCheck, setPhotoIndex}) =
 
   return (
       <div className="styleIcons" data-testid="testSI">
-        {allStyleResult.map((item) => (
+        {allStyleResult.map((item, index) => (
           <div className="styleDiv" key={item.style_id}>
             {item.style_id === check ? <FaCheckCircle id="check"/>: null}
-            <img className="stylePhotos" src={item.photos[0].thumbnail_url || outOfStock} alt="placeHolder" onClick={() => { setCheck(item.style_id); setItemStyle(item); setPhotoIndex(0) }}></img>
+            <img className="stylePhotos" data-testid={"styleIconImg" + index.toString()} src={item.photos[0].thumbnail_url || outOfStock} alt="placeHolder" onClick={() => { setCheck(item.style_id); setItemStyle(item); setPhotoIndex(0) }}></img>
           </div>
         ))}
       </div>

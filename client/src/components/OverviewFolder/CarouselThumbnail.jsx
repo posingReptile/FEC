@@ -32,11 +32,12 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
   }
 
   var scroll = (number) => {
-    var currentHeight = scrollDiv.scrollTop;
+    let curScrollDiv = scrollDiv || {};
+    var currentHeight = curScrollDiv.scrollBy ?
     scrollDiv.scrollBy({
       top: number,
       behavior: 'smooth'
-    })
+    }) : null
   }
 
   if (document.getElementById('horizontalCarousel')) {
@@ -50,18 +51,18 @@ const CarouselThumbnail = ({photos, mainPhoto, setMainPhoto, photoIndex, setPhot
           <div id="horizontalCarousel" data-testid="testHC">
             <div id="current">
               {mainPhoto.map(({thumbnail_url, url}, index) => (
-                <div key={index}>
+                <div key={index} onClick={e => setPhotoIndex(index)} data-testid={"changePhoto" + index.toString()} >
                   {photoIndex !== index ?
-                    <img className="column" src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img> :
-                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url  || outOfStock} onClick={e => setPhotoIndex(index)}></img>}
+                    <img className="column" src={thumbnail_url  || outOfStock}></img> :
+                    <img className="column" style={{border: '2px #daa520 solid'}} src={thumbnail_url  || outOfStock}></img>}
                 </div>
               ))}
             </div>
           </div>
-           {first ? null : <button id='topScroll' type="button" onClick={() => {scroll(-85)}}>▲</button>}
-           {last ? null : <button id='botScroll' type="button" onClick={() => {scroll(85)}}>▼</button>}
-           {photoIndex === 0 ? null : <button id='leftScroll' type="button" onClick={() => { setPhotoIndex(photoIndex - 1); scroll(-82)}}>«</button>}
-           {mainPhoto.length - 1 === photoIndex ? null : <button id='rightScroll' type="button" onClick={() => { setPhotoIndex(photoIndex + 1); scroll(82)}}>»</button>}
+           {first ? null : <button id='topScroll' data-testid="topScrollButton" type="button" onClick={() => {scroll(-82)}}>▲</button>}
+           {last ? null : <button id='botScroll' data-testid="botScrollButton" type="button" onClick={() => {scroll(82)}}>▼</button>}
+           {photoIndex === 0 ? null : <button id='leftScroll' data-testid="leftScrollButton" type="button" onClick={() => { setPhotoIndex(photoIndex - 1); scroll(-82)}}>«</button>}
+           {mainPhoto.length - 1 === photoIndex ? null : <button id='rightScroll' data-testid="rightScrollButton" type="button" onClick={() => { setPhotoIndex(photoIndex + 1); scroll(82)}}>»</button>}
       </div>
   )
 }
