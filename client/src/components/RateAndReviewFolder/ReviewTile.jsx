@@ -87,7 +87,7 @@ const ReviewTile = ({ review, markHelpful, reportReview }) => {
         <span>Helpful? <a onClick={() => clickHelper() }role="click-helpful">Yes({helpfulCount}) |</a></span>
         <span><a onClick={()=> reportReview(review.review_id)} role="click-report">&nbsp;Report</a></span>
       </div>
-      <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <Modal className="expandedPhoto" overlayClassName="overlayExpandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
           <div className="singlePhotoContainer">
             <img className="singlePhoto" src={currentPhoto} alt="placeholder"/>
           <div className="closeButtonContainer" onClick={closeModal}>

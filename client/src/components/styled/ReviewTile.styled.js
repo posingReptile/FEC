@@ -21,7 +21,7 @@ export const StyledATag = styled.a`
   font-weight: 400;
 
   &:hover {
-
+    cursor: pointer;
     font-style: italic
   }
 `
