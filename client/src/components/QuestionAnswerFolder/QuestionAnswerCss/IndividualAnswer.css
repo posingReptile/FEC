@@ -64,16 +64,13 @@ svg.close:hover {
 .singlePhotoDiv {
   padding-right: 5px;
 }
-.markedHelpful {
-  color:green
-}
+
 .answerYes {
   margin-right: 3px;
-
 }
 
 .markedtrue {
-  color: green;
+  color: rgb(218, 165, 32);
 }
 .helpfulBlock {
   margin-right: 10px;

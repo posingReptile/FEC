@@ -63,11 +63,8 @@ const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
       <h3><strong>Q:<Highlighter searchWords={[searchInput]} textToHighlight={question.question_body} /></strong></h3>
       <div className="Qhelpful">
         Helpful? &nbsp;
-        <u className="questionYes" data-testid="questionYes"id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }}>Yes</u>
-        { markedHelpful
-        ?  <div>({question.question_helpfulness + 1})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
-        :  <div>({question.question_helpfulness})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
-        }
+        <u className="questionYes" data-testid="questionYes" id={question.question_id} onClick={(e) => { handleMarkQuestionHelpful(e) }} >Yes</u>
+            <span className={"marked" + markedHelpful} >({markedHelpful ? question.question_helpfulness + 1 : question.question_helpfulness})</span>
         <u className="AddAnswerButton" id={question.question_id} onClick={(e) => { openModal(e) }}>Add Answer</u>
         <Modal className="AnswerModal" overlayClassName="AnswerModalOverlay" isOpen={modalIsOpen} onRequestClose={closeModal}>
           <NewAnswer itemName={itemName} questionId={questionId} questionBody={question.question_body} />

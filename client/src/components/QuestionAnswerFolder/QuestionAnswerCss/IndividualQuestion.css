@@ -46,7 +46,13 @@
   top: 5px;
   cursor: pointer;
 }
-
+.markedtrue {
+  color: rgb(218, 165, 32);
+  margin-right: 10px;
+}
+.markedfalse {
+  margin-right: 10px;
+}
 #NewAnswerClose:hover {
   cursor: pointer;
 }
@@ -60,4 +66,7 @@
   width: 50%;
   left: 25%;
   top: 15%; 
+}
+.questionYes {
+  padding-right: 3px;
 }
