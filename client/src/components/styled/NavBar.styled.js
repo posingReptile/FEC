@@ -12,7 +12,6 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
 
-
   & > h1 {
     font-size: 40px;
     font-family: 'Roboto Serif', serif;
