@@ -13,6 +13,8 @@ export const StyledImgList = styled.li`
   display: flex;
   flex-direction: row;
   width: 20%;
+  position: relative;
+  padding: 1%;
 `
 export const StyledATag = styled.a`
   font-size: 14px;

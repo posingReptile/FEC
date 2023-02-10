@@ -96,6 +96,7 @@ select {
   inset: 0px;
 }
 
+
 /* Review Tile Styling */
 .reviewTileContainer {
   /* border: 0.5px solid rgba(39, 50, 39, 0.3); */
@@ -172,6 +173,10 @@ p.recommended {
   color: inherit;
 }
 
+.HelpfulOrReport a:hover {
+  font-style: italic;
+  text-decoration: underline;
+}
 
 /* .reviewDate {
   font-size: small;
