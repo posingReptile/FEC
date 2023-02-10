@@ -1,16 +1,42 @@
 .AddQuestion, .MoreQuestionsButton, .loadFewerQuestionsButton {
-  font-weight: bold;
-  width:280px;
-  height: 60px;
+  /* font-weight: bold; */
+  height: 30px;
   margin-right: 20px;
+  border: 1px solid rgba(39, 50, 39, 0.7);
+  border-radius: 5px;
+  color: rgba(39, 50, 39, 0.8);
+  font-weight: 500;
 }
+
+.AddQuestion:hover, 
+.MoreQuestionsButton:hover, 
+.loadFewerQuestionsButton:hover {
+  background-color: rgba(39, 50, 39, 0.3);
+  color:rgba(39, 50, 39, 0.8);
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .AddQuestion:hover, 
+  .MoreQuestionsButton:hover, 
+  .loadFewerQuestionsButton:hover {
+    background-color: #646F58;
+    color:whitesmoke;
+  }
+}
+
+
 .QuestionAnswersBlock {
   width: 100%;
   margin-bottom: 3%;
   margin-top: 3%;
+  font-family: "adobe-clean", sans-serif;
 }
 
 .QAButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
   padding-top: 10px;
 }
 

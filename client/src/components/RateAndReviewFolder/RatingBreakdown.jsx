@@ -25,7 +25,7 @@ const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, f
         <StyledRecommendPercentage>{recommendPercentage}% of reviewers recommend this product</StyledRecommendPercentage>
       </div>
 
-      {filter.length > 0 ? <button onClick={() => setFilter([])}>clear all filters</button> : null}
+      {filter.length > 0 ? <button className='remove-filter-btn' onClick={() => setFilter([])}>clear all filters</button> : null}
       <StyledRatingDiv data-testid='rating-bd-stars'>
         <StarBar starValue={5} starRating={productRatings['5']} setFilter={setFilter} data-testid="star-filter"/>
         <StarBar starValue={4} starRating={productRatings['4']} setFilter={setFilter} data-testid="star-filter"/>
