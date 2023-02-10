@@ -36,8 +36,18 @@
   border-style: none none solid none;
 }
 
+.LoadMoreAnswers:hover {
+  font-style: italic;
+}
+
 .questionYes {
   cursor: pointer;
+}
+.questionYes:hover {
+  font-style: italic;
+}
+.AddAnswerButton:hover {
+  font-style: italic;
 }
 
 #NewAnswerClose {

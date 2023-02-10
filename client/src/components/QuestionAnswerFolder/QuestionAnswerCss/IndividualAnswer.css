@@ -2,6 +2,11 @@
   cursor: pointer;
 }
 
+.answerYes:hover,
+.Report:hover {
+  font-style: italic;
+}
+
 .answerBlock {
   display: flex;
   flex-direction: column;

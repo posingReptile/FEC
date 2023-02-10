@@ -181,6 +181,7 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
     Fit: ['Runs tight', 'Runs slightly tight', ' Perfect ', 'Runs slighty loose', 'Runs loose']
   }
 
+
   return (
     <StyledRatingsAndReviews data-testid="rating-main" id="rlink"  onClick={(e) => handleDataClick(e, 'Ratings&Review')}>
       <h4 id="randrtitle">Ratings & Reviews</h4>
@@ -190,7 +191,8 @@ const RateAndReview = ({ product_id, productRating, setProductRating, totalNumRe
             productRatings={productRatings}
             recommendPercentage={recommendPercentage}
             filter={filter}
-            setFilter={setFilter}/>
+            setFilter={setFilter}
+            />
           <ProductBreakdown productChar={productChar} charWords={charWords}/>
         </div>
       <ReviewsList setSortBy={setSortBy}

@@ -4,14 +4,16 @@ import { StyledStarRating, StyledHeadingDiv, StyledRatingDiv, StyledRecommendPer
 
 const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, filter, setFilter}) => {
   let ratingPercent = (productRating * 100) / 5;
-  ratingPercent = (ratingPercent % 5) >= 2.5 ? parseInt(ratingPercent / 5) * 5 + 5 : parseInt(ratingPercent / 5) * 5
-  // const handleStarClick = (e) => {
-  //   console.log('this is e.target.value: ', e.target)
-  //   // setFilter(prev => ([
-  //   //   ...prev,
-  //   //   e.target.value
-  //   // ]))
-  // }
+  ratingPercent = (ratingPercent % 5) >= 2.5 ? parseInt(ratingPercent / 5) * 5 + 5 : parseInt(ratingPercent / 5) * 5;
+
+  const removeOneStar = (e) => {
+    let star = e.target.name;
+    star = Number.parseInt(star)
+    let starIndex = filter.indexOf(star);
+    let removed = filter.splice(starIndex, 1);
+    console.log('this is removed:', removed, 'this is filter', filter)
+    setFilter(filter.splice(starIndex, 1))
+  }
 
 
   return (
@@ -25,7 +27,14 @@ const RatingBreakdown = ({ productRating, productRatings, recommendPercentage, f
         <StyledRecommendPercentage>{recommendPercentage}% of reviewers recommend this product</StyledRecommendPercentage>
       </div>
 
-      {filter.length > 0 ? <button onClick={() => setFilter([])}>clear all filters</button> : null}
+      {filter.length > 0 ? 
+      <div >
+        {filter.map((starNum, index) => (
+            <button className="remove-filter-star" name={starNum} key={index} onClick={removeOneStar}>{starNum}★</button>
+        ))}
+        <button className='remove-filter-btn' onClick={() => setFilter([])}>clear all filters</button></div> 
+        : null}
+
       <StyledRatingDiv data-testid='rating-bd-stars'>
         <StarBar starValue={5} starRating={productRatings['5']} setFilter={setFilter} data-testid="star-filter"/>
         <StarBar starValue={4} starRating={productRatings['4']} setFilter={setFilter} data-testid="star-filter"/>
