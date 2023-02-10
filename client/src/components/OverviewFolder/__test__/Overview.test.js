@@ -14,7 +14,7 @@ axios.defaults.baseURL = 'http://localhost:3000';
 describe('Workshop', function() {
   const user = userEvent.setup();
 
-  render(<Overview item={Static.productId}/>)
+  render(<Overview item={Static.productId}  handleDataClick={() => {}}/>)
 
   it('should render the overview component', () => {
     let test = screen.getByTestId('testOV')
