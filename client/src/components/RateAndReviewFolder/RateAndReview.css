@@ -127,7 +127,6 @@ select:hover {
   background-color: rgba(39, 50, 39, 0.5);
   position: fixed;
   inset: 0px;
-
 }
 
 #new-review-close {
@@ -224,15 +223,19 @@ p.recommended {
 }
 
 
-
-
 /* Review Tile Expanded styling */
 .expandedPhoto {
   /* display: flex; */
   justify-self: end;
   max-width: 50%;
-
 }
+
+.overlayExpandedPhoto {
+  background-color: rgba(39, 50, 39, 0.5);
+  position: fixed;
+  inset: 0px;
+}
+
 .singlePhoto {
   position: relative;
   margin:auto;
