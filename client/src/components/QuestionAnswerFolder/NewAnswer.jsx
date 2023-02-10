@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-
+import './QuestionAnswerCss/NewAnswer.css'
 
 const NewAnswer = ({ questionId, itemName, questionBody }) => {
 
@@ -23,19 +23,22 @@ const NewAnswer = ({ questionId, itemName, questionBody }) => {
   }
 
   return (
-    <form data-testid="newAnswerForm" onSubmit={handleSubmitNewQuestion}>
+    <form className="newAnswerForm" data-testid="newAnswerForm" onSubmit={handleSubmitNewQuestion}>
     <div>Submit Your Answer: </div>
-    <div>{itemName}: {questionBody}</div>
-      <p>Email Address:</p>
+    <h3>{itemName}: {questionBody}</h3>
+      <h5>Email Address:<i className="redStar">*</i></h5>
       <input name="email" onChange={handleAnswerInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com"   required  ></input>
-      <p>Nickname:</p>
+      <h5>Nickname:<i className="redStar">*</i></h5>
       <input name="nickname" onChange={handleAnswerInputChange} placeholder="Example: jackyBoy" minLength="5" required></input>
-      <p>Answer:</p>
-      <input name="answer" onChange={handleAnswerInputChange} placeholder="Example: You are the answer" minLength="5" required></input>
-      <p>Upload an Image: </p>
+      <h5>Answer:<i className="redStar">*</i></h5>
+      <textarea className="AnswerInput" placeholder="This is an Answer." cols="40" wrap="hard"></textarea> 
+      <h5>Upload an Image: </h5>
       <input type="file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg"  onChange={(e) => setImag(previous => [...previous, URL.createObjectURL(e.target.files[0])])} multiple />
-      <img src={imag} height="200" width="200" alt="" />
-      <input data-testid="Submit" type="submit" />
+      {imag.length > 0 
+      ? <img src={imag} height="200" width="200" alt="" />
+      : <img src={imag} alt="" />
+      }
+      <input className="submitButton" data-testid="Submit" type="submit" />
     </form>
   )
 }

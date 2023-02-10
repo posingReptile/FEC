@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import './QuestionAnswerCss/NewQuestion.css'
 
-
-const NewQuestion = ( {productId, itemName} ) => {
+const NewQuestion = ({ productId, itemName }) => {
 
   const [questionInput, setQuestionInput] = useState({
     email: '',
@@ -13,24 +13,25 @@ const NewQuestion = ( {productId, itemName} ) => {
   })
 
   const handleSubmitNewQuestion = () => {
-    axios.post('/addQuestion', {value: questionInput})
-    .catch(err => console.log('err in axios post add question', err))
+    axios.post('/addQuestion', { value: questionInput })
+      .catch(err => console.log('err in axios post add question', err))
   }
 
   const handleQuestionInputChange = (e) => {
-    setQuestionInput({...questionInput, [e.target.name]: e.target.value})
+    setQuestionInput({ ...questionInput, [e.target.name]: e.target.value })
   }
 
   return (
     <form className="NewQuestionForm" data-testid="newQuestionForm" onSubmit={handleSubmitNewQuestion}>
-      <div>Ask Your Question About the {itemName}</div>
-      <p>Email Address:</p>
+      <div>Ask Your Question About: </div>
+      <h3>{itemName}</h3>
+      <h5>Email Address:<i className="redStar">*</i></h5>
       <input className="QuestionEmailInput" name="email" onChange={handleQuestionInputChange} type="email" placeholder="Example: jackTheRipper@gmail.com" required  ></input>
-      <p>Nickname:</p>
+      <h5>Nickname:<i className="redStar">*</i></h5>
       <input className="QuestionNicknameInput" name="nickname" onChange={handleQuestionInputChange} placeholder="Example: jackyBoy" required minLength="5" ></input>
-      <p>Question:</p>
-      <input className="QuestionBodyInput" name="question" onChange={handleQuestionInputChange} placeholder="Example: Why am I like this?" required minLength="5" ></input>
-      <input type="submit" />
+      <h5>Question:<i className="redStar">*</i></h5>
+      <textarea className="AnswerInput" placeholder="Why am I like this?" cols="40" wrap="hard"></textarea>
+      <input className="submitButton" type="submit" />
     </form>
   )
 }

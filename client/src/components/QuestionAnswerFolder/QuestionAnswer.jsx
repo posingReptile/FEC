@@ -38,9 +38,9 @@ const QuestionAnswer = ( {product_id, itemName, handleDataClick} ) => {
           : <button hidden={true}></button>
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>
-        <Modal className="NewQuestionModal"isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal className="QuestionModal" overlayClassName="NewQuestionOverlay" isOpen={modalIsOpen} onRequestClose={closeModal}>
           <NewQuestion productId={product_id} itemName={itemName} />
-          <button onClick={closeModal}>close</button>
+          <button id="NewQuestionClose" onClick={closeModal}>X</button>
         </Modal>
       </div>
     </div>

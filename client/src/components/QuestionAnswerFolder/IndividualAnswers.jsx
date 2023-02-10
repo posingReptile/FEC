@@ -67,7 +67,7 @@ const IndividualAnswers = ({ answer, searchInput }) => {
             <span className={"marked" + markedHelpful} >({markedHelpful ? answer.helpfulness + 1 : answer.helpfulness})</span>
           </div>
           <u className="Report" onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
-          <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <Modal overlayClassName="expandedPhotoOverlay" className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
             <div className="singlePhotoContainer">
               <img className="singlePhoto" src={currentPhoto} alt="placeholder" />
               <div className="closeButtonContainer" onClick={closeModal}>

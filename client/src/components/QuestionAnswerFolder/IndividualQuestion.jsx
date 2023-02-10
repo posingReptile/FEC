@@ -69,9 +69,9 @@ const IndividualQuestion = ( {question, productid, searchInput, itemName} ) => {
         :  <div>({question.question_helpfulness})&nbsp; &nbsp; |&nbsp; &nbsp;</div>
         }
         <u className="AddAnswerButton" id={question.question_id} onClick={(e) => { openModal(e) }}>Add Answer</u>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal className="AnswerModal" overlayClassName="AnswerModalOverlay" isOpen={modalIsOpen} onRequestClose={closeModal}>
           <NewAnswer itemName={itemName} questionId={questionId} questionBody={question.question_body} />
-          <button onClick={closeModal}>close</button>
+          <button id="NewAnswerClose"onClick={closeModal}>X</button>
         </Modal>
       </div>
       <div className="answer" data-testid="answer">{mappedAnswers}</div>

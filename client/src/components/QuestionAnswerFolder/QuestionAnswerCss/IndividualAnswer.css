@@ -78,3 +78,9 @@ svg.close:hover {
 .helpfulBlock {
   margin-right: 10px;
 }
+
+.expandedPhotoOverlay {
+  background-color: rgba(39, 50, 39, 0.5);
+  position: fixed;
+  inset: 0px;
+}
