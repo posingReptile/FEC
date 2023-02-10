@@ -67,7 +67,8 @@ select {
 }
 
 .review-btns button,
-.remove-filter-btn {
+.remove-filter-btn,
+.remove-filter-star {
   border: 1px solid rgba(39, 50, 39, 0.7);
   border-radius: 5px;
   color: rgba(39, 50, 39, 0.8);
@@ -80,14 +81,17 @@ select {
 }
 
 .review-btns button:hover,
-.remove-filter-btn:hover {
+.remove-filter-btn:hover,
+.remove-filter-star:hover {
   background-color: rgba(39, 50, 39, 0.3);
   color:rgba(39, 50, 39, 0.8);
 
 }
 
 @media (prefers-color-scheme: dark) {
-  .review-btns button:hover {
+  .review-btns button:hover,
+  .remove-filter-btn:hover,
+  .remove-filter-star:hover {
     background-color: #646F58;
     color:whitesmoke;
   }
@@ -98,11 +102,7 @@ select {
   #reviewImgUpload {
     color: whitesmoke;
   }
-  .remove-filter-btn:hover {
-    background-color: #646F58;
-    color: whitesmoke;
 
-  }
 }
 
 .ReactModal__Overlay,
