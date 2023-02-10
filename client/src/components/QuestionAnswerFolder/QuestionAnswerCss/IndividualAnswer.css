@@ -64,17 +64,20 @@ svg.close:hover {
 .singlePhotoDiv {
   padding-right: 5px;
 }
-.markedHelpful {
-  color:green
-}
+
 .answerYes {
   margin-right: 3px;
-
 }
 
 .markedtrue {
-  color: green;
+  color: rgb(218, 165, 32);
 }
 .helpfulBlock {
   margin-right: 10px;
+}
+
+.expandedPhotoOverlay {
+  background-color: rgba(39, 50, 39, 0.5);
+  position: fixed;
+  inset: 0px;
 }

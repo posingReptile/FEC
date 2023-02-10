@@ -39,3 +39,34 @@
 .questionYes {
   cursor: pointer;
 }
+
+#NewAnswerClose {
+  position: absolute;
+  right: 5px; 
+  top: 5px;
+  cursor: pointer;
+}
+.markedtrue {
+  color: rgb(218, 165, 32);
+  margin-right: 10px;
+}
+.markedfalse {
+  margin-right: 10px;
+}
+#NewAnswerClose:hover {
+  cursor: pointer;
+}
+.AnswerModalOverlay {
+  background-color: rgba(39, 50, 39, 0.5);
+  position: fixed;
+  inset: 0px;
+}
+.AnswerModal {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 15%; 
+}
+.questionYes {
+  padding-right: 3px;
+}

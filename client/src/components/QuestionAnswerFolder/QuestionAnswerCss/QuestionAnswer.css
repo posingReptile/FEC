@@ -24,3 +24,27 @@
   object-fit: cover;
   object-position: 30% 30%;
 }
+
+.NewQuestionOverlay {
+  background-color: rgba(39, 50, 39, 0.5);
+  position: fixed;
+  inset: 0px;
+}
+
+#NewQuestionClose {
+  position: absolute;
+  right: 5px; 
+  top: 5px;
+  cursor: pointer;
+}
+
+#NewQuestionClose:hover {
+  cursor: pointer;
+}
+
+.QuestionModal {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 15%; 
+}
