@@ -61,6 +61,9 @@ svg.close:hover {
   background-color: rgb(148, 148, 148);
 }
 
+.singlePhotoDiv {
+  padding-right: 5px;
+}
 .markedHelpful {
   color:green
 }

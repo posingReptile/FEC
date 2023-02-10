@@ -38,7 +38,7 @@ const QuestionAnswer = ( {product_id, itemName, handleDataClick} ) => {
           : <button hidden={true}></button>
         }
         <button className="AddQuestion" onClick={openModal}>Add A Question</button>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal className="NewQuestionModal"isOpen={modalIsOpen} onRequestClose={closeModal}>
           <NewQuestion productId={product_id} itemName={itemName} />
           <button onClick={closeModal}>close</button>
         </Modal>
