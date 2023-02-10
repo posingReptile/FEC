@@ -31,7 +31,7 @@ const NewAnswer = ({ questionId, itemName, questionBody }) => {
       <h5>Nickname:<i className="redStar">*</i></h5>
       <input name="nickname" onChange={handleAnswerInputChange} placeholder="Example: jackyBoy" minLength="5" required></input>
       <h5>Answer:<i className="redStar">*</i></h5>
-      <textarea className="AnswerInput" placeholder="This is an Answer." cols="40" wrap="hard"></textarea> 
+      <textarea name="answer" onChange={handleAnswerInputChange} className="AnswerInput" placeholder="This is an Answer." cols="40" wrap="hard"></textarea> 
       <h5>Upload an Image: </h5>
       <input type="file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg"  onChange={(e) => setImag(previous => [...previous, URL.createObjectURL(e.target.files[0])])} multiple />
       {imag.length > 0 

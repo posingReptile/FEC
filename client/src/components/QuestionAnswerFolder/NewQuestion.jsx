@@ -30,7 +30,7 @@ const NewQuestion = ({ productId, itemName }) => {
       <h5>Nickname:<i className="redStar">*</i></h5>
       <input className="QuestionNicknameInput" name="nickname" onChange={handleQuestionInputChange} placeholder="Example: jackyBoy" required minLength="5" ></input>
       <h5>Question:<i className="redStar">*</i></h5>
-      <textarea className="AnswerInput" placeholder="Why am I like this?" cols="40" wrap="hard"></textarea>
+      <textarea name="question" onChange={handleQuestionInputChange} className="AnswerInput" placeholder="Why am I like this?" cols="40" wrap="hard"></textarea>
       <input className="submitButton" type="submit" />
     </form>
   )
