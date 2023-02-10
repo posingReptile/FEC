@@ -124,4 +124,8 @@ export const StyledEmailInput = styled.input`
 export const StyledSubmit = styled.input`
   position: absolute;
   right: 20px;
+  margin-top: 5px;
+  background-color: bisque;
+  border-radius: 4px;
+  cursor: pointer;
 `

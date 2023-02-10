@@ -6,6 +6,9 @@ export const StyledProductBar = styled.div`
   width: 100%;
   background-color: lightgray;
   margin-bottom: 5px;
+  @media (prefers-color-scheme: dark) {
+    background-color: RGBA(36, 39, 37, 0.5);
+  }
 `
 export const StyledProductRating = styled.div`
   display: flex;

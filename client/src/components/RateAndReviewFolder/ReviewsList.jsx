@@ -41,7 +41,7 @@ const ReviewsList = ({ setSortBy, totalNumReviews, reviewsShown, showMoreReviews
 
       <button id="btn-new-review" onClick={openModal} role='open-modal'>Add New Review</button>
         <Modal className="new-review" overlayClassName="overlay-new-review" isOpen={modalIsOpen} onRequestClose={closeModal}>
-          <button onClick={closeModal} style={{"position": "absolute", "right": "5px", 'top': '5px'}}>X</button>
+          <button onClick={closeModal} id="new-review-close">X</button>
           <NewReview item={item}
             charArray={charArray}
             charChoice={charChoice}

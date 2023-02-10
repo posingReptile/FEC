@@ -59,6 +59,10 @@ export const StyledParentStarBar = styled.div`
   height: 15px;
   width: 100%;
   background-color: lightgray;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: RGBA(36, 39, 37, 0.5);
+  }
 `
 
 export const StyledChildStarBar = styled.div`
@@ -66,4 +70,8 @@ export const StyledChildStarBar = styled.div`
   width: ${({starRating}) => starRating}%;
   background-color: green;
   text-align: right;
+  @media (prefers-color-scheme: dark) {
+    background-color: #646F58;
+  }
+
 `

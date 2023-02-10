@@ -40,7 +40,7 @@
 .sort-styled {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-start
 
 }
 .sort-label {
@@ -51,6 +51,10 @@ select {
   border-radius: 4px;
   font-style: inherit;
   background-color: rgb(255, 254, 255);
+}
+
+select:hover {
+  cursor: pointer;
 }
 
 .review-btns {
@@ -71,8 +75,24 @@ select {
 .review-btns button:hover {
   background-color: rgba(39, 50, 39, 0.3);
   color:rgba(39, 50, 39, 0.8);
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .review-btns button:hover {
+    background-color: #646F58;
+    color:whitesmoke;
+  }
+
+  .new-review .privacy-auth {
+    color: whitesmoke;
+  }
+  #reviewImgUpload {
+    color: whitesmoke;
+  }
 
 }
+
 .ReactModal__Overlay,
 .ReactModal__Overlay--after-open {
   background: rgba(39, 50, 39, 0.5);
@@ -81,6 +101,7 @@ select {
 .new-review {
   /* background-color: rgba(255, 255, 255, 0.75); */
   position: absolute;
+  margin: 0 auto;
   inset: 40px;
   border: 0.5px solid rgb(204, 204, 204);
   background: rgb(255, 250, 242);
@@ -88,14 +109,37 @@ select {
   border-radius: 4px;
   outline: none;
   padding: 20px;
+  max-width: 80%;
+}
+
+.new-review h5 {
+  font-size: 16px;
+  color: #556b2f;
+}
+
+.privacy-auth {
+  font-weight: 400;
+  color: rgba(39, 50, 39, 0.3);
+  font-variant: small-caps;
 }
 
 .overlay-new-review {
   background-color: rgba(39, 50, 39, 0.5);
   position: fixed;
   inset: 0px;
+
 }
 
+#new-review-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 4px;
+}
+
+#new-review-close:hover {
+  cursor: pointer;
+}
 
 /* Review Tile Styling */
 .reviewTileContainer {
@@ -112,9 +156,9 @@ select {
   justify-content: space-between;
 }
 
-/* .notHelpfulDiv {
-
-} */
+.stars-filter:hover {
+  cursor: pointer;
+}
 
 .Rating-And-Name {
   display: flex;
@@ -176,12 +220,10 @@ p.recommended {
 .HelpfulOrReport a:hover {
   font-style: italic;
   text-decoration: underline;
+  cursor: pointer;
 }
 
-/* .reviewDate {
-  font-size: small;
-  font-style: italic;
-} */
+
 
 
 /* Review Tile Expanded styling */

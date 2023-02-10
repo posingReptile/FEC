@@ -102,6 +102,9 @@ p, h1, h2, h3, h4, h5, h6 {
   body .ReactModal__Content {
     background-color: #242725;
   }
+  body .ReactModal__Content h5 {
+    color: rgb(218, 165, 32);
+  }
   body #ShoppingDisplay {
     background-color: #504B3A;
   }

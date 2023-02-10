@@ -62,7 +62,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
     <div>
       <Container role="add-new-review">
       <h4>Write Your Review</h4>
-      <h5>About the {item.name}</h5>
+      <h5>About the <i>{item.name}</i></h5>
       <form onSubmit={handleReviewSubmit}>
       <NewReviewTopPortion>
         <LeftAndRight>
@@ -70,12 +70,12 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
             <h5>Username<RedAsterisk>*</RedAsterisk></h5>
             <input name="username" placeholder="Example: jackson11!" onChange={(e) => handleTextInput(e, setUsername)} required/>
           </label><br/>
-          <h5>For privacy reasons, do not use your full name or email address</h5><br/>
+          <h5 className="privacy-auth">For privacy reasons, do not use your full name or email address</h5><br/>
           <label>
             <h5>Email<RedAsterisk>*</RedAsterisk></h5>
             <StyledEmailInput name="email" placeholder="Example: jackson11@email.com" type ="email" onChange={(e) => handleTextInput(e, setEmail)} required/>
           </label><br/>
-          <h5>For authentication reasons, you will not be emailed</h5>
+          <h5 className="privacy-auth">For authentication reasons, you will not be emailed</h5>
         </LeftAndRight>
         <LeftAndRight>
           <label><h5>Overall Rating<RedAsterisk>*</RedAsterisk></h5>
@@ -86,7 +86,7 @@ const NewReview = ({charArray, charChoice, setCharChoice, product_id, charOption
                     <li key={index}>
                       <FaStar
                       size={24}
-                      color={(hovered || starRating) > index ? "orange" : "grey"}
+                      color={(hovered || starRating) > index ? "#daa520" : "grey"}
                       role={`rating-${index}`}
                       onClick={() => setRating(index + 1)}
                       onMouseOver={() => setHovered(index + 1)}
