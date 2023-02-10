@@ -58,6 +58,12 @@ p, h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+.hGFGsi {
+  position: sticky;
+  z-index: 100;
+  top: 0px;
+}
+
 
 @media (prefers-color-scheme: dark) {
   body {
