@@ -1,6 +1,6 @@
 .AddQuestion, .MoreQuestionsButton, .loadFewerQuestionsButton {
   /* font-weight: bold; */
-  height: 30px;
+  height: 50px;
   margin-right: 20px;
   border: 1px solid rgba(39, 50, 39, 0.7);
   border-radius: 5px;
@@ -36,7 +36,6 @@
 .QAButtons {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
   padding-top: 10px;
 }
 
