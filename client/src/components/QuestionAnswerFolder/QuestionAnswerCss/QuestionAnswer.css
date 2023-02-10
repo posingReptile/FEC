@@ -13,3 +13,14 @@
 .QAButtons {
   padding-top: 10px;
 }
+
+.NewQuestionModal {
+  max-width: 30%;
+  left: 35%;
+  top: 15%;
+  position: absolute;
+  background-color: hwb(12 91% 7%);
+  box-shadow: 1px 1px 5px grey;
+  object-fit: cover;
+  object-position: 30% 30%;
+}

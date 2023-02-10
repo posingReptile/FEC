@@ -54,7 +54,7 @@ const IndividualAnswers = ({ answer, searchInput }) => {
         <div className="answerPhotos">
           {answer.photos ? answer.photos.map(photo => {
             return (
-              <div data-testid="Photo" onClick={() => { openModal(photo) }} key={photo} style={{ width: '10%', position: 'relative' }}>
+              <div className="singlePhotoDiv" data-testid="Photo" onClick={() => { openModal(photo) }} key={photo} style={{ width: '10%', position: 'relative' }}>
                 <img src={photo} alt="placeholder" />
               </div>
             )
@@ -66,7 +66,7 @@ const IndividualAnswers = ({ answer, searchInput }) => {
             <u className="answerYes" data-testid="answerYes" onClick={() => { handleMarkAnswerHelpful(answer.id) }} >Yes</u>
             <span className={"marked" + markedHelpful} >({markedHelpful ? answer.helpfulness + 1 : answer.helpfulness})</span>
           </div>
-          <u className="Report"  onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
+          <u className="Report" onClick={() => { handleReportAnswer(answer.id) }}>Report</u>
           <Modal className="expandedPhoto" isOpen={modalIsOpen} onRequestClose={closeModal}>
             <div className="singlePhotoContainer">
               <img className="singlePhoto" src={currentPhoto} alt="placeholder" />
