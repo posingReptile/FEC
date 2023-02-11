@@ -81,7 +81,7 @@ The Reviews List displays the two reviews at a time. A user can click the 'More 
 ![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/HelpfulReview.gif)
 
 The 'Add Review' button will open up a modal window where a customer can add a review of their own. The user is required to fill out all of the fields except for review summary and they can also add up to five photos. If a customer tries to submit a review without the required fields, they modal will remain and they will be prompted on the fields still needing completion. To exit the review modal without submitting a review, a user can click the 'X' button or outside of the modal window.
-
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/AddReview.gif)
 
 
 
