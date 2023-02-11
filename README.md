@@ -40,6 +40,8 @@ A user can also toggle dark mode in the site base on the user's intial settings.
 
 Search inquiry that allows users to input a search term and only render questions with that search term the search term will also be highlighted in rendered question and answer
 
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/QuestionAnswerInput.gif)
+
 Render all the questions when the Load more questions button is clicked allowing users to indefinitly scroll through all the questions related to the product 
 
 Users are able to mark a question or answer helpful once which is how the questions and answer are sorted 
