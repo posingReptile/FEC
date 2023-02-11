@@ -22,31 +22,31 @@ The Overview section features general product information, product description a
 
 A user can use the image carousels on the left to scroll and change the main image into view by clicking on any of the arrows or the image thumbnails.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/Carousel&Arrows.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/Carousel&Arrows.gif)
 
 At the top of the product details is the star ratings (out of 5 rounded to the nearest quarter) of the product. The number is sum review by other users as well as a link that scrolls the user's page down to the Rating and Reviews section.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ScrollLink.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/ScrollLink.gif)
 
 By clicking on the displayed image, a user can see the expanded view of it and once more for the zoomed view.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/Expand&Zoom.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/Expand&Zoom.gif)
 
 Clicking on a style thumbnail will update the images and information for that particular style.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/StyleIcons.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/StyleIcons.gif)
 
 Under the style selector a user can select an available size for the selected product style and the quantity they wish to add to their cart. Attempting to add-to-cart without selecting a size will pop up a message instructing them to do so.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/AddToBag.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/AddToBag.gif)
 
 Clicking on the show cart button will open a modal that will feature all of the items currently in the users cart allow the remove any items or checking out the entire cart.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/CartModal.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/CartModal.gif)
 
 A user can also toggle dark mode in the site base on the user's intial settings.
 
-![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/Dark&LightMode.gif)
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/Dark&LightMode.gif)
 
 #### Related Products
 
@@ -87,10 +87,10 @@ The Product Breakdown dynamically shows each products characteristics and how ot
 The Reviews List displays the two reviews at a time. A user can click the 'More Reviews' button and two more reviews will display on the screen. When the reviews list gets long enough, it becomes scrollable.
 ![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/MoreReviews.gif)
 
- As well as filter the reviews by stars, the customer can also sort by helpfulness, newest, or relevancy, the default is relevancy. 
+ As well as filter the reviews by stars, the customer can also sort by helpfulness, newest, or relevancy, the default is relevancy.
 ![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/SortOptions.gif)
- 
- Each review can be be marked helpful or reported if inappropriate. 
+
+ Each review can be be marked helpful or reported if inappropriate.
 ![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/HelpfulReview.gif)
 
 The 'Add Review' button will open up a modal window where a customer can add a review of their own. The user is required to fill out all of the fields except for review summary and they can also add up to five photos. If a customer tries to submit a review without the required fields, they modal will remain and they will be prompted on the fields still needing completion. To exit the review modal without submitting a review, a user can click the 'X' button or outside of the modal window.
@@ -100,7 +100,6 @@ The 'Add Review' button will open up a modal window where a customer can add a r
 
 
 ### Contributions 
-
 This project was created by Anthony Chen, Andrew Sittner, and Claire Tunakan for their Hack Reactor Front-End Capstone. 
 
 If you wish to contribute to the project, please proceed as follows.
