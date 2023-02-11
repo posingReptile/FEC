@@ -18,6 +18,8 @@ The Overview section features general product information, product description a
 
 A user can use the image carousels on the left to scroll and change the main image into view by clicking on any of the arrows or the image thumbnails.
 
+<!-- ![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/QuestionAnswerInput.gif) -->
+
 At the top of the product details is the star ratings (out of 5 rounded to the nearest quarter) of the product. The number is sum review by other users as well as a link that scrolls the user's page down to the Rating and Reviews section.
 
 By clicking on the displayed image, a user can see the expanded view of it and once more for the zoomed view.
@@ -62,12 +64,21 @@ User can add answers. If there are invalid inputs in mandatory slots, it will sh
 #### Ratings & Reviews
 
 When a customer scrolls down to the bottom of the page they are able to view the Ratings & Reviews widget which is broken down into Product Rating, Product Breakdown, Reviews List, and Add a New Review.
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/scrollReview.gif)
 
 Inside the Product Rating, the user is able to view the average rating, percentage of reviewers who recommeded the product, and a visual display of the star rating breakdown. Clicking on each star rating value(s) will add a filter(s) to the reviews list which will only show reviews which received that star rating(s). You are also able to remove the star filters individually or clear all filters.
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/StarFilters.gif)
 
 The Product Breakdown dynamically shows each products characteristics and how other customers rated those characteristics.
 
-The Reviews List displays the two reviews at a time. A user can click the 'More Reviews' button and two more reviews will display on the screen. When the reviews list gets long enough, it becomes scrollable. As well as filter the reviews by stars, the customer can also sort by helpfulness, newest, or relevancy, the default is relevancy. Each review can be be marked helpful or reported if inappropriate. 
+The Reviews List displays the two reviews at a time. A user can click the 'More Reviews' button and two more reviews will display on the screen. When the reviews list gets long enough, it becomes scrollable.
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/MoreReviews.gif)
+
+ As well as filter the reviews by stars, the customer can also sort by helpfulness, newest, or relevancy, the default is relevancy. 
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/SortOptions.gif)
+ 
+ Each review can be be marked helpful or reported if inappropriate. 
+![](https://github.com/2212-fec5-hawkeye/FEC/blob/main/ReadMeGifs/HelpfulReview.gif)
 
 The 'Add Review' button will open up a modal window where a customer can add a review of their own. The user is required to fill out all of the fields except for review summary and they can also add up to five photos. If a customer tries to submit a review without the required fields, they modal will remain and they will be prompted on the fields still needing completion. To exit the review modal without submitting a review, a user can click the 'X' button or outside of the modal window.
 
@@ -77,7 +88,7 @@ The 'Add Review' button will open up a modal window where a customer can add a r
 ### III. Contributions 
 (explain current contributors and the process required to make a contribution to the project)
 
-
+x
 
 
 
